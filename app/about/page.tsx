@@ -262,7 +262,7 @@ export default function About() {
               </h3>
             </div>
             <a
-              href="mailto:hello@noodlecodes.dev?subject=Future hire"
+              href="mailto:thenoodlecodes@gmail.com?subject=Future hire"
               className="btn btn-primary"
             >
               Drop your work ↗

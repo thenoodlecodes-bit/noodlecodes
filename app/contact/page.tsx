@@ -47,7 +47,12 @@ export default function Contact() {
                   Skip the form and grab a 30-min slot on our calendar. We&rsquo;ll
                   send the Loom intro &amp; call link.
                 </p>
-                <a href="#" className="btn btn-primary">
+                <a
+                  href="https://calendly.com/thenoodlecodes/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary"
+                >
                   Book on Calendly <span className="arr">↗</span>
                 </a>
               </div>
@@ -59,8 +64,23 @@ export default function Contact() {
                   Just write to us. We read every line. Reply within 24h on
                   weekdays.
                 </p>
-                <a href="mailto:hello@noodlecodes.dev" className="btn btn-secondary">
-                  hello@noodlecodes.dev <span className="arr">→</span>
+                <a
+                  href="mailto:thenoodlecodes@gmail.com"
+                  className="btn btn-secondary"
+                >
+                  thenoodlecodes@gmail.com <span className="arr">→</span>
+                </a>
+              </div>
+
+              <div className="side-card reveal">
+                <div className="ico">📞</div>
+                <h3>Want to talk now?</h3>
+                <p>
+                  Pick up the phone &mdash; we&rsquo;re humans, not a callback
+                  funnel. Available 10am&ndash;7pm IST, weekdays.
+                </p>
+                <a href="tel:+918529484995" className="btn btn-secondary">
+                  +91 85294 84995 <span className="arr">→</span>
                 </a>
               </div>
 

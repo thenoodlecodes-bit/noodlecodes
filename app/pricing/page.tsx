@@ -336,10 +336,15 @@ export default function Pricing() {
               Book a 30-min consult — free.
             </h3>
             <div className="btn-group">
-              <Link href="/contact" className="btn btn-primary">
+              <a
+                href="https://calendly.com/thenoodlecodes/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary"
+              >
                 Book consult <span className="arr">↗</span>
-              </Link>
-              <a href="mailto:hello@noodlecodes.dev" className="btn btn-secondary">
+              </a>
+              <a href="mailto:thenoodlecodes@gmail.com" className="btn btn-secondary">
                 Email us <span className="arr">→</span>
               </a>
             </div>

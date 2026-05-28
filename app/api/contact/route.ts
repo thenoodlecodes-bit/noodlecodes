@@ -63,8 +63,8 @@ export async function POST(req: Request) {
   // If RESEND_API_KEY is configured, send a real email via the Resend REST API
   // (no extra dependency needed). Otherwise, just log it server-side.
   const apiKey = process.env.RESEND_API_KEY;
-  const to = process.env.CONTACT_TO_EMAIL || "hello@noodlecodes.dev";
-  const from = process.env.CONTACT_FROM_EMAIL || "website@noodlecodes.dev";
+  const to = process.env.CONTACT_TO_EMAIL || "thenoodlecodes@gmail.com";
+  const from = process.env.CONTACT_FROM_EMAIL || "thenoodlecodes@gmail.com";
 
   if (apiKey) {
     try {

@@ -296,7 +296,7 @@ export default function ContactForm() {
             }}
           >
             Something burned in the kitchen — please try again, or email
-            hello@noodlecodes.dev directly.
+            thenoodlecodes@gmail.com directly.
           </p>
         )}
 

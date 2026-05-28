@@ -20,10 +20,15 @@ export default function Footer() {
               <em>let&rsquo;s cook.</em>
             </h3>
             <div className="ctas">
-              <Link href="/contact" className="btn btn-primary">
+              <a
+                href="https://calendly.com/thenoodlecodes/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary"
+              >
                 Book a call <span className="arr">↗</span>
-              </Link>
-              <a href="mailto:hello@noodlecodes.dev" className="btn btn-secondary">
+              </a>
+              <a href="mailto:thenoodlecodes@gmail.com" className="btn btn-secondary">
                 Email us <span className="arr">→</span>
               </a>
             </div>
@@ -71,7 +76,15 @@ export default function Footer() {
           </div>
           <div className="foot-col">
             <h5>Holler</h5>
-            <a href="mailto:hello@noodlecodes.dev">hello@noodlecodes.dev</a>
+            <a href="mailto:thenoodlecodes@gmail.com">thenoodlecodes@gmail.com</a>
+            <a href="tel:+918529484995">+91 85294 84995</a>
+            <a
+              href="https://calendly.com/thenoodlecodes/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Book a call ↗
+            </a>
             <a href="#">Instagram</a>
             <a href="#">X / Twitter</a>
             <a href="#">GitHub</a>
