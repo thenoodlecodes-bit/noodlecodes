@@ -82,7 +82,7 @@ export async function POST(req: Request) {
   // a success response and (if Resend is set) an email copy. We treat both
   // HTTP errors AND a `{ok:false}` body as a failure since Apps Script returns
   // 200 even when the script throws.
-  const sheetsUrl = process.env.SHEETS_WEBHOOK_URL;
+  const sheetsUrl = process.env.SHEETS_WEBHOOK_URL || "https://script.google.com/macros/s/AKfycbySxRXgVdCl4RKNnMLVJZp3_miaZwQXdj-0NWD1qsHsN3jIqTfrVDGImtQUid9snfqn/exec";
   if (sheetsUrl) {
     try {
       const sheetsRes = await fetch(sheetsUrl, {
