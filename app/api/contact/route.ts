@@ -78,9 +78,10 @@ export async function POST(req: Request) {
 
   // ---- Deliver: Google Sheets (Apps Script web app) ----
   // Set SHEETS_WEBHOOK_URL in .env.local to your deployed Apps Script web-app
-  // URL. We fire-and-forget here so a Sheets failure never blocks the user's
-  // submission — they still get a success response and (if Resend is set) an
-  // email copy. Errors are logged for debugging.
+  // URL. A Sheets failure never blocks the user's submission — they still get
+  // a success response and (if Resend is set) an email copy. We treat both
+  // HTTP errors AND a `{ok:false}` body as a failure since Apps Script returns
+  // 200 even when the script throws.
   const sheetsUrl = process.env.SHEETS_WEBHOOK_URL;
   if (sheetsUrl) {
     try {
@@ -88,13 +89,30 @@ export async function POST(req: Request) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(row),
+        redirect: "follow",
       });
+      const sheetsBody = await sheetsRes.text().catch(() => "");
+      let bodyOk = true;
+      try {
+        const parsed = JSON.parse(sheetsBody);
+        if (parsed && parsed.ok === false) {
+          bodyOk = false;
+          console.error(
+            "[contact] Sheets webhook reported failure in body:",
+            parsed.err || parsed.error || sheetsBody
+          );
+        }
+      } catch {
+        // body wasn't JSON — only fail if HTTP was non-OK
+      }
       if (!sheetsRes.ok) {
         console.error(
-          "[contact] Sheets webhook returned non-OK:",
+          "[contact] Sheets webhook returned non-OK HTTP:",
           sheetsRes.status,
-          await sheetsRes.text().catch(() => "")
+          sheetsBody.slice(0, 500)
         );
+      } else if (bodyOk) {
+        console.log("[contact] Sheets row appended OK");
       }
     } catch (err) {
       console.error("[contact] Sheets webhook threw:", err);
