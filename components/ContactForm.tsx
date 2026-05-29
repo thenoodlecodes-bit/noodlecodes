@@ -15,10 +15,10 @@ const SERVICES = [
 ];
 
 const BUDGETS = [
-  { value: "5-15", label: "$5k – $15k" },
-  { value: "15-30", label: "$15k – $30k" },
-  { value: "30-60", label: "$30k – $60k" },
-  { value: "60+", label: "$60k+" },
+  { value: "10-30", label: "₹10k – ₹30k" },
+  { value: "30-60", label: "₹30k – ₹60k" },
+  { value: "60-150", label: "₹60k – ₹1.5L" },
+  { value: "150+", label: "₹1.5L+" },
   { value: "tbd", label: "Not sure yet" },
 ];
 
@@ -222,7 +222,7 @@ export default function ContactForm() {
         </div>
 
         <div className="field">
-          <label>Budget range (USD)</label>
+          <label>Budget range (INR)</label>
           <div className="radio-grid">
             {BUDGETS.map((b) => (
               <label className="opt" key={b.value}>

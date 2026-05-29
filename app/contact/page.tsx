@@ -73,14 +73,32 @@ export default function Contact() {
               </div>
 
               <div className="side-card reveal">
+                <div className="ico">💬</div>
+                <h3>Faster on WhatsApp?</h3>
+                <p>
+                  Ping us a one-liner with the project idea &mdash; usually the
+                  fastest way to get a reply. Available 10am&ndash;7pm IST.
+                </p>
+                <a
+                  href="https://wa.me/917073994285?text=Hi%20NoodleCodes%2C%20I%27d%20like%20to%20talk%20about%20a%20project."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary"
+                  style={{ background: "#25D366", color: "#0E0E0E" }}
+                >
+                  Chat on WhatsApp <span className="arr">↗</span>
+                </a>
+              </div>
+
+              <div className="side-card reveal">
                 <div className="ico">📞</div>
-                <h3>Want to talk now?</h3>
+                <h3>Old-school call?</h3>
                 <p>
                   Pick up the phone &mdash; we&rsquo;re humans, not a callback
                   funnel. Available 10am&ndash;7pm IST, weekdays.
                 </p>
-                <a href="tel:+918529484995" className="btn btn-secondary">
-                  +91 85294 84995 <span className="arr">→</span>
+                <a href="tel:+917073994285" className="btn btn-secondary">
+                  +91 70739 94285 <span className="arr">→</span>
                 </a>
               </div>
 

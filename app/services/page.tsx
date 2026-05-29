@@ -65,7 +65,7 @@ export default function Services() {
               <div className="meta-table">
                 <div className="meta-row"><span>{"// Timeline"}</span><b>2–4 weeks</b></div>
                 <div className="meta-row"><span>{"// Best for"}</span><b>Startups, founders, agencies, studios</b></div>
-                <div className="meta-row"><span>{"// Starts at"}</span><span className="price-tag">$4,500</span></div>
+                <div className="meta-row"><span>{"// Starts at"}</span><span className="price-tag">₹30,000</span></div>
               </div>
 
               <div className="svc-cta-row">
@@ -119,9 +119,9 @@ export default function Services() {
               </div>
 
               <div className="meta-table">
-                <div className="meta-row"><span>{"// Timeline"}</span><b>6–12 weeks</b></div>
+                <div className="meta-row"><span>{"// Timeline"}</span><b>4–10 weeks</b></div>
                 <div className="meta-row"><span>{"// Best for"}</span><b>D2C, marketplaces, SaaS, social</b></div>
-                <div className="meta-row"><span>{"// Starts at"}</span><span className="price-tag">$18,000</span></div>
+                <div className="meta-row"><span>{"// Starts at"}</span><span className="price-tag">₹60,000</span></div>
               </div>
 
               <div className="svc-cta-row">
@@ -139,7 +139,7 @@ export default function Services() {
                   <div className="app-card">
                     <div>
                       <div style={{ opacity: 0.6 }}>Today&rsquo;s order</div>
-                      <div style={{ fontFamily: "var(--display)", fontWeight: 700, fontSize: "18px", letterSpacing: "-.01em" }}>$1,284</div>
+                      <div style={{ fontFamily: "var(--display)", fontWeight: 700, fontSize: "18px", letterSpacing: "-.01em" }}>₹1,28,400</div>
                     </div>
                     <div>↗</div>
                   </div>
@@ -188,9 +188,9 @@ export default function Services() {
               </div>
 
               <div className="meta-table">
-                <div className="meta-row"><span>{"// Timeline"}</span><b>4–10 weeks</b></div>
+                <div className="meta-row"><span>{"// Timeline"}</span><b>3–8 weeks</b></div>
                 <div className="meta-row"><span>{"// Best for"}</span><b>Internal tools, support, ops automation</b></div>
-                <div className="meta-row"><span>{"// Starts at"}</span><span className="price-tag">$12,000</span></div>
+                <div className="meta-row"><span>{"// Starts at"}</span><span className="price-tag">₹50,000</span></div>
               </div>
 
               <div className="svc-cta-row">
@@ -237,9 +237,9 @@ export default function Services() {
               </div>
 
               <div className="meta-table">
-                <div className="meta-row"><span>{"// Timeline"}</span><b>3–8 weeks</b></div>
+                <div className="meta-row"><span>{"// Timeline"}</span><b>3–6 weeks</b></div>
                 <div className="meta-row"><span>{"// Best for"}</span><b>Ops teams, marketplaces, content platforms</b></div>
-                <div className="meta-row"><span>{"// Starts at"}</span><span className="price-tag">$8,500</span></div>
+                <div className="meta-row"><span>{"// Starts at"}</span><span className="price-tag">₹40,000</span></div>
               </div>
 
               <div className="svc-cta-row">
@@ -259,7 +259,7 @@ export default function Services() {
                 </div>
                 <div className="main-area">
                   <div className="top-row">
-                    <div className="kpi"><div style={{ opacity: 0.5 }}>REVENUE</div><div className="num up">$284k</div></div>
+                    <div className="kpi"><div style={{ opacity: 0.5 }}>REVENUE</div><div className="num up">₹2.84L</div></div>
                     <div className="kpi"><div style={{ opacity: 0.5 }}>CHURN</div><div className="num down">1.8%</div></div>
                   </div>
                   <div className="chart-area">
@@ -305,14 +305,14 @@ export default function Services() {
               </div>
 
               <div className="meta-table">
-                <div className="meta-row"><span>{"// Timeline"}</span><b>1-day, 1-week, or ongoing</b></div>
+                <div className="meta-row"><span>{"// Timeline"}</span><b>1 session, 1 week, or ongoing</b></div>
                 <div className="meta-row"><span>{"// Best for"}</span><b>Pre-Seed → Series B teams</b></div>
-                <div className="meta-row"><span>{"// Starts at"}</span><span className="price-tag">$1,200/day</span></div>
+                <div className="meta-row"><span>{"// Starts at"}</span><span className="price-tag">₹10,000</span></div>
               </div>
 
               <div className="svc-cta-row">
-                <Link href="/contact?service=consulting" className="btn btn-primary">Book a day <span className="arr">↗</span></Link>
-                <Link href="/pricing#retainer" className="btn btn-secondary">Retainer options <span className="arr">→</span></Link>
+                <Link href="/contact?service=consulting" className="btn btn-primary">Book a session <span className="arr">↗</span></Link>
+                <Link href="/pricing" className="btn btn-secondary">See full pricing <span className="arr">→</span></Link>
               </div>
             </div>
 
@@ -350,7 +350,7 @@ export default function Services() {
                 <h4 className="no">✗ We&rsquo;re probably not it if you</h4>
                 <ul>
                   <li>Need 30 engineers and a 6-month &ldquo;discovery&rdquo; phase</li>
-                  <li>Want a freelancer on $8/hr from a marketplace</li>
+                  <li>Want a freelancer on ₹500/hr from a marketplace</li>
                   <li>Need fully on-site in a specific timezone</li>
                   <li>Won&rsquo;t share access to repos, designs, or analytics</li>
                   <li>Already have a CTO who hates outside teams</li>

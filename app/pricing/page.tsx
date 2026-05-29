@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Transparent pricing. Three engagement models: fixed-price projects from $4,500, monthly retainers from $6,500, and day-rate consultancy from $1,200. No hidden fees.",
+    "Transparent INR pricing. Websites from ₹30,000, mobile apps from ₹60,000, AI agents from ₹50,000, dashboards from ₹40,000, consultancy from ₹10,000. No hidden fees.",
   alternates: { canonical: "/pricing" },
 };
 
@@ -24,116 +24,187 @@ export default function Pricing() {
             <em>No fluff.</em>
           </h1>
           <p className="lede rise-4">
-            Three ways to work with us — pick whichever fits. All prices include
-            senior engineers, design, deploy, and a 90-day post-launch warranty.
-            No hourly billing, no surprise invoices, no &ldquo;scope creep&rdquo;
-            tax.
+            Five things on the menu — pick what you need, get a starting price up
+            front. Every plate includes senior engineers, design, deploy, and a
+            90-day post-launch warranty. No hourly billing, no surprise invoices,
+            no &ldquo;scope creep&rdquo; tax.
           </p>
         </div>
       </header>
 
-      {/* PRICING TIERS */}
+      {/* SERVICE PRICING (5 tiers in INR) */}
       <section style={{ paddingTop: "60px" }}>
         <div className="wrap">
-          <div className="price-grid">
-            {/* PROJECT */}
+          <div className="price-grid price-grid-5">
+            {/* WEBSITES */}
             <div className="price-card reveal">
-              <div className="price-label">{"// Engagement 01"}</div>
-              <h3>Project-based</h3>
+              <div className="price-label">{"// Menu 01"}</div>
+              <h3>Websites</h3>
               <div className="price-desc">
-                One scope. One price. Locked in writing before we start.
+                Marketing sites, landing pages, portfolios — fast, opinionated,
+                animated.
               </div>
               <div className="price-amount">
-                $4.5k<span className="small">+</span>
+                ₹30k<span className="small">+</span>
               </div>
-              <div className="price-meta">Fixed-price · 2–12 weeks</div>
+              <div className="price-meta">Starts at ₹30,000 · 2–4 weeks</div>
 
               <ul className="price-list">
-                <li>End-to-end: design + dev + deploy</li>
-                <li>Senior engineer + designer assigned</li>
-                <li>Weekly demos + daily Looms</li>
-                <li>Direct Slack with the team</li>
-                <li>Full repo + IP from day one</li>
-                <li>90-day free post-launch support</li>
+                <li>Custom design, no off-the-shelf themes</li>
+                <li>Lightning-fast, mobile-perfect, SEO-ready</li>
+                <li>CMS or static — your call</li>
+                <li>Deploy + DNS + analytics setup</li>
+                <li>Full repo + 90-day support</li>
               </ul>
 
               <div className="price-cta">
                 <Link
-                  href="/contact?engagement=project"
+                  href="/contact?service=websites"
                   className="btn btn-primary"
                   style={{ width: "100%", justifyContent: "center" }}
                 >
-                  Start a project <span className="arr">↗</span>
+                  Start a website <span className="arr">↗</span>
                 </Link>
               </div>
             </div>
 
-            {/* RETAINER (featured) */}
-            <div className="price-card feature reveal" id="retainer">
-              <span className="price-tag-line">Most popular</span>
-              <div className="price-label">{"// Engagement 02"}</div>
-              <h3>Monthly retainer</h3>
+            {/* MOBILE APPS */}
+            <div className="price-card reveal">
+              <div className="price-label">{"// Menu 02"}</div>
+              <h3>Mobile Apps</h3>
               <div className="price-desc">
-                Embedded dev team. Continuous shipping. Same crew every month.
+                iOS, Android or cross-platform. Native feel, real engineering
+                behind the cute icon.
               </div>
               <div className="price-amount">
-                $6.5k<span className="small">/mo</span>
+                ₹60k<span className="small">+</span>
               </div>
-              <div className="price-meta">Min. 3 months · pause anytime after</div>
+              <div className="price-meta">Starts at ₹60,000 · 4–10 weeks</div>
 
               <ul className="price-list">
-                <li>Dedicated senior eng. + 0.5 designer</li>
-                <li>~80 hrs/mo of focused work</li>
-                <li>2-week sprints, you set the priority</li>
-                <li>Weekly demos + daily Looms</li>
-                <li>Direct Slack, &lt; 4hr response</li>
-                <li>Quarterly architecture &amp; strategy review</li>
-                <li>30% off any one-off project add-ons</li>
+                <li>React Native or native Swift / Kotlin</li>
+                <li>UI / UX, animations, offline support</li>
+                <li>Auth, payments, push, analytics</li>
+                <li>App Store + Play Store submission</li>
+                <li>Full repo + 90-day support</li>
               </ul>
 
               <div className="price-cta">
                 <Link
-                  href="/contact?engagement=retainer"
+                  href="/contact?service=apps"
                   className="btn btn-primary"
                   style={{ width: "100%", justifyContent: "center" }}
                 >
-                  Start a retainer <span className="arr">↗</span>
+                  Start an app <span className="arr">↗</span>
                 </Link>
               </div>
             </div>
 
-            {/* DAY RATE */}
-            <div className="price-card reveal">
-              <div className="price-label">{"// Engagement 03"}</div>
-              <h3>Day rate / consult</h3>
+            {/* AI AGENTS */}
+            <div className="price-card feature reveal" id="ai">
+              <span className="price-tag-line">Hot right now</span>
+              <div className="price-label">{"// Menu 03"}</div>
+              <h3>AI Agents</h3>
               <div className="price-desc">
-                Book us by the day or week for advice, audits or sprints.
+                LLM workflows, RAG, custom GPT-style tools. Less chatbot, more
+                co-worker.
               </div>
               <div className="price-amount">
-                $1.2k<span className="small">/day</span>
+                ₹50k<span className="small">+</span>
               </div>
-              <div className="price-meta">Min. 1 day · book up to 10/mo</div>
+              <div className="price-meta">Starts at ₹50,000 · 3–8 weeks</div>
 
               <ul className="price-list">
-                <li>Senior CTO-level consult</li>
+                <li>Claude / OpenAI / open-weights — your pick</li>
+                <li>RAG over your docs / DB / APIs</li>
+                <li>Tool use, function calling, agents</li>
+                <li>Eval harness + observability dashboard</li>
+                <li>Cost controls + safety guardrails</li>
+                <li>Full repo + 90-day support</li>
+              </ul>
+
+              <div className="price-cta">
+                <Link
+                  href="/contact?service=ai"
+                  className="btn btn-primary"
+                  style={{ width: "100%", justifyContent: "center" }}
+                >
+                  Spin up an agent <span className="arr">↗</span>
+                </Link>
+              </div>
+            </div>
+
+            {/* DASHBOARDS / ADMIN PANELS */}
+            <div className="price-card reveal">
+              <div className="price-label">{"// Menu 04"}</div>
+              <h3>Dashboards</h3>
+              <div className="price-desc">
+                Custom CMS, ops tooling, internal panels. Built for the team
+                that has to use it daily.
+              </div>
+              <div className="price-amount">
+                ₹40k<span className="small">+</span>
+              </div>
+              <div className="price-meta">Starts at ₹40,000 · 3–6 weeks</div>
+
+              <ul className="price-list">
+                <li>Role-based access, audit logs</li>
+                <li>Real-time data, exports, search</li>
+                <li>CRUD, workflows, bulk actions</li>
+                <li>Charts that actually mean something</li>
+                <li>Full repo + 90-day support</li>
+              </ul>
+
+              <div className="price-cta">
+                <Link
+                  href="/contact?service=panels"
+                  className="btn btn-primary"
+                  style={{ width: "100%", justifyContent: "center" }}
+                >
+                  Build a panel <span className="arr">↗</span>
+                </Link>
+              </div>
+            </div>
+
+            {/* CONSULTANCY */}
+            <div className="price-card reveal">
+              <div className="price-label">{"// Menu 05"}</div>
+              <h3>Consultancy</h3>
+              <div className="price-desc">
+                Senior CTO-level brain time — audits, architecture, scaling,
+                hiring playbooks.
+              </div>
+              <div className="price-amount">
+                ₹10k<span className="small">+</span>
+              </div>
+              <div className="price-meta">Starts at ₹10,000 · per session / day</div>
+
+              <ul className="price-list">
                 <li>Codebase audits + written report</li>
                 <li>Architecture &amp; scaling reviews</li>
                 <li>Hiring playbooks &amp; interview rubrics</li>
                 <li>Stack &amp; vendor evaluations</li>
-                <li>Async Slack between sessions</li>
+                <li>Async follow-up over WhatsApp / email</li>
               </ul>
 
               <div className="price-cta">
                 <Link
-                  href="/contact?engagement=daily"
+                  href="/contact?service=consulting"
                   className="btn btn-primary"
                   style={{ width: "100%", justifyContent: "center" }}
                 >
-                  Book a day <span className="arr">↗</span>
+                  Book a session <span className="arr">↗</span>
                 </Link>
               </div>
             </div>
           </div>
+
+          <p className="price-foot reveal">
+            ✱ All prices are <b>starting</b> figures. Final scope, timeline and
+            quote come after a free 30-min discovery call. We invoice in INR
+            (GST applicable) and accept UPI, bank transfer, Razorpay, Wise &amp;
+            Stripe for international clients.
+          </p>
         </div>
       </section>
 
@@ -168,87 +239,38 @@ export default function Pricing() {
         </div>
       </section>
 
-      {/* COMPARISON TABLE */}
+      {/* WHAT AFFECTS THE PRICE */}
       <section>
         <div className="wrap">
-          <span className="eyebrow reveal">Side by side</span>
+          <span className="eyebrow reveal">Why &ldquo;starts at&rdquo;</span>
           <h2 className="section-title reveal">
-            Pick your <em>plate</em>.
+            What moves the <em>needle</em>.
           </h2>
+          <p className="section-intro reveal">
+            Five honest variables that swing the final number. We&rsquo;ll walk
+            you through how each one applies to your project on the discovery
+            call — no surprises after.
+          </p>
 
-          <div className="reveal" style={{ overflowX: "auto" }}>
-            <table className="compare-table">
-              <thead>
-                <tr>
-                  <th>Comparison</th>
-                  <th>Project</th>
-                  <th>Retainer</th>
-                  <th>Day-rate</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Starts at</td>
-                  <td>$4,500</td>
-                  <td>$6,500/mo</td>
-                  <td>$1,200/day</td>
-                </tr>
-                <tr>
-                  <td>Min. commitment</td>
-                  <td>2 weeks</td>
-                  <td>3 months</td>
-                  <td>1 day</td>
-                </tr>
-                <tr>
-                  <td>Scope</td>
-                  <td>Fixed up front</td>
-                  <td>Flexible monthly</td>
-                  <td>You set it</td>
-                </tr>
-                <tr>
-                  <td>Best for</td>
-                  <td>One-off launch</td>
-                  <td>Ongoing build</td>
-                  <td>Audits, advisory, sprints</td>
-                </tr>
-                <tr>
-                  <td>Dedicated team</td>
-                  <td className="yes">Yes</td>
-                  <td className="yes">Yes</td>
-                  <td className="yes">Yes</td>
-                </tr>
-                <tr>
-                  <td>Direct Slack</td>
-                  <td className="yes">Yes</td>
-                  <td className="yes">Yes</td>
-                  <td className="yes">Yes</td>
-                </tr>
-                <tr>
-                  <td>Loom updates</td>
-                  <td>Daily</td>
-                  <td>Daily</td>
-                  <td>End of day</td>
-                </tr>
-                <tr>
-                  <td>Full IP &amp; repo</td>
-                  <td className="yes">Yes — day 1</td>
-                  <td className="yes">Yes — day 1</td>
-                  <td>Deliverables only</td>
-                </tr>
-                <tr>
-                  <td>Post-launch support</td>
-                  <td>90 days free</td>
-                  <td>Ongoing (included)</td>
-                  <td>Async Slack</td>
-                </tr>
-                <tr>
-                  <td>Pause / cancel</td>
-                  <td>N/A</td>
-                  <td>30-day notice</td>
-                  <td>Per-day</td>
-                </tr>
-              </tbody>
-            </table>
+          <div className="included-grid reveal">
+            <div className="included">
+              <span className="check">✓</span> <b>Scope &amp; page/feature count</b> — more screens, more wiring
+            </div>
+            <div className="included">
+              <span className="check">✓</span> <b>Custom design depth</b> — illustrations, motion, micro-interactions
+            </div>
+            <div className="included">
+              <span className="check">✓</span> <b>Integrations</b> — payments, auth, third-party APIs, CRMs
+            </div>
+            <div className="included">
+              <span className="check">✓</span> <b>Data complexity</b> — schemas, migrations, RAG corpus size
+            </div>
+            <div className="included">
+              <span className="check">✓</span> <b>Timeline pressure</b> — &lt;2 weeks adds a rush fee
+            </div>
+            <div className="included">
+              <span className="check">✓</span> <b>Compliance needs</b> — GDPR, HIPAA, SOC2 readiness
+            </div>
           </div>
         </div>
       </section>
@@ -275,9 +297,9 @@ export default function Pricing() {
               <summary className="faq-q">What&rsquo;s the payment schedule?</summary>
               <div className="faq-a">
                 Projects: 30% on signature, 40% at midpoint demo, 30% on launch.
-                Retainers: monthly in advance. Day-rate: 50% on booking, 50% on
-                delivery. Wire, ACH, Stripe, or Wise — your call. We can invoice
-                in USD, GBP, EUR, INR.
+                Consultancy: 100% upfront for single sessions, monthly for
+                ongoing. We invoice in INR (GST applicable) and accept UPI, bank
+                transfer, Razorpay, Wise &amp; Stripe for international clients.
               </div>
             </details>
             <details className="faq-item reveal">
@@ -289,12 +311,12 @@ export default function Pricing() {
               </div>
             </details>
             <details className="faq-item reveal">
-              <summary className="faq-q">Can I scale a retainer up or down?</summary>
+              <summary className="faq-q">Can I bundle multiple services?</summary>
               <div className="faq-a">
-                Yes. After the first 3 months, you can scale the retainer to add
-                engineers (more hrs/mo) or dial it down. 30-day notice for
-                changes. You can pause for up to 60 days and resume without
-                re-onboarding.
+                Absolutely &mdash; lots of clients pair a website + dashboard, or
+                an AI agent + admin panel. Bundles get a discount on the smaller
+                item. We&rsquo;ll quote it as a single project once we&rsquo;ve
+                talked through the scope.
               </div>
             </details>
             <details className="faq-item reveal">
@@ -315,11 +337,11 @@ export default function Pricing() {
               </div>
             </details>
             <details className="faq-item reveal">
-              <summary className="faq-q">Are taxes / VAT / GST included?</summary>
+              <summary className="faq-q">Are taxes / GST included?</summary>
               <div className="faq-a">
-                Prices are shown net. Depending on your billing entity location,
-                applicable VAT/GST/sales tax is added. US-based clients: typically
-                no sales tax for SaaS-style services.
+                Prices shown are net. 18% GST is added for Indian billing
+                entities. International clients: no GST &mdash; we invoice with a
+                zero-rated export note.
               </div>
             </details>
           </div>

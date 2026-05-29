@@ -42,26 +42,66 @@ export async function POST(req: Request) {
   }
 
   // ---- Compose the message ----
+  const submittedAt = new Date().toISOString();
   const lines = [
     `New project inquiry from the NoodleCodes site`,
     ``,
-    `Name:     ${name}`,
-    `Email:    ${email}`,
-    `Company:  ${data.company || "—"}`,
-    `Role:     ${data.role || "—"}`,
-    `Service:  ${data.service || "—"}`,
-    `Budget:   ${data.budget || "—"}`,
-    `Timeline: ${data.timeline || "—"}`,
-    `Source:   ${data.source || "—"}`,
+    `Submitted: ${submittedAt}`,
+    `Name:      ${name}`,
+    `Email:     ${email}`,
+    `Company:   ${data.company || "—"}`,
+    `Role:      ${data.role || "—"}`,
+    `Service:   ${data.service || "—"}`,
+    `Budget:    ${data.budget || "—"}`,
+    `Timeline:  ${data.timeline || "—"}`,
+    `Source:    ${data.source || "—"}`,
     ``,
     `Message:`,
     message,
   ];
   const text = lines.join("\n");
 
-  // ---- Deliver ----
-  // If RESEND_API_KEY is configured, send a real email via the Resend REST API
-  // (no extra dependency needed). Otherwise, just log it server-side.
+  // Record the structured row so we can fan out to multiple destinations
+  // (Google Sheets, email, server log) without re-shaping the payload each time.
+  const row = {
+    submittedAt,
+    name,
+    email,
+    company: data.company || "",
+    role: data.role || "",
+    service: data.service || "",
+    budget: data.budget || "",
+    timeline: data.timeline || "",
+    source: data.source || "",
+    message,
+  };
+
+  // ---- Deliver: Google Sheets (Apps Script web app) ----
+  // Set SHEETS_WEBHOOK_URL in .env.local to your deployed Apps Script web-app
+  // URL. We fire-and-forget here so a Sheets failure never blocks the user's
+  // submission — they still get a success response and (if Resend is set) an
+  // email copy. Errors are logged for debugging.
+  const sheetsUrl = process.env.SHEETS_WEBHOOK_URL;
+  if (sheetsUrl) {
+    try {
+      const sheetsRes = await fetch(sheetsUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(row),
+      });
+      if (!sheetsRes.ok) {
+        console.error(
+          "[contact] Sheets webhook returned non-OK:",
+          sheetsRes.status,
+          await sheetsRes.text().catch(() => "")
+        );
+      }
+    } catch (err) {
+      console.error("[contact] Sheets webhook threw:", err);
+    }
+  }
+
+  // ---- Deliver: email (Resend) ----
   const apiKey = process.env.RESEND_API_KEY;
   const to = process.env.CONTACT_TO_EMAIL || "thenoodlecodes@gmail.com";
   const from = process.env.CONTACT_FROM_EMAIL || "thenoodlecodes@gmail.com";
@@ -86,21 +126,27 @@ export async function POST(req: Request) {
       if (!res.ok) {
         const detail = await res.text();
         console.error("Resend error:", detail);
-        return NextResponse.json(
-          { ok: false, error: "Email delivery failed." },
-          { status: 502 }
-        );
+        // Only fail the request if Sheets is ALSO not configured — otherwise
+        // the submission is already safely recorded.
+        if (!sheetsUrl) {
+          return NextResponse.json(
+            { ok: false, error: "Delivery failed." },
+            { status: 502 }
+          );
+        }
       }
     } catch (err) {
       console.error("Resend request threw:", err);
-      return NextResponse.json(
-        { ok: false, error: "Email delivery failed." },
-        { status: 502 }
-      );
+      if (!sheetsUrl) {
+        return NextResponse.json(
+          { ok: false, error: "Delivery failed." },
+          { status: 502 }
+        );
+      }
     }
-  } else {
-    // No email provider configured — log so nothing is lost in dev.
-    console.log("[contact] New submission (no RESEND_API_KEY set):\n" + text);
+  } else if (!sheetsUrl) {
+    // Neither destination configured — log so dev submissions aren't lost.
+    console.log("[contact] New submission (no provider set):\n" + text);
   }
 
   return NextResponse.json({ ok: true });

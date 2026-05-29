@@ -47,7 +47,7 @@ export default function Process() {
                 A 30-min intro call, a written brief, and a fixed quote within 48
                 hours. If we&rsquo;re a fit, we sign and book a kickoff. If
                 we&rsquo;re not — we&rsquo;ll refer you to someone who is. No pitch
-                decks, no $5k &ldquo;discovery&rdquo; tax.
+                decks, no ₹50k &ldquo;discovery&rdquo; tax.
               </p>
 
               <div className="step-details">

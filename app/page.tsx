@@ -19,9 +19,8 @@ const orgSchema = {
   description:
     "Development agency building websites, apps, AI agents and admin panels.",
   sameAs: [
-    "https://twitter.com/noodlecodes",
-    "https://instagram.com/noodlecodes",
-    "https://github.com/noodlecodes",
+    "https://instagram.com/noodlecodes_",
+    "https://www.facebook.com/61590267099609/",
   ],
 };
 

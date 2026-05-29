@@ -6,6 +6,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import NoodleCursor from "@/components/NoodleCursor";
+import WhatsAppFAB from "@/components/WhatsAppFAB";
 
 const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -84,6 +85,7 @@ export default function RootLayout({
         <Footer />
         <ScrollReveal />
         <NoodleCursor />
+        <WhatsAppFAB />
       </body>
     </html>
   );

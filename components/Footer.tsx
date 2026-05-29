@@ -77,7 +77,14 @@ export default function Footer() {
           <div className="foot-col">
             <h5>Holler</h5>
             <a href="mailto:thenoodlecodes@gmail.com">thenoodlecodes@gmail.com</a>
-            <a href="tel:+918529484995">+91 85294 84995</a>
+            <a
+              href="https://wa.me/917073994285?text=Hi%20NoodleCodes%2C%20I%27d%20like%20to%20talk%20about%20a%20project."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              WhatsApp ↗
+            </a>
+            <a href="tel:+917073994285">+91 70739 94285</a>
             <a
               href="https://calendly.com/thenoodlecodes/30min"
               target="_blank"
@@ -85,10 +92,20 @@ export default function Footer() {
             >
               Book a call ↗
             </a>
-            <a href="#">Instagram</a>
-            <a href="#">X / Twitter</a>
-            <a href="#">GitHub</a>
-            <a href="#">LinkedIn</a>
+            <a
+              href="https://instagram.com/noodlecodes_"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Instagram ↗
+            </a>
+            <a
+              href="https://www.facebook.com/61590267099609/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Facebook ↗
+            </a>
           </div>
         </div>
 
