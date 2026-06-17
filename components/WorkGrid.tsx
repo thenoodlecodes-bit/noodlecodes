@@ -1,51 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useRef, type CSSProperties } from "react";
+import { useState, type CSSProperties } from "react";
 
-/** Premium case thumbnail: poster image always; for featured cases the video
- *  lazy-loads and plays on hover so the grid stays fast (no autoplay on load). */
-function CaseThumb({
-  poster,
-  video,
-  alt,
-}: {
-  poster: string;
-  video?: string;
-  alt: string;
-}) {
-  const ref = useRef<HTMLVideoElement>(null);
-
-  if (!video) {
-    return (
-      <img src={poster} alt={alt} className="case-img" loading="lazy" />
-    );
-  }
-
-  return (
-    <video
-      ref={ref}
-      className="case-img"
-      poster={poster}
-      muted
-      loop
-      playsInline
-      preload="none"
-      aria-label={alt}
-      onMouseEnter={() => {
-        const v = ref.current;
-        if (!v) return;
-        if (!v.src) v.src = video;
-        v.play().catch(() => {});
-      }}
-      onMouseLeave={() => {
-        const v = ref.current;
-        if (!v) return;
-        v.pause();
-        v.currentTime = 0;
-      }}
-    />
-  );
+/** Case thumbnail: a flat brand illustration poster. */
+function CaseThumb({ poster, alt }: { poster: string; alt: string }) {
+  return <img src={poster} alt={alt} className="case-img" loading="lazy" />;
 }
 
 const FILTERS = [
@@ -90,7 +50,6 @@ export default function WorkGrid() {
           <div className="case-thumb">
             <CaseThumb
               poster="/work/finwhiz.jpg"
-              video="/work/finwhiz.mp4"
               alt="Finwhiz AI financial-operations dashboard with anomaly detection and an AI assistant"
             />
           </div>
@@ -129,7 +88,6 @@ export default function WorkGrid() {
           <div className="case-thumb">
             <CaseThumb
               poster="/work/orbit.jpg"
-              video="/work/orbit.mp4"
               alt="OrbitCRM admin panel with revenue analytics, KPI cards and a transactions table"
             />
           </div>
@@ -163,7 +121,6 @@ export default function WorkGrid() {
           <div className="case-thumb">
             <CaseThumb
               poster="/work/pingr.jpg"
-              video="/work/pingr.mp4"
               alt="Pingr in-app AI assistant chat connected to Stripe, Mixpanel, Slack and HubSpot"
             />
           </div>
@@ -229,7 +186,6 @@ export default function WorkGrid() {
           <div className="case-thumb">
             <CaseThumb
               poster="/work/lingu.jpg"
-              video="/work/lingu.mp4"
               alt="Lingu language-learning mobile app showing a streak, today's lesson and progress ring"
             />
           </div>
