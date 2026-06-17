@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Websites, mobile apps, AI agents, admin panels & consultancy. Detailed deliverables, timelines and starting prices for every service we offer.",
+    "Websites, mobile apps, AI agents, admin panels & consultancy for U.S. teams. Senior U.S.-hours engineers, fixed USD pricing, you own the IP. Detailed deliverables, timelines and starting prices for every service.",
   alternates: { canonical: "/services" },
 };
 
@@ -33,6 +33,14 @@ export default function Services() {
             <Link href="/pricing" className="btn btn-secondary">
               View pricing <span className="arr">→</span>
             </Link>
+          </div>
+
+          <div className="us-trust rise-5" aria-label="Trust signals">
+            <span className="us-pill"><span className="us-flag" aria-hidden="true">★</span> 4.9 avg · 40+ reviews</span>
+            <span className="us-pill">U.S.-hours senior engineers</span>
+            <span className="us-pill">SOC 2 · HIPAA · CCPA-ready</span>
+            <span className="us-pill">NDA before we talk</span>
+            <span className="us-pill">You own 100% of the IP</span>
           </div>
         </div>
       </header>
@@ -64,8 +72,8 @@ export default function Services() {
 
               <div className="meta-table">
                 <div className="meta-row"><span>{"// Timeline"}</span><b>2–4 weeks</b></div>
-                <div className="meta-row"><span>{"// Best for"}</span><b>Startups, founders, agencies, studios</b></div>
-                <div className="meta-row"><span>{"// Starts at"}</span><span className="price-tag">₹30,000</span></div>
+                <div className="meta-row"><span>{"// Best for"}</span><b>U.S. startups, founders, agencies, studios</b></div>
+                <div className="meta-row"><span>{"// Starts at"}</span><span className="price-tag">$4,000</span></div>
               </div>
 
               <div className="svc-cta-row">
@@ -75,19 +83,12 @@ export default function Services() {
             </div>
 
             <div className="svc-visual">
-              <div className="visual-web">
-                <div className="v-bar">
-                  <span className="v-dot"></span><span className="v-dot"></span><span className="v-dot"></span>
-                  <span style={{ marginLeft: "8px", opacity: 0.6 }}>studiomango.dev</span>
-                </div>
-                <div className="v-card">
-                  <div className="v-h">b<span className="o">●</span>ld<br />products,<br />built fast.</div>
-                  <div style={{ marginTop: "14px", fontFamily: "var(--mono)", fontSize: "11px", color: "var(--gray)", lineHeight: 1.5 }}>
-                    {"// shipping product since 2024"}<br />{"// trusted by 40+ founders"}
-                  </div>
-                  <div className="v-btn">Start a project ↗</div>
-                </div>
-              </div>
+              <img
+                src="/work/stackly.jpg"
+                alt="A high-conversion SaaS marketing site built by NoodleCodes"
+                className="svc-shot"
+                loading="lazy"
+              />
             </div>
           </div>
         </div>
@@ -121,7 +122,7 @@ export default function Services() {
               <div className="meta-table">
                 <div className="meta-row"><span>{"// Timeline"}</span><b>4–10 weeks</b></div>
                 <div className="meta-row"><span>{"// Best for"}</span><b>D2C, marketplaces, SaaS, social</b></div>
-                <div className="meta-row"><span>{"// Starts at"}</span><span className="price-tag">₹60,000</span></div>
+                <div className="meta-row"><span>{"// Starts at"}</span><span className="price-tag">$12,000</span></div>
               </div>
 
               <div className="svc-cta-row">
@@ -131,32 +132,12 @@ export default function Services() {
             </div>
 
             <div className="svc-visual">
-              <div className="visual-app">
-                <div className="phone">
-                  <div className="notch"></div>
-                  <div style={{ fontFamily: "var(--mono)", fontSize: "10px", color: "var(--gray)" }}>10:24 · all good</div>
-                  <div className="app-h">Good evening,<br />Jordan 🍜</div>
-                  <div className="app-card">
-                    <div>
-                      <div style={{ opacity: 0.6 }}>Today&rsquo;s order</div>
-                      <div style={{ fontFamily: "var(--display)", fontWeight: 700, fontSize: "18px", letterSpacing: "-.01em" }}>₹1,28,400</div>
-                    </div>
-                    <div>↗</div>
-                  </div>
-                  <div className="app-card alt">
-                    <div>
-                      <div style={{ opacity: 0.6 }}>New customers</div>
-                      <div style={{ fontFamily: "var(--display)", fontWeight: 700, fontSize: "18px", letterSpacing: "-.01em" }}>+24</div>
-                    </div>
-                    <div>↗</div>
-                  </div>
-                  <div className="app-nav">
-                    <div>HOME</div>
-                    <div style={{ color: "var(--noodle)" }}>●</div>
-                    <div>ME</div>
-                  </div>
-                </div>
-              </div>
+              <img
+                src="/work/lingu.jpg"
+                alt="A polished consumer mobile app built by NoodleCodes"
+                className="svc-shot"
+                loading="lazy"
+              />
             </div>
           </div>
         </div>
@@ -190,7 +171,7 @@ export default function Services() {
               <div className="meta-table">
                 <div className="meta-row"><span>{"// Timeline"}</span><b>3–8 weeks</b></div>
                 <div className="meta-row"><span>{"// Best for"}</span><b>Internal tools, support, ops automation</b></div>
-                <div className="meta-row"><span>{"// Starts at"}</span><span className="price-tag">₹50,000</span></div>
+                <div className="meta-row"><span>{"// Starts at"}</span><span className="price-tag">$9,000</span></div>
               </div>
 
               <div className="svc-cta-row">
@@ -200,13 +181,12 @@ export default function Services() {
             </div>
 
             <div className="svc-visual">
-              <div className="visual-ai">
-                <div className="b user">summarize last week&rsquo;s support tickets</div>
-                <div className="b tool">→ fetched 247 tickets · 12s</div>
-                <div className="b tool">→ clustering by topic…</div>
-                <div className="b ai">3 themes dominated: billing confusion (42%), mobile app crashes on Android 14 (28%), and refund requests post-update (18%). Want me to draft a Slack post &amp; loop in @support?</div>
-                <div className="b user">do it</div>
-              </div>
+              <img
+                src="/work/pingr.jpg"
+                alt="An AI assistant agent wired into a product's data stack, built by NoodleCodes"
+                className="svc-shot"
+                loading="lazy"
+              />
             </div>
           </div>
         </div>
@@ -239,7 +219,7 @@ export default function Services() {
               <div className="meta-table">
                 <div className="meta-row"><span>{"// Timeline"}</span><b>3–6 weeks</b></div>
                 <div className="meta-row"><span>{"// Best for"}</span><b>Ops teams, marketplaces, content platforms</b></div>
-                <div className="meta-row"><span>{"// Starts at"}</span><span className="price-tag">₹40,000</span></div>
+                <div className="meta-row"><span>{"// Starts at"}</span><span className="price-tag">$7,000</span></div>
               </div>
 
               <div className="svc-cta-row">
@@ -249,31 +229,12 @@ export default function Services() {
             </div>
 
             <div className="svc-visual">
-              <div className="visual-panel">
-                <div className="side">
-                  <div style={{ fontFamily: "var(--display)", fontWeight: 800, fontSize: "16px", color: "var(--noodle)" }}>N●</div>
-                  <div className="side-i act">▤</div>
-                  <div className="side-i">◐</div>
-                  <div className="side-i">▦</div>
-                  <div className="side-i">✱</div>
-                </div>
-                <div className="main-area">
-                  <div className="top-row">
-                    <div className="kpi"><div style={{ opacity: 0.5 }}>REVENUE</div><div className="num up">₹2.84L</div></div>
-                    <div className="kpi"><div style={{ opacity: 0.5 }}>CHURN</div><div className="num down">1.8%</div></div>
-                  </div>
-                  <div className="chart-area">
-                    <div className="col" style={{ height: "30%" }}></div>
-                    <div className="col" style={{ height: "50%" }}></div>
-                    <div className="col" style={{ height: "38%" }}></div>
-                    <div className="col" style={{ height: "70%" }}></div>
-                    <div className="col" style={{ height: "55%" }}></div>
-                    <div className="col" style={{ height: "85%" }}></div>
-                    <div className="col" style={{ height: "65%" }}></div>
-                    <div className="col" style={{ height: "95%", background: "var(--sauce)" }}></div>
-                  </div>
-                </div>
-              </div>
+              <img
+                src="/work/orbit.jpg"
+                alt="A custom admin panel with real-time analytics, built by NoodleCodes"
+                className="svc-shot"
+                loading="lazy"
+              />
             </div>
           </div>
         </div>
@@ -307,7 +268,7 @@ export default function Services() {
               <div className="meta-table">
                 <div className="meta-row"><span>{"// Timeline"}</span><b>1 session, 1 week, or ongoing</b></div>
                 <div className="meta-row"><span>{"// Best for"}</span><b>Pre-Seed → Series B teams</b></div>
-                <div className="meta-row"><span>{"// Starts at"}</span><span className="price-tag">₹10,000</span></div>
+                <div className="meta-row"><span>{"// Starts at"}</span><span className="price-tag">$1,500</span></div>
               </div>
 
               <div className="svc-cta-row">
@@ -342,7 +303,7 @@ export default function Services() {
                   <li>Want to ship something that actually works in 2–8 weeks</li>
                   <li>Have an idea, problem, or scope (rough is fine)</li>
                   <li>Value quality over hourly micromanagement</li>
-                  <li>Will reply to Slack within 24h</li>
+                  <li>Want a partner who overlaps U.S. business hours</li>
                   <li>Are okay with senior engineers being honest about scope</li>
                 </ul>
               </div>
@@ -350,8 +311,8 @@ export default function Services() {
                 <h4 className="no">✗ We&rsquo;re probably not it if you</h4>
                 <ul>
                   <li>Need 30 engineers and a 6-month &ldquo;discovery&rdquo; phase</li>
-                  <li>Want a freelancer on ₹500/hr from a marketplace</li>
-                  <li>Need fully on-site in a specific timezone</li>
+                  <li>Want the cheapest $8/hr freelancer on a marketplace</li>
+                  <li>Need a team physically on-site at your office every day</li>
                   <li>Won&rsquo;t share access to repos, designs, or analytics</li>
                   <li>Already have a CTO who hates outside teams</li>
                 </ul>

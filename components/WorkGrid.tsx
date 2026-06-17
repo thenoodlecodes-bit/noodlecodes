@@ -1,7 +1,52 @@
 "use client";
 
 import Link from "next/link";
-import { useState, type CSSProperties } from "react";
+import { useState, useRef, type CSSProperties } from "react";
+
+/** Premium case thumbnail: poster image always; for featured cases the video
+ *  lazy-loads and plays on hover so the grid stays fast (no autoplay on load). */
+function CaseThumb({
+  poster,
+  video,
+  alt,
+}: {
+  poster: string;
+  video?: string;
+  alt: string;
+}) {
+  const ref = useRef<HTMLVideoElement>(null);
+
+  if (!video) {
+    return (
+      <img src={poster} alt={alt} className="case-img" loading="lazy" />
+    );
+  }
+
+  return (
+    <video
+      ref={ref}
+      className="case-img"
+      poster={poster}
+      muted
+      loop
+      playsInline
+      preload="none"
+      aria-label={alt}
+      onMouseEnter={() => {
+        const v = ref.current;
+        if (!v) return;
+        if (!v.src) v.src = video;
+        v.play().catch(() => {});
+      }}
+      onMouseLeave={() => {
+        const v = ref.current;
+        if (!v) return;
+        v.pause();
+        v.currentTime = 0;
+      }}
+    />
+  );
+}
 
 const FILTERS = [
   { key: "all", label: "All", count: 24 },
@@ -43,36 +88,11 @@ export default function WorkGrid() {
           style={hide("ai")}
         >
           <div className="case-thumb">
-            <div className="thumb-bg-2">
-              <div className="code-block">
-                <span style={{ color: "#6c7a89" }}>{"// finwhiz · ai ops agent"}</span>
-                <br />
-                <span>const agent = await noodle.spawn({"{"}</span>
-                <br />
-                <span>
-                  &nbsp;&nbsp;model:{" "}
-                  <span style={{ color: "#b8e986" }}>&apos;claude-opus-4-7&apos;</span>,
-                </span>
-                <br />
-                <span>
-                  &nbsp;&nbsp;tools: [
-                  <span style={{ color: "#b8e986" }}>&apos;rag&apos;</span>,{" "}
-                  <span style={{ color: "#b8e986" }}>&apos;sql&apos;</span>,{" "}
-                  <span style={{ color: "#b8e986" }}>&apos;notify&apos;</span>],
-                </span>
-                <br />
-                <span>
-                  &nbsp;&nbsp;memory:{" "}
-                  <span style={{ color: "#b8e986" }}>&apos;persistent&apos;</span>
-                </span>
-                <br />
-                <span>{"});"}</span>
-                <br />
-                <span>
-                  agent.run() <span style={{ color: "var(--cream)" }}>▌</span>
-                </span>
-              </div>
-            </div>
+            <CaseThumb
+              poster="/work/finwhiz.jpg"
+              video="/work/finwhiz.mp4"
+              alt="Finwhiz AI financial-operations dashboard with anomaly detection and an AI assistant"
+            />
           </div>
           <div className="case-info">
             <div className="case-tags">
@@ -107,38 +127,11 @@ export default function WorkGrid() {
         {/* ORBIT */}
         <Link href="#orbit" id="orbit" className="case-big reveal" data-cat="panel" style={hide("panel")}>
           <div className="case-thumb">
-            <div className="thumb-bg-4">
-              <div className="side">
-                <div className="act"></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-              </div>
-              <div className="main">
-                <div className="row">
-                  <div className="kpi">
-                    USERS<b>12.4k</b>
-                  </div>
-                  <div className="kpi">
-                    CHURN<b style={{ color: "var(--basil)" }}>1.8%</b>
-                  </div>
-                  <div className="kpi">
-                    MRR<b>$284k</b>
-                  </div>
-                </div>
-                <div className="chart">
-                  <span style={{ height: "20%" }}></span>
-                  <span style={{ height: "40%" }}></span>
-                  <span style={{ height: "30%" }}></span>
-                  <span style={{ height: "60%" }}></span>
-                  <span style={{ height: "50%" }}></span>
-                  <span style={{ height: "75%" }}></span>
-                  <span style={{ height: "55%" }}></span>
-                  <span style={{ height: "95%", background: "var(--sauce)" }}></span>
-                </div>
-              </div>
-            </div>
+            <CaseThumb
+              poster="/work/orbit.jpg"
+              video="/work/orbit.mp4"
+              alt="OrbitCRM admin panel with revenue analytics, KPI cards and a transactions table"
+            />
           </div>
           <div className="case-info">
             <div className="case-tags">
@@ -168,14 +161,11 @@ export default function WorkGrid() {
         {/* PINGR */}
         <Link href="#pingr" id="pingr" className="case-big reveal" data-cat="ai" style={hide("ai")}>
           <div className="case-thumb">
-            <div className="thumb-bg-5">
-              <div className="bub u">how are signups doing?</div>
-              <div className="bub a">
-                +38% week over week. spike on thu from your reddit post. draft a
-                follow-up?
-              </div>
-              <div className="bub u">yes, also in-app push</div>
-            </div>
+            <CaseThumb
+              poster="/work/pingr.jpg"
+              video="/work/pingr.mp4"
+              alt="Pingr in-app AI assistant chat connected to Stripe, Mixpanel, Slack and HubSpot"
+            />
           </div>
           <div className="case-info">
             <div className="case-tags">
@@ -205,50 +195,10 @@ export default function WorkGrid() {
         {/* MANGO */}
         <Link href="#mango" id="mango" className="case-big reveal" data-cat="web" style={hide("web")}>
           <div className="case-thumb">
-            <div className="thumb-bg-6">
-              <div className="lp">
-                <h4>
-                  bold products,
-                  <br />
-                  <em>built fast.</em>
-                </h4>
-                <div style={{ display: "flex", gap: "6px" }}>
-                  <span
-                    style={{
-                      fontFamily: "var(--mono)",
-                      fontSize: "9px",
-                      padding: "3px 8px",
-                      border: "1px solid var(--ink)",
-                      borderRadius: "999px",
-                    }}
-                  >
-                    studio
-                  </span>
-                  <span
-                    style={{
-                      fontFamily: "var(--mono)",
-                      fontSize: "9px",
-                      padding: "3px 8px",
-                      border: "1px solid var(--ink)",
-                      borderRadius: "999px",
-                    }}
-                  >
-                    est. &rsquo;24
-                  </span>
-                </div>
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "1fr 1fr 1fr",
-                    gap: "6px",
-                  }}
-                >
-                  <div style={{ background: "var(--noodle)", aspectRatio: "1", borderRadius: "6px" }}></div>
-                  <div style={{ background: "var(--ink)", aspectRatio: "1", borderRadius: "6px" }}></div>
-                  <div style={{ background: "var(--basil)", aspectRatio: "1", borderRadius: "6px" }}></div>
-                </div>
-              </div>
-            </div>
+            <CaseThumb
+              poster="/work/mango.jpg"
+              alt="Studio Mango marketing website with a bold hero and a project grid"
+            />
           </div>
           <div className="case-info">
             <div className="case-tags">
@@ -258,7 +208,7 @@ export default function WorkGrid() {
             </div>
             <h3>Studio Mango — agency site with 99/100 Lighthouse</h3>
             <p>
-              Marketing site for a London-based design studio. Custom CMS,
+              Marketing site for a Brooklyn-based design studio. Custom CMS,
               animated transitions, project case studies. Loads in &lt;1s on 3G.
             </p>
             <div className="case-result">
@@ -277,18 +227,11 @@ export default function WorkGrid() {
         {/* LINGU */}
         <Link href="#" className="case-big reveal" data-cat="app" style={hide("app")}>
           <div className="case-thumb">
-            <div className="thumb-bg-3">
-              <div className="phone-mini">
-                <div className="h">
-                  Welcome,
-                  <br />
-                  Lia 👋
-                </div>
-                <div className="r">streak · 12 days 🔥</div>
-                <div className="r alt">today&rsquo;s lesson</div>
-                <div className="r alt">progress 64%</div>
-              </div>
-            </div>
+            <CaseThumb
+              poster="/work/lingu.jpg"
+              video="/work/lingu.mp4"
+              alt="Lingu language-learning mobile app showing a streak, today's lesson and progress ring"
+            />
           </div>
           <div className="case-info">
             <div className="case-tags">
@@ -317,13 +260,10 @@ export default function WorkGrid() {
         {/* STACKLY */}
         <Link href="#" className="case-big reveal" data-cat="web" style={hide("web")}>
           <div className="case-thumb">
-            <div className="thumb-bg-1">
-              <div className="text-block">
-                stackly.
-                <br />
-                <em>ship faster.</em>
-              </div>
-            </div>
+            <CaseThumb
+              poster="/work/stackly.jpg"
+              alt="Stackly developer SaaS landing page with a ship-faster hero and customer logos"
+            />
           </div>
           <div className="case-info">
             <div className="case-tags">
@@ -353,11 +293,10 @@ export default function WorkGrid() {
         {/* TOFU */}
         <Link href="#" className="case-big reveal" data-cat="panel" style={hide("panel")}>
           <div className="case-thumb">
-            <div className="thumb-bg-7">
-              <div className="badge-big">
-                Tofu/Labs<small>internal ops platform</small>
-              </div>
-            </div>
+            <CaseThumb
+              poster="/work/tofu.jpg"
+              alt="Tofu Labs logistics operations dashboard with route map and orders table"
+            />
           </div>
           <div className="case-info">
             <div className="case-tags">
@@ -387,20 +326,10 @@ export default function WorkGrid() {
         {/* HELPDESK */}
         <Link href="#" className="case-big reveal" data-cat="ai" style={hide("ai")}>
           <div className="case-thumb">
-            <div className="thumb-bg-8">
-              <div className="ws-mock">
-                <h5>support.ai</h5>
-                <div style={{ fontFamily: "var(--mono)", fontSize: "10px", color: "var(--gray)" }}>
-                  {"// 1,247 tickets · 12 categories"}
-                </div>
-                <div className="feed">
-                  <div style={{ width: "80%" }}></div>
-                  <div style={{ width: "60%" }}></div>
-                  <div style={{ width: "90%" }}></div>
-                  <div style={{ width: "50%" }}></div>
-                </div>
-              </div>
-            </div>
+            <CaseThumb
+              poster="/work/helpdesk.jpg"
+              alt="AI support-desk auto-triage interface with ticket categories and an AI-drafted reply"
+            />
           </div>
           <div className="case-info">
             <div className="case-tags">
@@ -447,7 +376,7 @@ export default function WorkGrid() {
             </span>
           </p>
           <div className="by">
-            — Aanya Mehta, CEO @ Stackly · ($4.2M Series A, 2026)
+            — Jordan Reyes, CEO @ Stackly · Austin, TX ($4.2M Series A, 2026)
           </div>
         </div>
       </div>

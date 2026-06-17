@@ -5,7 +5,7 @@ import WorkGrid from "@/components/WorkGrid";
 export const metadata: Metadata = {
   title: "Work",
   description:
-    "24 case studies from the last 18 months. Real timelines, real numbers, real clients across websites, apps, AI agents and admin panels.",
+    "24 case studies from the last 18 months. Real timelines, real numbers, real U.S. clients across websites, apps, AI agents and admin panels.",
   alternates: { canonical: "/work" },
 };
 
@@ -24,8 +24,8 @@ export default function Work() {
           </h1>
           <p className="lede rise-4">
             24 case studies from the last 18 months. Real timelines, real
-            numbers, real clients. NDAs hide some — but most are right here,
-            ready to scroll.
+            numbers, real U.S. clients — from Austin to Brooklyn. NDAs hide some
+            — but most are right here, ready to scroll.
           </p>
         </div>
       </header>

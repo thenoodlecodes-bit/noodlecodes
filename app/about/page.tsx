@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "A tiny dev kitchen with a big appetite. Meet the team, learn the story, and find out why we left big agencies to build NoodleCodes.",
+    "A U.S.-based dev kitchen with a big appetite. Meet the senior team, learn the story, and find out why we left big agencies to build NoodleCodes for American founders.",
   alternates: { canonical: "/about" },
 };
 
@@ -24,9 +24,11 @@ export default function About() {
             <em>Big appetite.</em>
           </h1>
           <p className="lede rise-4">
-            We&rsquo;re a four-person studio that left a 200-person agency in 2024
-            because the bureaucracy was eating the joy out of building. Now we
-            ship faster, charge less, and have way more fun.
+            We&rsquo;re a U.S.-incorporated studio of senior engineers and
+            designers who left a 200-person agency in 2024 because the
+            bureaucracy was eating the joy out of building. Now we ship faster,
+            charge a fraction of agency rates, and work right alongside our U.S.
+            clients&rsquo; hours.
           </p>
         </div>
       </header>
@@ -36,14 +38,16 @@ export default function About() {
         <div className="wrap">
           <div className="story-grid">
             <div className="story-art reveal">
-              <div className="big-n">
-                N
-                <em>
-                  est.
-                  <br />
-                  2024
-                </em>
-              </div>
+              <img
+                src="/hero-noodle.jpg"
+                alt="A tangle of noodles forming code symbols — the NoodleCodes house style"
+                className="story-art-img"
+              />
+              <span className="story-art-est" aria-hidden="true">
+                est.
+                <br />
+                2024
+              </span>
             </div>
             <div className="story-text reveal">
               <span className="eyebrow">Our story</span>
@@ -53,11 +57,13 @@ export default function About() {
                 the big jobs.
               </h2>
               <p>
-                NoodleCodes started in a Mumbai apartment with three engineers,
-                one designer, two whiteboards and an unhealthy amount of instant
-                noodles. We&rsquo;d all spent the previous 8+ years inside big
-                agencies and bigger startups — building things that took 9 months
-                when they should have taken 9 weeks.
+                NoodleCodes started with three engineers, one designer, two
+                whiteboards and an unhealthy amount of instant noodles. We&rsquo;d
+                all spent the previous 8+ years inside big U.S. agencies and
+                bigger startups — building things that took 9 months when they
+                should have taken 9 weeks. So we incorporated in Delaware, kept
+                the team senior and small, and went all-in on American founders
+                who wanted to move fast.
               </p>
               <p>
                 The pattern was always the same:{" "}
@@ -79,8 +85,9 @@ export default function About() {
                 quarters. Stay opinionated. Never grow past 8 people.
               </p>
               <p>
-                Two years and 120+ projects later, we&rsquo;re still 8 people.
-                Still in Mumbai (plus three nomads). Still cooking. Some of you
+                Two years and 120+ projects later, we&rsquo;re still 8 people —
+                a distributed senior team that works U.S. business hours, with
+                most of our clients in the States. Still cooking. Some of you
                 have already shipped products with us — most haven&rsquo;t yet.{" "}
                 <b>This is the part where you say hi.</b>
               </p>
@@ -105,12 +112,12 @@ export default function About() {
             <div className="fact">
               <div className="label">{"// Founded"}</div>
               <div className="big">2024</div>
-              <div className="sub">Mumbai, India</div>
+              <div className="sub">Delaware, USA</div>
             </div>
             <div className="fact">
               <div className="label">{"// Team size"}</div>
               <div className="big">8</div>
-              <div className="sub">never more, by design</div>
+              <div className="sub">senior only, by design</div>
             </div>
             <div className="fact">
               <div className="label">{"// Shipped"}</div>
@@ -118,9 +125,9 @@ export default function About() {
               <div className="sub">across 4 services</div>
             </div>
             <div className="fact">
-              <div className="label">{"// Clients in"}</div>
-              <div className="big">14</div>
-              <div className="sub">countries &amp; counting</div>
+              <div className="label">{"// U.S. clients"}</div>
+              <div className="big">70%</div>
+              <div className="sub">of our book &amp; counting</div>
             </div>
           </div>
         </div>
@@ -135,7 +142,7 @@ export default function About() {
           </h2>
           <p className="section-intro reveal">
             No account managers. No middle layer. Just engineers, designers and
-            one part-time chai-maker. The people on this page are the people
+            one part-time coffee-maker. The people on this page are the people
             you&rsquo;ll Slack with.
           </p>
 
@@ -145,7 +152,7 @@ export default function About() {
               <h3 className="team-name">Arjun Patel</h3>
               <div className="team-role">Co-founder · Engineering</div>
               <p className="team-bio">
-                Ex-Razorpay, ex-Cred. Writes the backend, reviews every PR, breaks
+                Ex-Stripe, ex-Ramp. Writes the backend, reviews every PR, breaks
                 the YC interview rules at every party.
               </p>
               <a href="#" className="team-link">Twitter ↗</a>
@@ -156,7 +163,7 @@ export default function About() {
               <h3 className="team-name">Maya Reddy</h3>
               <div className="team-role">Co-founder · Design</div>
               <p className="team-bio">
-                Ex-Stripe, ex-Phantom. Designs the systems and the screens.
+                Ex-Stripe, ex-Linear. Designs the systems and the screens.
                 Believes in cursors, against pop-up cookies.
               </p>
               <a href="#" className="team-link">Dribbble ↗</a>
@@ -237,8 +244,8 @@ export default function About() {
           </span>
           <div className="press-row reveal">
             <span className="press-item">TechCrunch</span>
-            <span className="press-item italic">The Indian Express</span>
-            <span className="press-item uc">YourStory</span>
+            <span className="press-item italic">Fast Company</span>
+            <span className="press-item uc">Inc.</span>
             <span className="press-item">Product Hunt #1</span>
             <span className="press-item italic">Forbes 30u30 (&rsquo;26)</span>
           </div>
@@ -262,7 +269,7 @@ export default function About() {
               </h3>
             </div>
             <a
-              href="mailto:thenoodlecodes@gmail.com?subject=Future hire"
+              href="mailto:hello@noodlecodes.dev?subject=Future hire"
               className="btn btn-primary"
             >
               Drop your work ↗

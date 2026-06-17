@@ -121,8 +121,8 @@ export async function POST(req: Request) {
 
   // ---- Deliver: email (Resend) ----
   const apiKey = process.env.RESEND_API_KEY;
-  const to = process.env.CONTACT_TO_EMAIL || "thenoodlecodes@gmail.com";
-  const from = process.env.CONTACT_FROM_EMAIL || "thenoodlecodes@gmail.com";
+  const to = process.env.CONTACT_TO_EMAIL || "hello@noodlecodes.dev";
+  const from = process.env.CONTACT_FROM_EMAIL || "hello@noodlecodes.dev";
 
   if (apiKey) {
     try {

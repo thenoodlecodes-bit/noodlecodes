@@ -28,7 +28,7 @@ export default function Footer() {
               >
                 Book a call <span className="arr">↗</span>
               </a>
-              <a href="mailto:thenoodlecodes@gmail.com" className="btn btn-secondary">
+              <a href="mailto:hello@noodlecodes.dev" className="btn btn-secondary">
                 Email us <span className="arr">→</span>
               </a>
             </div>
@@ -55,8 +55,12 @@ export default function Footer() {
               des
             </div>
             <p className="foot-tag">
-              A tiny dev kitchen serving websites, apps, AI agents &amp; admin
-              panels — fresh, fast, never frozen.
+              A U.S.-based dev kitchen serving websites, apps, AI agents &amp;
+              admin panels — fresh, fast, never frozen.
+            </p>
+            {/* REPLACE with your real registered U.S. address before launch */}
+            <p className="foot-addr">
+              NoodleCodes LLC · New York, NY · Delaware C-Corp
             </p>
           </div>
           <div className="foot-col">
@@ -76,15 +80,10 @@ export default function Footer() {
           </div>
           <div className="foot-col">
             <h5>Holler</h5>
-            <a href="mailto:thenoodlecodes@gmail.com">thenoodlecodes@gmail.com</a>
-            <a
-              href="https://wa.me/917073994285?text=Hi%20NoodleCodes%2C%20I%27d%20like%20to%20talk%20about%20a%20project."
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              WhatsApp ↗
-            </a>
-            <a href="tel:+917073994285">+91 70739 94285</a>
+            <a href="mailto:hello@noodlecodes.dev">hello@noodlecodes.dev</a>
+            {/* REPLACE with your real U.S. business number */}
+            <a href="tel:+15550123456">+1 (555) 012-3456</a>
+            <a href="sms:+15550123456">Text us ↗</a>
             <a
               href="https://calendly.com/thenoodlecodes/30min"
               target="_blank"
@@ -112,16 +111,16 @@ export default function Footer() {
         <div className="foot-bottom">
           <div>© {year} NoodleCodes. All slurps reserved.</div>
           <div className="legal">
-            <a href="#">Privacy</a>
-            <a href="#">Terms</a>
-            <span>
-              Brewed with <span className="heart">♥</span> &amp; way too much
-              chai.
-            </span>
+            <Link href="/privacy">Privacy</Link>
+            <Link href="/terms">Terms</Link>
+            {/* <span>
+              Built in the USA with <span className="heart">♥</span> &amp; way
+              too much coffee.
+            </span> */}
           </div>
         </div>
         <div className="foot-mega" aria-hidden="true">
-          N<span className="o">●</span>ODLECODES
+          N<span className="o">O</span>ODLECODES
         </div>
       </div>
     </footer>

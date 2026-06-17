@@ -15,10 +15,10 @@ const SERVICES = [
 ];
 
 const BUDGETS = [
-  { value: "10-30", label: "₹10k – ₹30k" },
-  { value: "30-60", label: "₹30k – ₹60k" },
-  { value: "60-150", label: "₹60k – ₹1.5L" },
-  { value: "150+", label: "₹1.5L+" },
+  { value: "under-5k", label: "< $5k" },
+  { value: "5-15k", label: "$5k – $15k" },
+  { value: "15-50k", label: "$15k – $50k" },
+  { value: "50k+", label: "$50k+" },
   { value: "tbd", label: "Not sure yet" },
 ];
 
@@ -119,8 +119,9 @@ export default function ContactForm() {
               margin: "0 auto",
             }}
           >
-            A real human from the NoodleCodes kitchen will get back to you within
-            24 hours with available slots for a free 30-min taste-test call.
+            A real engineer from the NoodleCodes kitchen will get back to you
+            within one business day (U.S. hours) with slots for a free 30-min
+            strategy call. Want an NDA first? Just reply and we&rsquo;ll send one.
           </p>
           <div
             style={{
@@ -222,7 +223,7 @@ export default function ContactForm() {
         </div>
 
         <div className="field">
-          <label>Budget range (INR)</label>
+          <label>Budget range (USD)</label>
           <div className="radio-grid">
             {BUDGETS.map((b) => (
               <label className="opt" key={b.value}>
@@ -296,7 +297,7 @@ export default function ContactForm() {
             }}
           >
             Something burned in the kitchen — please try again, or email
-            thenoodlecodes@gmail.com directly.
+            hello@noodlecodes.dev directly.
           </p>
         )}
 

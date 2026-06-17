@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Transparent INR pricing. Websites from ₹30,000, mobile apps from ₹60,000, AI agents from ₹50,000, dashboards from ₹40,000, consultancy from ₹10,000. No hidden fees.",
+    "Transparent USD pricing for U.S. teams. Websites from $4,000, mobile apps from $12,000, AI agents from $9,000, dashboards from $7,000, consultancy from $1,500. Fixed price, no hidden fees, you own the IP.",
   alternates: { canonical: "/pricing" },
 };
 
@@ -24,15 +24,25 @@ export default function Pricing() {
             <em>No fluff.</em>
           </h1>
           <p className="lede rise-4">
-            Five things on the menu — pick what you need, get a starting price up
-            front. Every plate includes senior engineers, design, deploy, and a
-            90-day post-launch warranty. No hourly billing, no surprise invoices,
-            no &ldquo;scope creep&rdquo; tax.
+            Five things on the menu — pick what you need, get a real starting
+            price up front in <b>USD</b>. Every plate includes senior U.S.-hours
+            engineers, design, deploy, and a 90-day post-launch warranty. Fixed
+            price. No hourly billing, no surprise invoices, no &ldquo;scope
+            creep&rdquo; tax. Typically <b>40–60% less than a U.S. agency</b> for
+            the same senior work.
           </p>
+
+          <div className="us-trust rise-5" aria-label="Trust signals">
+            <span className="us-pill"><span className="us-flag" aria-hidden="true">★</span> 4.9 avg · 40+ reviews</span>
+            <span className="us-pill">Fixed price, in USD</span>
+            <span className="us-pill">You own 100% of the IP</span>
+            <span className="us-pill">NDA before we talk</span>
+            <span className="us-pill">Ship on time or money back</span>
+          </div>
         </div>
       </header>
 
-      {/* SERVICE PRICING (5 tiers in INR) */}
+      {/* SERVICE PRICING (5 tiers in USD) */}
       <section style={{ paddingTop: "60px" }}>
         <div className="wrap">
           <div className="price-grid price-grid-5">
@@ -45,9 +55,9 @@ export default function Pricing() {
                 animated.
               </div>
               <div className="price-amount">
-                ₹30k<span className="small">+</span>
+                $4k<span className="small">+</span>
               </div>
-              <div className="price-meta">Starts at ₹30,000 · 2–4 weeks</div>
+              <div className="price-meta">Starts at $4,000 · 2–4 weeks</div>
 
               <ul className="price-list">
                 <li>Custom design, no off-the-shelf themes</li>
@@ -77,9 +87,9 @@ export default function Pricing() {
                 behind the cute icon.
               </div>
               <div className="price-amount">
-                ₹60k<span className="small">+</span>
+                $12k<span className="small">+</span>
               </div>
-              <div className="price-meta">Starts at ₹60,000 · 4–10 weeks</div>
+              <div className="price-meta">Starts at $12,000 · 4–10 weeks</div>
 
               <ul className="price-list">
                 <li>React Native or native Swift / Kotlin</li>
@@ -110,9 +120,9 @@ export default function Pricing() {
                 co-worker.
               </div>
               <div className="price-amount">
-                ₹50k<span className="small">+</span>
+                $9k<span className="small">+</span>
               </div>
-              <div className="price-meta">Starts at ₹50,000 · 3–8 weeks</div>
+              <div className="price-meta">Starts at $9,000 · 3–8 weeks</div>
 
               <ul className="price-list">
                 <li>Claude / OpenAI / open-weights — your pick</li>
@@ -143,9 +153,9 @@ export default function Pricing() {
                 that has to use it daily.
               </div>
               <div className="price-amount">
-                ₹40k<span className="small">+</span>
+                $7k<span className="small">+</span>
               </div>
-              <div className="price-meta">Starts at ₹40,000 · 3–6 weeks</div>
+              <div className="price-meta">Starts at $7,000 · 3–6 weeks</div>
 
               <ul className="price-list">
                 <li>Role-based access, audit logs</li>
@@ -175,16 +185,16 @@ export default function Pricing() {
                 hiring playbooks.
               </div>
               <div className="price-amount">
-                ₹10k<span className="small">+</span>
+                $1.5k<span className="small">+</span>
               </div>
-              <div className="price-meta">Starts at ₹10,000 · per session / day</div>
+              <div className="price-meta">Starts at $1,500 · per session / sprint</div>
 
               <ul className="price-list">
                 <li>Codebase audits + written report</li>
                 <li>Architecture &amp; scaling reviews</li>
                 <li>Hiring playbooks &amp; interview rubrics</li>
                 <li>Stack &amp; vendor evaluations</li>
-                <li>Async follow-up over WhatsApp / email</li>
+                <li>Async follow-up over Slack / email</li>
               </ul>
 
               <div className="price-cta">
@@ -200,11 +210,37 @@ export default function Pricing() {
           </div>
 
           <p className="price-foot reveal">
-            ✱ All prices are <b>starting</b> figures. Final scope, timeline and
-            quote come after a free 30-min discovery call. We invoice in INR
-            (GST applicable) and accept UPI, bank transfer, Razorpay, Wise &amp;
-            Stripe for international clients.
+            ✱ All prices are <b>starting</b> figures in <b>USD</b>. Final scope,
+            timeline and a fixed quote come after a free 30-min discovery call.
+            We invoice in U.S. dollars and accept ACH, wire, and all major credit
+            cards via Stripe. Net-15 terms available for established companies.
           </p>
+        </div>
+      </section>
+
+      {/* GUARANTEE — risk reversal */}
+      <section>
+        <div className="wrap">
+          <div className="guarantee reveal">
+            <div className="guarantee-seal" aria-hidden="true">
+              <span>NO<br />RISK</span>
+            </div>
+            <div className="guarantee-body">
+              <span className="eyebrow">The NoodleCodes guarantee</span>
+              <h3>
+                On time, on budget, or your{" "}
+                <span style={{ fontFamily: "var(--brush)", color: "var(--sauce)" }}>
+                  money back.
+                </span>
+              </h3>
+              <ul className="guarantee-list">
+                <li><span className="check">✓</span> <b>Fixed price.</b> The number we quote is the number you pay. Change orders are opt-in, never a surprise.</li>
+                <li><span className="check">✓</span> <b>On-time pledge.</b> Miss a deadline by more than 50% and the unfinished work is refunded in full — in writing, in every contract.</li>
+                <li><span className="check">✓</span> <b>You own everything.</b> Full code, full IP assignment, full infra access on day one. Fire us anytime and keep building.</li>
+                <li><span className="check">✓</span> <b>NDA-first.</b> We sign before we talk. Your idea stays yours.</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -269,7 +305,7 @@ export default function Pricing() {
               <span className="check">✓</span> <b>Timeline pressure</b> — &lt;2 weeks adds a rush fee
             </div>
             <div className="included">
-              <span className="check">✓</span> <b>Compliance needs</b> — GDPR, HIPAA, SOC2 readiness
+              <span className="check">✓</span> <b>Compliance needs</b> — SOC 2, HIPAA, CCPA &amp; GDPR readiness
             </div>
           </div>
         </div>
@@ -298,8 +334,10 @@ export default function Pricing() {
               <div className="faq-a">
                 Projects: 30% on signature, 40% at midpoint demo, 30% on launch.
                 Consultancy: 100% upfront for single sessions, monthly for
-                ongoing. We invoice in INR (GST applicable) and accept UPI, bank
-                transfer, Razorpay, Wise &amp; Stripe for international clients.
+                ongoing. We invoice in <b>U.S. dollars</b> and accept ACH, wire,
+                and major credit cards via Stripe. Net-15 terms available for
+                established companies. You&rsquo;ll get a clean, itemized invoice
+                and a signed SOW for your records every time.
               </div>
             </details>
             <details className="faq-item reveal">
@@ -337,11 +375,24 @@ export default function Pricing() {
               </div>
             </details>
             <details className="faq-item reveal">
-              <summary className="faq-q">Are taxes / GST included?</summary>
+              <summary className="faq-q">Are there any taxes or hidden fees?</summary>
               <div className="faq-a">
-                Prices shown are net. 18% GST is added for Indian billing
-                entities. International clients: no GST &mdash; we invoice with a
-                zero-rated export note.
+                No. Prices are the price. As a U.S.-registered company billing in
+                USD, there&rsquo;s no sales tax on professional software
+                development services in most states &mdash; and we&rsquo;ll
+                provide a W-9 and proper invoices for your books. No platform
+                fees, no &ldquo;onboarding&rdquo; charge, no markup on cloud or
+                third-party costs (we pass those through at cost, with receipts).
+              </div>
+            </details>
+            <details className="faq-item reveal">
+              <summary className="faq-q">Do you sign NDAs / MSAs and handle compliance?</summary>
+              <div className="faq-a">
+                Yes. We&rsquo;ll sign your NDA before the first real
+                conversation, and we work under your MSA or ours. We build to
+                SOC 2, HIPAA, CCPA and GDPR readiness when your project needs it,
+                and we&rsquo;re happy to complete your vendor security
+                questionnaire.
               </div>
             </details>
           </div>
@@ -366,7 +417,7 @@ export default function Pricing() {
               >
                 Book consult <span className="arr">↗</span>
               </a>
-              <a href="mailto:thenoodlecodes@gmail.com" className="btn btn-secondary">
+              <a href="mailto:hello@noodlecodes.dev" className="btn btn-secondary">
                 Email us <span className="arr">→</span>
               </a>
             </div>

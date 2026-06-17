@@ -5,7 +5,7 @@ import ContactForm from "@/components/ContactForm";
 export const metadata: Metadata = {
   title: "Start a project",
   description:
-    "Tell us about your project. We reply within 24 hours with a free 30-min consult slot. Or book directly via Calendly. No sales calls, no pressure.",
+    "Tell us about your project. A U.S.-based team replies within one business day with a free 30-min strategy call. Book directly via Calendly, call, or email. NDA on request, no pressure.",
   alternates: { canonical: "/contact" },
 };
 
@@ -26,8 +26,10 @@ export default function Contact() {
           </h1>
           <p className="lede rise-4">
             Tell us about your project. The more detail, the better the first
-            reply. We respond within <b>24 hours</b> on weekdays with a free
-            30-min consult slot — no sales pitch, no follow-up funnels.
+            reply. A real U.S.-hours human responds within <b>one business
+            day</b> with a free 30-min strategy call — no sales pitch, no
+            follow-up funnels. Need an <b>NDA first?</b> Just say so and
+            we&rsquo;ll send one over before we talk.
           </p>
         </div>
       </header>
@@ -57,48 +59,47 @@ export default function Contact() {
                 </a>
               </div>
 
+              {/* REPLACE +1 (555) 012-3456 with your real U.S. business number */}
+              <div className="side-card reveal">
+                <div className="ico">📞</div>
+                <h3>Rather just call?</h3>
+                <p>
+                  Pick up the phone &mdash; you&rsquo;ll reach a real engineer,
+                  not a callback funnel. Available <b>9am&ndash;6pm ET</b>,
+                  Mon&ndash;Fri.
+                </p>
+                <a href="tel:+15550123456" className="btn btn-secondary">
+                  +1 (555) 012-3456 <span className="arr">→</span>
+                </a>
+              </div>
+
               <div className="side-card reveal">
                 <div className="ico">✉️</div>
-                <h3>Old-school email?</h3>
+                <h3>Prefer email?</h3>
                 <p>
-                  Just write to us. We read every line. Reply within 24h on
-                  weekdays.
+                  Just write to us. We read every line and reply within one
+                  business day (U.S. hours).
                 </p>
                 <a
-                  href="mailto:thenoodlecodes@gmail.com"
+                  href="mailto:hello@noodlecodes.dev"
                   className="btn btn-secondary"
                 >
-                  thenoodlecodes@gmail.com <span className="arr">→</span>
+                  hello@noodlecodes.dev <span className="arr">→</span>
                 </a>
               </div>
 
               <div className="side-card reveal">
                 <div className="ico">💬</div>
-                <h3>Faster on WhatsApp?</h3>
+                <h3>Faster by text?</h3>
                 <p>
-                  Ping us a one-liner with the project idea &mdash; usually the
-                  fastest way to get a reply. Available 10am&ndash;7pm IST.
+                  Shoot us a one-liner with the project idea &mdash; often the
+                  fastest way to get a reply during U.S. business hours.
                 </p>
                 <a
-                  href="https://wa.me/917073994285?text=Hi%20NoodleCodes%2C%20I%27d%20like%20to%20talk%20about%20a%20project."
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="sms:+15550123456"
                   className="btn btn-primary"
-                  style={{ background: "#25D366", color: "#0E0E0E" }}
                 >
-                  Chat on WhatsApp <span className="arr">↗</span>
-                </a>
-              </div>
-
-              <div className="side-card reveal">
-                <div className="ico">📞</div>
-                <h3>Old-school call?</h3>
-                <p>
-                  Pick up the phone &mdash; we&rsquo;re humans, not a callback
-                  funnel. Available 10am&ndash;7pm IST, weekdays.
-                </p>
-                <a href="tel:+917073994285" className="btn btn-secondary">
-                  +91 70739 94285 <span className="arr">→</span>
+                  Text us <span className="arr">↗</span>
                 </a>
               </div>
 

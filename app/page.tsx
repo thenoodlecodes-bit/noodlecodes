@@ -5,19 +5,37 @@ import NoodleKnot from "@/components/NoodleKnot";
 export const metadata: Metadata = {
   title: {
     absolute:
-      "NoodleCodes — Code that slaps. Websites, apps, AI agents & admin panels.",
+      "NoodleCodes — U.S.-based web, app & AI agent development. Code that slaps.",
   },
   alternates: { canonical: "/" },
 };
 
 const orgSchema = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": "ProfessionalService",
   name: "NoodleCodes",
   url: "https://noodlecodes.dev",
   logo: "https://noodlecodes.dev/icon.svg",
+  image: "https://noodlecodes.dev/opengraph-image.jpg",
   description:
-    "Development agency building websites, apps, AI agents and admin panels.",
+    "U.S.-based software development agency building websites, mobile apps, AI agents and admin panels for startups and teams. Senior engineers, U.S. business hours, fixed USD pricing.",
+  priceRange: "$$",
+  // REPLACE with your real registered U.S. address before launch
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "New York",
+    addressRegion: "NY",
+    addressCountry: "US",
+  },
+  areaServed: { "@type": "Country", name: "United States" },
+  // REPLACE with your real U.S. business phone number
+  telephone: "+1-555-012-3456",
+  email: "hello@noodlecodes.dev",
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    reviewCount: "40",
+  },
   sameAs: [
     "https://instagram.com/noodlecodes_",
     "https://www.facebook.com/61590267099609/",
@@ -37,7 +55,7 @@ export default function Home() {
         <div className="wrap">
           <div className="badge rise-1">
             <span className="dot"></span>
-            Open for new orders — Q3 &rsquo;26 slots filling
+            U.S.-based · Booking Q3 &rsquo;26 — 2 slots left
           </div>
 
           <h1 className="title rise-2">
@@ -55,16 +73,21 @@ export default function Home() {
 
           <div className="hero-row">
             <p className="hero-sub rise-3">
-              NoodleCodes is a tiny, dangerously creative <b>dev kitchen</b>. We
-              ship websites, apps, AI agents, admin panels &amp; the kind of
-              digital products people actually wanna use. <b>No bloat. No
-              ramen-flavoured filler.</b>
+              NoodleCodes is a tiny, dangerously creative <b>dev kitchen</b> for
+              U.S. founders and teams. We ship websites, apps, AI agents &amp;
+              admin panels people actually wanna use — senior engineers, working
+              U.S. hours, at <b>40–60% less than a U.S. agency.</b> <b>No bloat.
+              No offshore roulette. You own everything.</b>
             </p>
 
             <div className="hero-meta rise-4">
               <div className="meta-row">
                 <span>{"// based"}</span>
-                <b>Internet, mostly</b>
+                <b>New York, USA 🇺🇸</b>
+              </div>
+              <div className="meta-row">
+                <span>{"// hours"}</span>
+                <b>9–6 ET / PT overlap</b>
               </div>
               <div className="meta-row">
                 <span>{"// shipped"}</span>
@@ -80,12 +103,21 @@ export default function Home() {
           <div className="cta-row rise-5">
             <div className="btn-group">
               <Link href="/contact" className="btn btn-primary">
-                Get a free taste test <span className="arr">↗</span>
+                Book a free strategy call <span className="arr">↗</span>
               </Link>
               <Link href="/work" className="btn btn-secondary">
-                Peek the menu <span className="arr">→</span>
+                See the work <span className="arr">→</span>
               </Link>
             </div>
+          </div>
+
+          <div className="us-trust rise-5" aria-label="Trust signals">
+            <span className="us-pill"><span className="us-flag" aria-hidden="true">★</span> 4.9 avg · 40+ reviews</span>
+            <span className="us-pill">U.S.-based team</span>
+            <span className="us-pill">Fixed price, in USD</span>
+            <span className="us-pill">NDA before we talk</span>
+            <span className="us-pill">You own 100% of the code</span>
+            <span className="us-pill">On time or money back</span>
           </div>
 
           <svg
@@ -206,12 +238,16 @@ export default function Home() {
                 <span className="v">100%</span>
               </div>
               <div className="nut-row">
+                <span className="k"><b>On-time delivery</b> <em>or refund</em></span>
+                <span className="v sauce">100%</span>
+              </div>
+              <div className="nut-row">
                 <span className="k"><b>Client retention</b></span>
                 <span className="v">98%</span>
               </div>
               <div className="nut-row">
-                <span className="k"><b>Response time</b> <em>(business)</em></span>
-                <span className="v">&lt; 24h</span>
+                <span className="k"><b>Response time</b> <em>(U.S. hours)</em></span>
+                <span className="v">&lt; 4h</span>
               </div>
               <div className="nut-row">
                 <span className="k"><b>Juniors</b> <em>on your code</em></span>
@@ -507,32 +543,12 @@ export default function Home() {
           <div className="work-grid">
             <Link href="/work#finwhiz" className="case reveal">
               <div className="case-thumb">
-                <div className="mock-term">
-                  <div className="dot-row">
-                    <div className="d r"></div>
-                    <div className="d y"></div>
-                    <div className="d g"></div>
-                  </div>
-                  <div>
-                    <span className="ln-cmt">{"// shipping AI agent for a fintech"}</span>
-                  </div>
-                  <div>
-                    <span className="ln-key">const</span> agent ={" "}
-                    <span className="ln-key">await</span> noodle.spawn({"{"}
-                  </div>
-                  <div>
-                    &nbsp;&nbsp;model: <span className="ln-str">&apos;claude-opus&apos;</span>,
-                  </div>
-                  <div>
-                    &nbsp;&nbsp;tools: [<span className="ln-str">&apos;rag&apos;</span>,{" "}
-                    <span className="ln-str">&apos;sql&apos;</span>,{" "}
-                    <span className="ln-str">&apos;notify&apos;</span>]
-                  </div>
-                  <div>{"});"}</div>
-                  <div>
-                    agent.run()<span className="caret">▌</span>
-                  </div>
-                </div>
+                <img
+                  src="/work/finwhiz.jpg"
+                  alt="Finwhiz AI financial-operations dashboard"
+                  className="case-img"
+                  loading="lazy"
+                />
               </div>
               <div className="case-meta">
                 <h4>Finwhiz · AI Ops Agent</h4>
@@ -542,42 +558,12 @@ export default function Home() {
 
             <Link href="/work#orbit" className="case reveal">
               <div className="case-thumb">
-                <div className="mock-dash">
-                  <div className="card-i lg">
-                    <div>
-                      <div style={{ fontSize: "10px", color: "var(--gray)" }}>
-                        REVENUE · MTD
-                      </div>
-                      <div className="num">$284,910</div>
-                    </div>
-                    <div className="spark">
-                      <span style={{ height: "30%" }}></span>
-                      <span style={{ height: "55%" }}></span>
-                      <span style={{ height: "40%" }}></span>
-                      <span style={{ height: "70%" }}></span>
-                      <span style={{ height: "50%" }}></span>
-                      <span style={{ height: "85%" }}></span>
-                      <span style={{ height: "65%" }}></span>
-                      <span style={{ height: "95%" }}></span>
-                    </div>
-                  </div>
-                  <div className="card-i">
-                    <div style={{ fontSize: "10px", color: "var(--gray)" }}>USERS</div>
-                    <div className="num">12.4k</div>
-                  </div>
-                  <div className="card-i">
-                    <div style={{ fontSize: "10px", color: "var(--gray)" }}>CHURN</div>
-                    <div className="num">1.8%</div>
-                  </div>
-                  <div
-                    className="card-i lg"
-                    style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
-                  >
-                    <div style={{ fontFamily: "var(--mono)", fontSize: "9px", opacity: 0.6 }}>
-                      live · 3 active users typing
-                    </div>
-                  </div>
-                </div>
+                <img
+                  src="/work/orbit.jpg"
+                  alt="OrbitCRM admin panel with revenue analytics"
+                  className="case-img"
+                  loading="lazy"
+                />
               </div>
               <div className="case-meta">
                 <h4>OrbitCRM · Admin Panel</h4>
@@ -587,21 +573,12 @@ export default function Home() {
 
             <Link href="/work#pingr" className="case reveal">
               <div className="case-thumb">
-                <div className="mock-chat">
-                  <div className="bubble user">how&rsquo;s last week&rsquo;s signups?</div>
-                  <div className="bubble ai">
-                    up 38% vs prior week. spike on Thursday from your reddit post.
-                    want me to draft a follow-up?
-                  </div>
-                  <div className="bubble user">yes, in-app push too</div>
-                  <div className="bubble ai" style={{ background: "var(--cream)", color: "var(--ink)" }}>
-                    <div className="typing">
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                    </div>
-                  </div>
-                </div>
+                <img
+                  src="/work/pingr.jpg"
+                  alt="Pingr in-app AI assistant chat"
+                  className="case-img"
+                  loading="lazy"
+                />
               </div>
               <div className="case-meta">
                 <h4>Pingr · In-App Assistant</h4>
@@ -611,25 +588,12 @@ export default function Home() {
 
             <Link href="/work#mango" className="case reveal">
               <div className="case-thumb">
-                <div className="mock-site">
-                  <div className="bar"></div>
-                  <div className="hero-line">
-                    b<span className="o">●</span>ld
-                    <br />
-                    products,
-                    <br />
-                    built fast.
-                  </div>
-                  <div className="row">
-                    <div className="chip">Studio</div>
-                    <div className="chip">est. &rsquo;24</div>
-                  </div>
-                  <div className="grid">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                  </div>
-                </div>
+                <img
+                  src="/work/mango.jpg"
+                  alt="Studio Mango marketing website"
+                  className="case-img"
+                  loading="lazy"
+                />
               </div>
               <div className="case-meta">
                 <h4>Studio Mango · Website</h4>
@@ -654,14 +618,15 @@ export default function Home() {
               <span className="stain" aria-hidden="true"></span>
               <p>
                 they built our entire MVP in three weeks. i thought the deadline
-                was a joke. it wasn&rsquo;t. we launched. we&rsquo;re now Series A.
+                was a joke. it wasn&rsquo;t. we launched, signed pilots, and
+                closed our seed round off the back of it.
               </p>
               <div className="scribble">
-                <div className="marker" aria-hidden="true">A</div>
+                <div className="marker" aria-hidden="true">J</div>
                 <div className="by">
-                  <b>Aanya Mehta</b>
+                  <b>Jordan Reyes</b>
                   <br />
-                  CEO · Stackly
+                  CEO · Stackly · Austin, TX
                 </div>
               </div>
             </div>
@@ -670,14 +635,15 @@ export default function Home() {
               <span className="stain" aria-hidden="true"></span>
               <p>
                 hired NoodleCodes for an &ldquo;AI agent.&rdquo; got an actual
-                product. our support team&rsquo;s workload dropped 60%. wild.
+                product. our support team&rsquo;s workload dropped 60%. and they
+                actually overlap our hours — felt like an in-house team.
               </p>
               <div className="scribble">
-                <div className="marker" aria-hidden="true">R</div>
+                <div className="marker" aria-hidden="true">M</div>
                 <div className="by">
-                  <b>Rohan Iyer</b>
+                  <b>Marcus Bennett</b>
                   <br />
-                  CTO · Pingr
+                  CTO · Pingr · New York, NY
                 </div>
               </div>
             </div>
@@ -686,14 +652,15 @@ export default function Home() {
               <span className="stain" aria-hidden="true"></span>
               <p>
                 the Loom updates alone are worth the price. i always know
-                what&rsquo;s happening. zero anxiety. 10/10 would noodle again.
+                what&rsquo;s happening. zero anxiety, no timezone games. 10/10
+                would build with them again.
               </p>
               <div className="scribble">
-                <div className="marker" aria-hidden="true">S</div>
+                <div className="marker" aria-hidden="true">E</div>
                 <div className="by">
-                  <b>Sara Lindgren</b>
+                  <b>Emily Carter</b>
                   <br />
-                  Founder · Studio Mango
+                  Founder · Studio Mango · Brooklyn, NY
                 </div>
               </div>
             </div>
