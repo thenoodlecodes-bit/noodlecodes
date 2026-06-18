@@ -14,11 +14,13 @@ const SERVICES = [
   { value: "other", label: "Other / Multiple" },
 ];
 
-const BUDGETS = [
-  { value: "under-5k", label: "< $5k" },
-  { value: "5-15k", label: "$5k – $15k" },
-  { value: "15-50k", label: "$15k – $50k" },
-  { value: "50k+", label: "$50k+" },
+type Budget = { value: string; label: string };
+
+const DEFAULT_BUDGETS: Budget[] = [
+  { value: "u2k", label: "Under $2k" },
+  { value: "2-6k", label: "$2k – $6k" },
+  { value: "6-15k", label: "$6k – $15k" },
+  { value: "15k+", label: "$15k+" },
   { value: "tbd", label: "Not sure yet" },
 ];
 
@@ -29,7 +31,13 @@ const TIMELINES = [
   { value: "exploring", label: "Just exploring" },
 ];
 
-export default function ContactForm() {
+export default function ContactForm({
+  budgets = DEFAULT_BUDGETS,
+  currency = "USD",
+}: {
+  budgets?: Budget[];
+  currency?: string;
+}) {
   const formRef = useRef<HTMLFormElement>(null);
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<Record<string, boolean>>({});
@@ -223,9 +231,9 @@ export default function ContactForm() {
         </div>
 
         <div className="field">
-          <label>Budget range (USD)</label>
+          <label>Budget range ({currency})</label>
           <div className="radio-grid">
-            {BUDGETS.map((b) => (
+            {budgets.map((b) => (
               <label className="opt" key={b.value}>
                 <input type="radio" name="budget" value={b.value} />
                 {b.label}

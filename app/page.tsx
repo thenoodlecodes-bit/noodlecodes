@@ -18,7 +18,7 @@ const orgSchema = {
   logo: "https://noodlecodes.dev/icon.svg",
   image: "https://noodlecodes.dev/opengraph-image.jpg",
   description:
-    "U.S.-based software development agency building websites, mobile apps, AI agents and admin panels for startups and teams. Senior engineers, U.S. business hours, fixed USD pricing.",
+    "U.S.-based software development agency building websites, mobile apps, AI agents and admin panels for startups and teams. Senior engineers, U.S. business hours, fixed pricing in your local currency.",
   priceRange: "$$",
   // REPLACE with your real registered U.S. address before launch
   address: {
@@ -114,7 +114,7 @@ export default function Home() {
           <div className="us-trust rise-5" aria-label="Trust signals">
             <span className="us-pill"><span className="us-flag" aria-hidden="true">★</span> 4.9 avg · 40+ reviews</span>
             <span className="us-pill">U.S.-based team</span>
-            <span className="us-pill">Fixed price, in USD</span>
+            <span className="us-pill">Fixed-price, no surprises</span>
             <span className="us-pill">NDA before we talk</span>
             <span className="us-pill">You own 100% of the code</span>
             <span className="us-pill">On time or money back</span>

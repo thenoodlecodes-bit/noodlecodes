@@ -1,14 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { getRegion } from "@/lib/region";
+import { getPricing } from "@/lib/pricing";
 
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Transparent USD pricing for U.S. teams. Websites from $4,000, mobile apps from $12,000, AI agents from $9,000, dashboards from $7,000, consultancy from $1,500. Fixed price, no hidden fees, you own the IP.",
+    "Transparent, fixed pricing — shown in your local currency (USD or INR). Websites, mobile apps, AI agents, dashboards and a free first CTO call. No hourly billing, no hidden fees, you own the IP.",
   alternates: { canonical: "/pricing" },
 };
 
 export default function Pricing() {
+  const p = getPricing(getRegion());
   return (
     <main id="main">
       <header className="page-head">
@@ -25,16 +28,16 @@ export default function Pricing() {
           </h1>
           <p className="lede rise-4">
             Five things on the menu — pick what you need, get a real starting
-            price up front in <b>USD</b>. Every plate includes senior U.S.-hours
-            engineers, design, deploy, and a 90-day post-launch warranty. Fixed
-            price. No hourly billing, no surprise invoices, no &ldquo;scope
-            creep&rdquo; tax. Typically <b>40–60% less than a U.S. agency</b> for
-            the same senior work.
+            price up front in <b>{p.currency}</b>. Every plate includes senior
+            engineers on U.S. hours, design, deploy, and a 90-day post-launch
+            warranty. Fixed price. No hourly billing, no surprise invoices, no
+            &ldquo;scope creep&rdquo; tax — typically far less than a big agency
+            or a full-time hire for the same senior work.
           </p>
 
           <div className="us-trust rise-5" aria-label="Trust signals">
             <span className="us-pill"><span className="us-flag" aria-hidden="true">★</span> 4.9 avg · 40+ reviews</span>
-            <span className="us-pill">Fixed price, in USD</span>
+            <span className="us-pill">Fixed price, in {p.currency}</span>
             <span className="us-pill">You own 100% of the IP</span>
             <span className="us-pill">NDA before we talk</span>
             <span className="us-pill">Ship on time or money back</span>
@@ -55,9 +58,9 @@ export default function Pricing() {
                 animated.
               </div>
               <div className="price-amount">
-                $4k<span className="small">+</span>
+                {p.websites.short}<span className="small">+</span>
               </div>
-              <div className="price-meta">Starts at $4,000 · 2–4 weeks</div>
+              <div className="price-meta">Starts at {p.websites.full} · 2–4 weeks</div>
 
               <ul className="price-list">
                 <li>Custom design, no off-the-shelf themes</li>
@@ -87,9 +90,9 @@ export default function Pricing() {
                 behind the cute icon.
               </div>
               <div className="price-amount">
-                $12k<span className="small">+</span>
+                {p.apps.short}<span className="small">+</span>
               </div>
-              <div className="price-meta">Starts at $12,000 · 4–10 weeks</div>
+              <div className="price-meta">Starts at {p.apps.full} · 4–10 weeks</div>
 
               <ul className="price-list">
                 <li>React Native or native Swift / Kotlin</li>
@@ -120,9 +123,9 @@ export default function Pricing() {
                 co-worker.
               </div>
               <div className="price-amount">
-                $9k<span className="small">+</span>
+                {p.ai.short}<span className="small">+</span>
               </div>
-              <div className="price-meta">Starts at $9,000 · 3–8 weeks</div>
+              <div className="price-meta">Starts at {p.ai.full} · 3–8 weeks</div>
 
               <ul className="price-list">
                 <li>Claude / OpenAI / open-weights — your pick</li>
@@ -153,9 +156,9 @@ export default function Pricing() {
                 that has to use it daily.
               </div>
               <div className="price-amount">
-                $7k<span className="small">+</span>
+                {p.panels.short}<span className="small">+</span>
               </div>
-              <div className="price-meta">Starts at $7,000 · 3–6 weeks</div>
+              <div className="price-meta">Starts at {p.panels.full} · 3–6 weeks</div>
 
               <ul className="price-list">
                 <li>Role-based access, audit logs</li>
@@ -176,18 +179,18 @@ export default function Pricing() {
               </div>
             </div>
 
-            {/* CONSULTANCY */}
+            {/* CONSULTANCY / CTO CALL */}
             <div className="price-card reveal">
               <div className="price-label">{"// Menu 05"}</div>
-              <h3>Consultancy</h3>
+              <h3>CTO Call</h3>
               <div className="price-desc">
                 Senior CTO-level brain time — audits, architecture, scaling,
-                hiring playbooks.
+                hiring playbooks. First call&rsquo;s on us.
               </div>
               <div className="price-amount">
-                $1.5k<span className="small">+</span>
+                Free<span className="small">*</span>
               </div>
-              <div className="price-meta">Starts at $1,500 · per session / sprint</div>
+              <div className="price-meta">{p.consultMeta}</div>
 
               <ul className="price-list">
                 <li>Codebase audits + written report</li>
@@ -210,10 +213,9 @@ export default function Pricing() {
           </div>
 
           <p className="price-foot reveal">
-            ✱ All prices are <b>starting</b> figures in <b>USD</b>. Final scope,
-            timeline and a fixed quote come after a free 30-min discovery call.
-            We invoice in U.S. dollars and accept ACH, wire, and all major credit
-            cards via Stripe. Net-15 terms available for established companies.
+            ✱ All prices are <b>starting</b> figures in <b>{p.currency}</b>,
+            shown for your region. Final scope, timeline and a fixed quote come
+            after a free 30-min discovery call. {p.invoiceFoot}
           </p>
         </div>
       </section>
@@ -331,14 +333,7 @@ export default function Pricing() {
             </details>
             <details className="faq-item reveal">
               <summary className="faq-q">What&rsquo;s the payment schedule?</summary>
-              <div className="faq-a">
-                Projects: 30% on signature, 40% at midpoint demo, 30% on launch.
-                Consultancy: 100% upfront for single sessions, monthly for
-                ongoing. We invoice in <b>U.S. dollars</b> and accept ACH, wire,
-                and major credit cards via Stripe. Net-15 terms available for
-                established companies. You&rsquo;ll get a clean, itemized invoice
-                and a signed SOW for your records every time.
-              </div>
+              <div className="faq-a">{p.paymentSchedule}</div>
             </details>
             <details className="faq-item reveal">
               <summary className="faq-q">What if my scope changes mid-project?</summary>
@@ -376,14 +371,7 @@ export default function Pricing() {
             </details>
             <details className="faq-item reveal">
               <summary className="faq-q">Are there any taxes or hidden fees?</summary>
-              <div className="faq-a">
-                No. Prices are the price. As a U.S.-registered company billing in
-                USD, there&rsquo;s no sales tax on professional software
-                development services in most states &mdash; and we&rsquo;ll
-                provide a W-9 and proper invoices for your books. No platform
-                fees, no &ldquo;onboarding&rdquo; charge, no markup on cloud or
-                third-party costs (we pass those through at cost, with receipts).
-              </div>
+              <div className="faq-a">{p.taxAnswer}</div>
             </details>
             <details className="faq-item reveal">
               <summary className="faq-q">Do you sign NDAs / MSAs and handle compliance?</summary>

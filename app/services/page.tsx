@@ -1,14 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { getRegion } from "@/lib/region";
+import { getPricing } from "@/lib/pricing";
 
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Websites, mobile apps, AI agents, admin panels & consultancy for U.S. teams. Senior U.S.-hours engineers, fixed USD pricing, you own the IP. Detailed deliverables, timelines and starting prices for every service.",
+    "Websites, mobile apps, AI agents, admin panels & a free CTO call. Senior engineers on U.S. hours, fixed pricing in your local currency, you own the IP. Detailed deliverables, timelines and starting prices for every service.",
   alternates: { canonical: "/services" },
 };
 
 export default function Services() {
+  const p = getPricing(getRegion());
   return (
     <main id="main">
       {/* PAGE HEAD */}
@@ -73,7 +76,7 @@ export default function Services() {
               <div className="meta-table">
                 <div className="meta-row"><span>{"// Timeline"}</span><b>2–4 weeks</b></div>
                 <div className="meta-row"><span>{"// Best for"}</span><b>U.S. startups, founders, agencies, studios</b></div>
-                <div className="meta-row"><span>{"// Starts at"}</span><span className="price-tag">$4,000</span></div>
+                <div className="meta-row"><span>{"// Starts at"}</span><span className="price-tag">{p.websites.full}</span></div>
               </div>
 
               <div className="svc-cta-row">
@@ -122,7 +125,7 @@ export default function Services() {
               <div className="meta-table">
                 <div className="meta-row"><span>{"// Timeline"}</span><b>4–10 weeks</b></div>
                 <div className="meta-row"><span>{"// Best for"}</span><b>D2C, marketplaces, SaaS, social</b></div>
-                <div className="meta-row"><span>{"// Starts at"}</span><span className="price-tag">$12,000</span></div>
+                <div className="meta-row"><span>{"// Starts at"}</span><span className="price-tag">{p.apps.full}</span></div>
               </div>
 
               <div className="svc-cta-row">
@@ -171,7 +174,7 @@ export default function Services() {
               <div className="meta-table">
                 <div className="meta-row"><span>{"// Timeline"}</span><b>3–8 weeks</b></div>
                 <div className="meta-row"><span>{"// Best for"}</span><b>Internal tools, support, ops automation</b></div>
-                <div className="meta-row"><span>{"// Starts at"}</span><span className="price-tag">$9,000</span></div>
+                <div className="meta-row"><span>{"// Starts at"}</span><span className="price-tag">{p.ai.full}</span></div>
               </div>
 
               <div className="svc-cta-row">
@@ -219,7 +222,7 @@ export default function Services() {
               <div className="meta-table">
                 <div className="meta-row"><span>{"// Timeline"}</span><b>3–6 weeks</b></div>
                 <div className="meta-row"><span>{"// Best for"}</span><b>Ops teams, marketplaces, content platforms</b></div>
-                <div className="meta-row"><span>{"// Starts at"}</span><span className="price-tag">$7,000</span></div>
+                <div className="meta-row"><span>{"// Starts at"}</span><span className="price-tag">{p.panels.full}</span></div>
               </div>
 
               <div className="svc-cta-row">
@@ -268,7 +271,7 @@ export default function Services() {
               <div className="meta-table">
                 <div className="meta-row"><span>{"// Timeline"}</span><b>1 session, 1 week, or ongoing</b></div>
                 <div className="meta-row"><span>{"// Best for"}</span><b>Pre-Seed → Series B teams</b></div>
-                <div className="meta-row"><span>{"// Starts at"}</span><span className="price-tag">$1,500</span></div>
+                <div className="meta-row"><span>{"// Pricing"}</span><span className="price-tag">Free, then {p.consultThen}</span></div>
               </div>
 
               <div className="svc-cta-row">

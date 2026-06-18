@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ContactForm from "@/components/ContactForm";
+import { getRegion } from "@/lib/region";
+import { getPricing } from "@/lib/pricing";
 
 export const metadata: Metadata = {
   title: "Start a project",
@@ -10,6 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default function Contact() {
+  const p = getPricing(getRegion());
   return (
     <main id="main">
       <header className="page-head">
@@ -38,7 +41,7 @@ export default function Contact() {
         <div className="wrap">
           <div className="contact-grid">
             {/* FORM (client component) */}
-            <ContactForm />
+            <ContactForm budgets={p.budgets} currency={p.currency} />
 
             {/* SIDEBAR */}
             <aside>
