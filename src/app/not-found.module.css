@@ -1,0 +1,21 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100svh - var(--header));
+  padding: 96px 0;
+  overflow: hidden;
+}
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.inner :global(.h1) {
+  max-width: 12ch;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}

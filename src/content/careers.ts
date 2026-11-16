@@ -1,0 +1,305 @@
+import type { Role, Step } from "./types";
+
+// Placeholder benefits, process and openings. Replace with the real policy and live roles.
+export const careers: { intro: string; benefits: Step[]; process: Step[]; growth: Step[] } = {
+  intro:
+    "We are about 40 engineers, designers and marketers across Bengaluru, Pune and Gurugram. We hire people who like hard problems and explain things plainly, then put them on small teams with real clients.",
+  benefits: [
+    {
+      title: "Health cover for your family",
+      text: "Insurance for you, your partner, your children and your parents, with a top-up for serious illness.",
+    },
+    {
+      title: "₹1 lakh learning budget",
+      text: "Every year, for the courses, books, conferences or certifications you choose.",
+    },
+    {
+      title: "Hybrid by default",
+      text: "Two days a week in a studio, the rest wherever you work best. Some roles are fully remote.",
+    },
+    {
+      title: "Real time off",
+      text: "24 days of paid leave plus public holidays, and the whole company closes between Christmas and New Year.",
+    },
+    {
+      title: "Equipment you choose",
+      text: "The laptop and setup you prefer, refreshed every three years.",
+    },
+    {
+      title: "Parental leave",
+      text: "26 weeks for birth mothers and 12 weeks for every other parent, fully paid.",
+    },
+  ],
+  process: [
+    {
+      title: "Apply",
+      text: "Send your CV or LinkedIn and a few lines on work you're proud of. A person reads every application within a week.",
+    },
+    {
+      title: "Intro call",
+      text: "30 minutes with the hiring manager about the role, your experience and what you want next.",
+    },
+    {
+      title: "Work sample",
+      text: "A short, paid exercise close to real work, or a walkthrough of something you've built. You choose.",
+    },
+    {
+      title: "Meet the team",
+      text: "Talk to two or three people you would work with. Ask them anything.",
+    },
+    {
+      title: "Offer",
+      text: "A written offer with your level, pay band and start date, usually within three days of the last conversation.",
+    },
+  ],
+  growth: [
+    {
+      title: "Published levels and pay bands",
+      text: "Every role has written expectations for each level, and everyone can see the pay band for theirs.",
+    },
+    {
+      title: "Reviews twice a year",
+      text: "With your lead and one peer, against the level guide. Promotions can happen at either review.",
+    },
+    {
+      title: "A mentor outside your team",
+      text: "Everyone gets a senior mentor from another practice for their first year.",
+    },
+    {
+      title: "New clients every few months",
+      text: "Most people work with two or three clients a year, across different industries and stacks.",
+    },
+  ],
+};
+
+export const roles: Role[] = [
+  {
+    slug: "senior-full-stack-engineer",
+    title: "Senior full-stack engineer",
+    team: "Engineering",
+    location: "Bengaluru",
+    type: "Full-time",
+    experience: "5+ years",
+    summary: "Build web products and APIs for clients in retail, finance and logistics, from first commit to production.",
+    about: [
+      "You'll join a team of three to six people working with one client at a time. Most of our work is TypeScript on both ends with PostgreSQL underneath, but we choose the stack for each client.",
+      "You will talk to clients directly. We expect you to push back on scope when it's wrong and explain trade-offs in plain language.",
+    ],
+    responsibilities: [
+      "Design and build features across Next.js front ends and Node.js or Go services",
+      "Own technical decisions on your workstream and write them down",
+      "Review code and pair with engineers on your team",
+      "Demo your work to the client every week",
+      "Keep production healthy with monitoring, alerts and on-call for your projects",
+      "Help scope and estimate new engagements",
+    ],
+    requirements: [
+      "5+ years building web applications in production",
+      "Strong TypeScript and React, plus one backend language",
+      "Good SQL and data modelling, ideally in PostgreSQL",
+      "Experience with AWS or GCP and CI pipelines",
+      "Clear written and spoken English",
+    ],
+    nice: [
+      "Shipped something with Shopify, Stripe or Razorpay",
+      "Worked in a consultancy or agency before",
+      "Open source contributions",
+    ],
+  },
+  {
+    slug: "mobile-engineer",
+    title: "Mobile engineer",
+    team: "Engineering",
+    location: "Pune",
+    type: "Full-time",
+    experience: "3+ years",
+    summary: "Build iOS and Android apps in Flutter or React Native for users on every kind of phone and network.",
+    about: [
+      "Our apps run on flagship iPhones and ₹8,000 Android phones on patchy 4G. You'll care about app size, startup time and offline states as much as how the screens look.",
+      "You will work with a designer and backend engineers on the same client, and ship to the stores yourself.",
+    ],
+    responsibilities: [
+      "Build features in Flutter or React Native, and native modules when needed",
+      "Integrate payments, push notifications and deep links",
+      "Profile performance on low-end Android devices",
+      "Set up and maintain release pipelines for both stores",
+      "Write tests for critical flows like login and payment",
+    ],
+    requirements: [
+      "3+ years shipping apps to the App Store and Play Store",
+      "Strong Flutter or React Native, with some native iOS or Android",
+      "Experience with Firebase Cloud Messaging and analytics SDKs",
+      "Good understanding of offline storage and sync",
+      "Comfortable reading crash reports and fixing what they show",
+    ],
+    nice: ["UPI intent and payment gateway integrations", "Apps with Indic language support", "Kotlin or Swift in production"],
+  },
+  {
+    slug: "data-engineer",
+    title: "Data engineer",
+    team: "Data and AI",
+    location: "Bengaluru",
+    type: "Full-time",
+    experience: "4+ years",
+    summary: "Build the pipelines and warehouses that our clients' reports, models and campaigns depend on.",
+    about: [
+      "Most of our clients have data spread across a store, an app, ad platforms and a CRM. You'll bring it together into something reliable that people can query without asking an engineer.",
+      "You will work closely with our analytics and AI engineers, and with the client teams who will own what you build.",
+    ],
+    responsibilities: [
+      "Design and build batch and streaming pipelines",
+      "Model data in BigQuery, Snowflake or PostgreSQL with dbt",
+      "Set up data quality checks and alerts",
+      "Connect ad platform, CRM and product data",
+      "Document models so client teams can maintain them",
+    ],
+    requirements: [
+      "4+ years in data engineering",
+      "Strong SQL and Python",
+      "Hands-on experience with dbt and a cloud warehouse",
+      "Experience with an orchestrator such as Airflow or Dagster",
+      "Working knowledge of privacy rules for personal data",
+    ],
+    nice: ["Kafka or Pub/Sub", "GA4 BigQuery exports", "Indian payments or lending data"],
+  },
+  {
+    slug: "ai-engineer",
+    title: "AI engineer",
+    team: "Data and AI",
+    location: "Remote in India",
+    type: "Full-time",
+    experience: "4+ years",
+    summary: "Build language model features that answer from real data, stay within limits and get tested like any other code.",
+    about: [
+      "We put language models into products where mistakes cost money or trust: wealth apps, clinics and support tools. Most of the work is retrieval, evaluation and guardrails. Very little of it is prompt tinkering.",
+      "You will own features end to end, from deciding whether a model is the right tool to monitoring it after launch.",
+    ],
+    responsibilities: [
+      "Build retrieval and tool-use features on top of client APIs and data",
+      "Write evaluation sets and run them on every change",
+      "Design refusals, handoffs and logging with client compliance teams",
+      "Track cost and latency, and choose models accordingly",
+      "Explain to clients what a feature can and cannot do",
+    ],
+    requirements: [
+      "4+ years as a software engineer, with at least one language model feature in production",
+      "Strong Python or TypeScript",
+      "Experience with vector search, such as pgvector",
+      "A habit of measuring quality with evaluation sets",
+      "Good judgement about when a model is the wrong answer",
+    ],
+    nice: ["Experience in a regulated industry", "Indic language models or speech", "Open source evaluation tooling"],
+  },
+  {
+    slug: "product-designer",
+    title: "Product designer",
+    team: "Design",
+    location: "Gurugram",
+    type: "Full-time",
+    experience: "4+ years",
+    summary: "Design apps and dashboards people use every day, from research through to shipped screens.",
+    about: [
+      "You'll lead design for one or two clients at a time, working next to engineers from the first week. We value designers who can test an idea with five users by Friday.",
+      "Many of our products serve people in more than one language and on small screens. You will design for them first.",
+    ],
+    responsibilities: [
+      "Run user interviews and usability tests",
+      "Turn research into flows, prototypes and final designs in Figma",
+      "Build and maintain design systems with engineers",
+      "Design for regional languages and accessibility",
+      "Present and defend design decisions with clients",
+    ],
+    requirements: [
+      "4+ years designing digital products",
+      "A portfolio of shipped work with the reasoning behind it",
+      "Strong interaction design and visual craft",
+      "Experience running research yourself",
+      "Comfort working directly with engineers and clients",
+    ],
+    nice: ["Designed for Hindi, Tamil or other Indic scripts", "Data-heavy dashboard work", "Some front-end code"],
+  },
+  {
+    slug: "performance-marketing-manager",
+    title: "Performance marketing manager",
+    team: "Growth",
+    location: "Gurugram",
+    type: "Full-time",
+    experience: "4+ years",
+    summary: "Plan and run paid campaigns for our clients, judged by orders and revenue.",
+    about: [
+      "You will manage budgets across Google, Meta and marketplaces for three to five clients. We measure campaigns against real sales in each client's own systems, so you will know what works.",
+      "You'll work alongside our analytics engineers, who own the tracking, and our designers, who make the creative.",
+    ],
+    responsibilities: [
+      "Plan, launch and optimise campaigns on Google Ads and Meta",
+      "Own budgets and report on contribution margin and return on ad spend",
+      "Design creative tests with our design team",
+      "Run weekly reviews with clients and explain the numbers",
+      "Spot tracking problems early and work with analytics to fix them",
+    ],
+    requirements: [
+      "4+ years managing paid media, with monthly budgets above ₹10 lakh",
+      "Strong Google Ads and Meta Ads Manager skills",
+      "Comfortable with GA4 and spreadsheets",
+      "Experience with D2C, hospitality or app install campaigns",
+      "Honest reporting, including when results are bad",
+    ],
+    nice: ["Amazon or Flipkart ads", "Campaigns in Gulf markets", "Basic SQL"],
+  },
+  {
+    slug: "analytics-engineer",
+    title: "Analytics engineer, tracking and measurement",
+    team: "Growth",
+    location: "Remote in India",
+    type: "Full-time",
+    experience: "3+ years",
+    summary: "Set up the tracking that tells our clients which ads, pages and features actually pay.",
+    about: [
+      "You'll build server-side tracking, conversion APIs and analytics setups for stores, apps and SaaS products. When marketing and finance disagree on a number, you are the one who finds out why.",
+      "The role sits between engineering and growth. You'll write code most days and explain results to non-technical clients most weeks.",
+    ],
+    responsibilities: [
+      "Set up Google Tag Manager, server-side tagging and consent mode",
+      "Implement Meta Conversions API and Google enhanced conversions",
+      "Design event schemas for websites and mobile apps",
+      "Build GA4 and BigQuery reporting",
+      "Audit existing setups and write clear findings",
+    ],
+    requirements: [
+      "3+ years in analytics or tracking implementation",
+      "Strong JavaScript and working SQL",
+      "Hands-on with GTM, GA4 and at least one conversion API",
+      "Understanding of consent, cookies and the DPDP Act",
+      "Patience for debugging data that does not add up",
+    ],
+    nice: ["Firebase or other app analytics SDKs", "Shopify or WooCommerce tracking", "dbt or Looker Studio"],
+  },
+  {
+    slug: "engagement-manager",
+    title: "Engagement manager",
+    team: "Delivery",
+    location: "Bengaluru",
+    type: "Full-time",
+    experience: "6+ years",
+    summary: "Run client engagements end to end: scope, team, budget, demos and the relationship.",
+    about: [
+      "You'll own two or three engagements at a time, each with a team of three to six. You make sure the work matches what was agreed, and you say so early when it does not.",
+      "Our clients are founders, CTOs and marketing heads. You need to be comfortable with all three, and with saying no politely.",
+    ],
+    responsibilities: [
+      "Scope new work with our leads and write proposals",
+      "Plan delivery and track budget and timeline every week",
+      "Run the Friday demo and client check-ins",
+      "Manage risks, change requests and escalations",
+      "Keep teams focused and unblocked",
+    ],
+    requirements: [
+      "6+ years in delivery or project management for software",
+      "Experience running fixed-scope and retainer engagements",
+      "Enough technical depth to follow architecture discussions",
+      "Clear writing: status notes, proposals and change requests",
+      "Calm under pressure",
+    ],
+    nice: ["A background as an engineer or designer", "Marketing or growth projects", "Clients outside India"],
+  },
+];

@@ -1,0 +1,242 @@
+/* Section layouts shared by the detail templates. */
+
+/* heading on the left, content on the right */
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+  gap: 32px 64px;
+}
+.split > :first-child {
+  align-self: start;
+}
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 68ch;
+  color: var(--ink-2);
+  font-size: 18px;
+  line-height: 1.65;
+}
+.body > :first-child {
+  color: var(--ink);
+  font-size: clamp(20px, 1.8vw, 24px);
+  line-height: 1.5;
+}
+:global(.dark) .body {
+  color: rgb(255 255 255 / 0.74);
+}
+:global(.dark) .body > :first-child {
+  color: var(--paper);
+}
+.statsGap {
+  margin-top: 56px;
+}
+
+/* the problem a client brings, in their words */
+.problem {
+  margin: 0;
+}
+.problem blockquote {
+  margin: 0;
+}
+.problem p {
+  font: 700 clamp(28px, 3vw, 42px) / 1.15 var(--display);
+  font-variation-settings: "wdth" 108;
+  letter-spacing: -0.02em;
+}
+.problem p::before {
+  content: "C";
+  color: var(--brand);
+}
+.problem p::after {
+  content: "D";
+  color: var(--brand);
+}
+.problem figcaption {
+  margin-top: 16px;
+  color: var(--ink-3);
+  font: 500 13px/1.4 var(--mono);
+}
+
+/* capability and feature cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+.cards3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 32px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--paper);
+}
+:global(.section:not(.mist)) .card {
+  background: var(--mist);
+}
+.card h3 {
+  font: 700 24px/1.15 var(--display);
+  font-variation-settings: "wdth" 108;
+  letter-spacing: -0.01em;
+}
+.card p {
+  color: var(--ink-2);
+  font-size: 16.5px;
+}
+.ticks {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  list-style: none;
+}
+.ticks li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 15.5px;
+  line-height: 1.45;
+}
+.ticks li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 7px;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--brand);
+}
+
+/* tools and tags */
+.tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+}
+.tools li {
+  padding: 10px 16px;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: var(--paper);
+  font: 500 15px/1 var(--body);
+}
+.toolsFoot {
+  margin-top: 28px;
+}
+
+/* quote */
+.quote {
+  margin: 0;
+}
+.quote p {
+  max-width: 24ch;
+  font: 640 clamp(30px, 3.6vw, 52px) / 1.12 var(--display);
+  font-variation-settings: "wdth" 106;
+  letter-spacing: -0.02em;
+  text-indent: -0.42em;
+}
+.quote footer {
+  margin-top: 28px;
+  color: rgb(255 255 255 / 0.7);
+  font-size: 16px;
+}
+.quote footer strong {
+  display: block;
+  color: var(--paper);
+  font-weight: 600;
+}
+
+/* key facts list on case and role pages */
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px 24px;
+  margin: 0;
+  padding: 28px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.facts dt {
+  margin-bottom: 6px;
+  color: var(--ink-3);
+  font: 500 12.5px/1 var(--mono);
+}
+.facts dd {
+  margin: 0;
+  font-size: 15.5px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.banner {
+  padding: 16px;
+  border-radius: var(--r-lg);
+  background: var(--dark);
+}
+.bannerStats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  margin: 0;
+}
+.bannerStats div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: clamp(24px, 3vw, 40px);
+  color: var(--paper);
+}
+.bannerStats div + div {
+  border-left: 1px solid rgb(255 255 255 / 0.18);
+}
+.bannerStats dt {
+  max-width: 26ch;
+  color: rgb(255 255 255 / 0.72);
+  font-size: 15.5px;
+  line-height: 1.4;
+}
+.bannerStats dd {
+  order: -1;
+  margin: 0;
+  font: 800 clamp(40px, 4.6vw, 68px) / 1 var(--display);
+  font-variation-settings: "wdth" 116;
+  letter-spacing: -0.03em;
+}
+.bannerStats div:first-child dd {
+  color: var(--brand-bright);
+}
+
+@media (max-width: 1080px) {
+  .cards3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 760px) {
+  .bannerStats {
+    grid-template-columns: 1fr;
+  }
+  .bannerStats div + div {
+    border-left: 0;
+    border-top: 1px solid rgb(255 255 255 / 0.18);
+  }
+  .split,
+  .cards,
+  .cards3 {
+    grid-template-columns: 1fr;
+  }
+  .card {
+    padding: 26px 22px;
+  }
+  .body {
+    font-size: 17px;
+  }
+}
