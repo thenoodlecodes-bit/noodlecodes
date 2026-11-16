@@ -26,7 +26,7 @@ export default function CareersPage() {
 
       <section className="section" data-section="benefits">
         <div className="container">
-          <Head title="What you get." />
+          <Head title="What you get" />
           <div className={`${b.cards} ${b.cards3}`}>
             {careers.benefits.map((x) => (
               <article key={x.title} className={b.card}>
@@ -40,7 +40,7 @@ export default function CareersPage() {
 
       <section className="section dark" data-section="growth">
         <div className="container">
-          <Head title="How you grow." />
+          <Head title="How you grow" />
           <ul className={styles.growth}>
             {careers.growth.map((g) => (
               <li key={g.title}>
@@ -54,7 +54,7 @@ export default function CareersPage() {
 
       <section className="section" data-section="process">
         <div className="container">
-          <Head title="How we hire.">
+          <Head title="How we hire">
             <p>Usually three weeks from application to offer. We tell you where you stand at every step.</p>
           </Head>
           <Steps steps={careers.process} />
@@ -63,7 +63,7 @@ export default function CareersPage() {
 
       <section className="section mist" id="roles" data-section="roles">
         <div className="container">
-          <Head title="Open roles." />
+          <Head title="Open roles" />
           {TEAMS.map((team) => {
             const list = roles.filter((r) => r.team === team);
             if (!list.length) return null;

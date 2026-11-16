@@ -7,7 +7,6 @@ export const solutions: Solution[] = [
     name: "Relay",
     kind: "Notification system",
     menu: "One API for in-app, push, email, SMS and WhatsApp",
-    title: "One place to send every notification your product needs.",
     intro:
       "Relay sends each message on the right channel, respects user preferences and quiet hours, and tells you what was delivered and read.",
     features: [
@@ -36,7 +35,6 @@ export const solutions: Solution[] = [
     name: "Mailroom",
     kind: "Email marketing",
     menu: "Campaigns, journeys and transactional email on your domain",
-    title: "Email marketing without a monthly fee per contact.",
     intro:
       "Mailroom sends campaigns, automated journeys and transactional email from your own infrastructure. You pay for what you send, not for how many people are on your list.",
     features: [
@@ -65,7 +63,6 @@ export const solutions: Solution[] = [
     name: "Wave",
     kind: "WhatsApp marketing",
     menu: "Broadcasts, chat journeys and catalogue orders on WhatsApp",
-    title: "Sell and support on the app your customers already open.",
     intro:
       "Wave runs WhatsApp broadcasts, two-way chat journeys and catalogue orders on the official WhatsApp Business Platform, connected to your CRM and order system.",
     features: [
@@ -94,7 +91,6 @@ export const solutions: Solution[] = [
     name: "Pulse",
     kind: "Push notifications (FCM)",
     menu: "Mobile and web push with smart send times",
-    title: "Push notifications people are glad to get.",
     intro:
       "Pulse sends mobile and web push through Firebase Cloud Messaging and APNs, with smart send times, frequency caps and deep links that open the right screen.",
     features: [
@@ -123,7 +119,6 @@ export const solutions: Solution[] = [
     name: "Trail",
     kind: "User behaviour analyser",
     menu: "Funnels, heatmaps, session replays and rage clicks",
-    title: "See where users get stuck, and why.",
     intro:
       "Trail records how people move through your website and app, then shows funnels, heatmaps, rage clicks and session replays, with personal data masked by default.",
     features: [

@@ -61,7 +61,7 @@ export function FilterBoard({
       {visible.length ? (
         <div className={gridClassName}>
           {visible.map(({ i }) => (
-            <div key={i} style={{ viewTransitionName: `card-${i}` }}>
+            <div key={i} style={{ viewTransitionName: `${noun[1]}-${i}` }}>
               {cards[i]}
             </div>
           ))}

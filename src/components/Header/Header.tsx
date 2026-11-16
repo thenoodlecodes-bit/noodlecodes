@@ -23,7 +23,7 @@ const PANELS: { id: Panel; label: string; base: string }[] = [
 ];
 
 const LINKS = [
-  { href: "/work", label: "Work" },
+  { href: "/work", label: "Clients" },
   { href: "/about", label: "About" },
   { href: "/careers", label: "Careers" },
 ];
@@ -209,7 +209,7 @@ export function Header({ menu }: { menu: MenuData }) {
           </div>
           <Link href="/work" className={styles.feature}>
             <strong>Eight client stories from retail, finance, health, mobility and SaaS.</strong>
-            <span className="go">See the work</span>
+            <span className="go">Meet our clients</span>
           </Link>
         </div>
       </div>

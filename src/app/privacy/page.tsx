@@ -36,7 +36,7 @@ const policy: Block[] = [
 export default function PrivacyPage() {
   return (
     <main id="main">
-      <PageHero crumbs={[{ href: "/privacy", label: "Privacy" }]} title="Privacy notice." intro="Short, plain and specific to this website." />
+      <PageHero crumbs={[{ href: "/privacy", label: "Privacy" }]} title="Privacy notice" intro="Short, plain and specific to this website." />
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="container">
           <Prose blocks={policy} />

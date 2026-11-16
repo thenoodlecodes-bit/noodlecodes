@@ -9,10 +9,8 @@ import styles from "./Untangle.module.css";
 type State = "before" | "after";
 
 const CAPTION: Record<State, string> = {
-  before:
-    "How most growing companies run: twelve tools, an orders sheet at the centre, four sources of truth and nobody sure what an ad earns.",
-  after:
-    "What we leave behind: one orders API, tracking that runs on the server and one dashboard everyone trusts. Same team, smaller bill.",
+  before: "A typical growing company: twelve tools, an orders spreadsheet in the middle and three different revenue numbers.",
+  after: "The same company after working with us: one order system, accurate tracking and one dashboard everyone trusts.",
 };
 
 const pct = (n: number) => `${(n * 100).toFixed(3)}%`;
@@ -131,16 +129,34 @@ export function Untangle() {
 
   return (
     <div className={styles.root} data-state={state}>
-      <div className={styles.top}>
+      <div className={styles.intro}>
         <h1 className={`h1 ${styles.title}`}>
           We untangle hard software problems<span className={styles.stop}>.</span>
         </h1>
+        <p className={styles.lede}>
+          We build apps and websites, fix messy systems and make your marketing numbers add up. One senior team, based in
+          Bengaluru, Pune and Gurugram.
+        </p>
+        <div className={styles.actions}>
+          <Link href="/contact" className="btn btn--primary">
+            Bring us a problem
+          </Link>
+          <Link href="/work" className="btn btn--ghost">
+            Meet our clients
+          </Link>
+        </div>
+      </div>
+
+      <div className={styles.bar}>
+        <p className={styles.caption} aria-live="polite">
+          <strong>What untangling looks like.</strong> {CAPTION[state]}
+        </p>
         <div className={styles.toggle} role="group" aria-label="Show the system">
           <button type="button" aria-pressed={state === "before"} onClick={() => show("before")}>
-            How it starts
+            Before
           </button>
           <button type="button" aria-pressed={state === "after"} onClick={() => show("after")}>
-            How we leave it
+            After
           </button>
         </div>
       </div>
@@ -150,25 +166,11 @@ export function Untangle() {
         <Diagram layout={narrow} className={styles.narrow} />
       </div>
 
-      <div className={styles.foot}>
-        <div>
-          <p className={styles.caption} aria-live="polite">
-            {CAPTION[state]}
-          </p>
-          <p className={styles.legend} aria-hidden="true">
-            <span className={styles.keyIssue}>Broken</span>
-            <span className={styles.keyBuilt}>Built by us</span>
-          </p>
-        </div>
-        <div className={styles.actions}>
-          <Link href="/contact" className="btn btn--primary">
-            Bring us a problem
-          </Link>
-          <Link href="/work/calder-labs" className="go">
-            Read a real one
-          </Link>
-        </div>
-      </div>
+      <p className={styles.legend} aria-hidden="true">
+        <span className={styles.keyIssue}>Broken</span>
+        <span className={styles.keyBuilt}>Built by us</span>
+        <span className={styles.keyKept}>Kept and fixed</span>
+      </p>
     </div>
   );
 }

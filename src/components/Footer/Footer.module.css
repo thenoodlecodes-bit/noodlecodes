@@ -4,54 +4,26 @@
 }
 
 .top {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 520px);
-  gap: 48px;
-  align-items: end;
-  padding-bottom: 56px;
+  padding-bottom: 48px;
   border-bottom: 1px solid rgb(255 255 255 / 0.12);
 }
-.define {
-  max-width: 640px;
-}
-.word {
-  font: 800 clamp(44px, 5vw, 72px) / 1 var(--display);
-  font-variation-settings: "wdth" 116;
-  letter-spacing: -0.025em;
-}
-.ipa {
-  margin-left: 10px;
-  color: rgb(255 255 255 / 0.55);
-  font: 400 clamp(16px, 1.4vw, 20px) / 1 var(--mono);
-  letter-spacing: 0;
-  vertical-align: middle;
-}
-.pos {
-  margin-left: 6px;
-  color: var(--brand-bright);
-  font: 500 clamp(14px, 1.2vw, 17px) / 1 var(--body);
-  font-style: italic;
-  letter-spacing: 0;
-  vertical-align: middle;
-}
-.sense {
-  margin-top: 22px;
-  font: 600 clamp(20px, 1.8vw, 24px) / 1.35 var(--body);
-}
-.usage {
-  margin-top: 10px;
-  color: rgb(255 255 255 / 0.6);
-  font-size: 17px;
-  font-style: italic;
-}
+/* newsletter: the ask on the left, the field on the right */
 .news {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 520px);
+  gap: 12px 48px;
+  align-items: center;
 }
 .newsTitle {
-  font: 700 22px/1.25 var(--display);
-  font-variation-settings: "wdth" 108;
+  grid-row: span 2;
+  max-width: 22ch;
+  font: 700 clamp(24px, 2.4vw, 32px) / 1.2 var(--display);
+  font-variation-settings: "wdth" 110;
+}
+.newsRow,
+.newsDone,
+.newsError {
+  grid-column: 2;
 }
 .newsRow {
   display: flex;
@@ -165,8 +137,16 @@
 }
 
 @media (max-width: 1080px) {
-  .top {
+  .news {
     grid-template-columns: 1fr;
+  }
+  .newsTitle {
+    grid-row: auto;
+  }
+  .newsRow,
+  .newsDone,
+  .newsError {
+    grid-column: auto;
   }
   .cols,
   .offices {

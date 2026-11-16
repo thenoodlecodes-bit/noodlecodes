@@ -6,7 +6,6 @@ export const industries: Industry[] = [
     slug: "retail",
     name: "Retail and D2C",
     menu: "Stores, retention and growth for brands that sell online",
-    title: "Online stores that sell, and customers who come back.",
     intro:
       "Indian D2C brands spend heavily to win a first order, then lose margin to returns, cash on delivery and discounts. We build the store, the tracking and the retention systems that make the second order cheaper than the first.",
     challenges: [
@@ -56,7 +55,6 @@ export const industries: Industry[] = [
     slug: "financial-services",
     name: "Financial services",
     menu: "Apps, platforms and data for investment, lending and payments teams",
-    title: "Financial products people trust with their money.",
     intro:
       "Fintech and wealth teams in India build under RBI and SEBI rules, for customers who expect UPI speed. We build apps and platforms that are quick for customers and easy to audit.",
     challenges: [
@@ -106,7 +104,6 @@ export const industries: Industry[] = [
     slug: "healthcare",
     name: "Healthcare",
     menu: "Booking, patient apps and clinic systems for care providers",
-    title: "Care that is easier to book and harder to miss.",
     intro:
       "Clinics and hospitals lose hours to phone bookings and revenue to missed appointments. We build patient apps, clinic dashboards and reminders that work for staff and for patients of every age.",
     challenges: [
@@ -156,7 +153,6 @@ export const industries: Industry[] = [
     slug: "hospitality",
     name: "Hospitality and food",
     menu: "Bookings, guest marketing and tracking for restaurants and hotels",
-    title: "Fuller tables on the nights that need it.",
     intro:
       "Restaurants and hotels have busy weekends, quiet weekdays and aggregators taking a cut of every order. We help groups own their guest relationships and fill the slow nights directly.",
     challenges: [
@@ -206,7 +202,6 @@ export const industries: Industry[] = [
     slug: "mobility",
     name: "Mobility and logistics",
     menu: "Rider apps, fleet tools and dispatch systems for moving people and goods",
-    title: "Apps and systems that keep fleets moving.",
     intro:
       "Ride, delivery and freight businesses run on thin margins and live data. We build rider apps, driver tools and operations dashboards that hold up at peak hour.",
     challenges: [
@@ -256,7 +251,6 @@ export const industries: Industry[] = [
     slug: "saas",
     name: "SaaS and B2B tech",
     menu: "Architecture, product engineering and pipeline for software companies",
-    title: "Ship faster without rebuilding everything.",
     intro:
       "Software companies outgrow the codebase they started with, and the cloud bill that came with it. We help product teams release more often, spend less on infrastructure and track the pipeline that pays for it all.",
     challenges: [

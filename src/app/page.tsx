@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { Fragment } from "react";
 import { Brief } from "@/components/Brief/Brief";
-import { Decisions } from "@/components/Decisions/Decisions";
-import { Journal, ReportCover } from "@/components/Journal/Journal";
-import { Problems } from "@/components/Problems/Problems";
+import { ArticleCard, CaseGrid, ReportCover, ServiceCards, Tiles } from "@/components/Cards/Cards";
+import { ClientBand, ClientQuotes } from "@/components/Clients/Clients";
+import { Head } from "@/components/Page/Page";
+import { Process } from "@/components/Process/Process";
 import { Untangle } from "@/components/Untangle/Untangle";
 import { roles } from "@/content/careers";
 import { cases } from "@/content/cases";
@@ -12,37 +12,11 @@ import { insights } from "@/content/insights";
 import { site } from "@/content/site";
 import styles from "./home.module.css";
 
-// Placeholder clause numbers and wording. Align with the real agreement before launch.
-const clauses = [
-  {
-    no: "2.3",
-    title: "The people you meet are the people who build.",
-    text: "Everyone in the pitch is named in the contract and works on the project. Every team is led by someone with at least ten years of shipping.",
-  },
-  {
-    no: "4.1",
-    title: "Working software every Friday.",
-    text: "Progress is shown every week on a staging link you can share with your board.",
-  },
-  {
-    no: "6.2",
-    title: "You own everything from day one.",
-    text: "Code, designs, ad accounts and data are created in your accounts, not ours. Leaving takes an email, not a negotiation.",
-  },
-  {
-    no: "8.1",
-    title: "Fees follow scope, never spend.",
-    text: "Defined work has a fixed fee. Ongoing teams have a monthly fee. We never take a percentage of ad spend.",
-  },
-];
-
-const featured = ["calder-labs", "aurelian", "halcyon-health", "juniper-wealth", "ember-and-oak"].map(
-  (s) => cases.find((c) => c.slug === s)!,
-);
+const featured = ["calder-labs", "halcyon-health", "ember-and-oak"].map((s) => cases.find((c) => c.slug === s)!);
+const quoted = ["maison-verde", "onyx-ridge", "aurelian"].map((s) => cases.find((c) => c.slug === s)!);
 
 export default function Home() {
-  const lead = insights.find((i) => i.featured) ?? insights[0];
-  const rest = insights.filter((i) => i !== lead).slice(0, 3);
+  const latest = insights.slice(0, 2);
 
   const ld = {
     "@context": "https://schema.org",
@@ -65,80 +39,77 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section" data-section="problems">
+      <section className="section" data-section="clients">
         <div className="container">
-          <h2 className={`h2 ${styles.heading}`}>What people say when they call us.</h2>
-          <Problems />
+          <ClientBand />
         </div>
       </section>
 
-      <section className="section" data-section="decisions">
+      <section className="section mist" data-section="services">
         <div className="container">
-          <div className={styles.headRow}>
-            <h2 className="h2">The calls we made.</h2>
+          <Head title="What we do" text="Five services from one team. Use one, or let us combine them." />
+          <ServiceCards />
+        </div>
+      </section>
+
+      <section className="section" data-section="process">
+        <div className="container">
+          <Head title="How we work" text="Every project follows the same four steps, so you always know what happens next." />
+          <Process />
+        </div>
+      </section>
+
+      <section className="section mist" data-section="results">
+        <div className="container">
+          <Head title="Results for clients" text="Real numbers from recent projects.">
             <Link href="/work" className="go">
-              All {cases.length} client decisions
+              All client stories
             </Link>
-          </div>
-          <Decisions cases={featured} />
+          </Head>
+          <CaseGrid cases={featured} />
         </div>
       </section>
 
-      <section className="section mist" data-section="clauses">
-        <div className={`container ${styles.clauses}`}>
-          <div className={styles.clausesIntro}>
-            <h2 className="h2">How we work.</h2>
-            <p>Four clauses from the agreement every client signs.</p>
-          </div>
-          <div className={styles.doc}>
-            <p className={styles.docHead}>
-              <span>Master services agreement</span>
-              <span>Excerpt</span>
-            </p>
-            <ol>
-              {clauses.map((c) => (
-                <li key={c.no}>
-                  <span className={styles.clauseNo}>{c.no}</span>
-                  <div>
-                    <h3>{c.title}</h3>
-                    <p>{c.text}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </div>
-      </section>
-
-      <section className="section" data-section="notes">
-        <div className={`container ${styles.notes}`}>
-          <div>
-            <div className={styles.headRow}>
-              <h2 className="h2">Field notes.</h2>
-              <Link href="/insights" className="go">
-                All notes
-              </Link>
-            </div>
-            <Journal lead={lead} items={rest} />
-          </div>
-          <ReportCover />
+      <section className="section dark" data-section="quotes">
+        <div className="container">
+          <Head title="In their words" />
+          <ClientQuotes stories={quoted} />
         </div>
       </section>
 
       <section className="section" data-section="industries">
         <div className="container">
-          <p className={styles.sectors}>
-            We know six industries from the inside:{" "}
-            {industries.map((i, n) => (
-              <Fragment key={i.slug}>
-                <Link href={`/industries/${i.slug}`}>{i.name}</Link>
-                {n < industries.length - 2 ? ", " : n === industries.length - 2 ? " and " : "."}
-              </Fragment>
+          <Head title="Industries we know" text="Sectors where we have shipped enough to know the rules." />
+          <Tiles
+            items={industries.map((i) => ({
+              href: `/industries/${i.slug}`,
+              title: i.name,
+              text: i.menu,
+              stat: i.stats[0].value,
+              tag: i.stats[0].label,
+            }))}
+          />
+        </div>
+      </section>
+
+      <section className="section mist" data-section="insights">
+        <div className="container">
+          <Head title="Ideas and guides" text="Practical notes from the people who did the work.">
+            <Link href="/insights" className="go">
+              All articles
+            </Link>
+          </Head>
+          <div className={styles.insights}>
+            {latest.map((i) => (
+              <ArticleCard key={i.slug} i={i} />
             ))}
-          </p>
+            <ReportCover />
+          </div>
           <Link href="/careers" className={styles.hiring}>
-            <span className="meta">Hiring</span>
-            <strong>{roles.length} open roles in Bengaluru, Pune, Gurugram and remote</strong>
+            <strong>We are hiring.</strong>
+            <span>
+              {roles.length} open roles in Bengaluru, Pune, Gurugram and remote.
+            </span>
             <span className="go">See the roles</span>
           </Link>
         </div>

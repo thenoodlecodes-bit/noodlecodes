@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
-import { ClientWall } from "@/components/ClientWall/ClientWall";
+import Link from "next/link";
 import { Brief } from "@/components/Brief/Brief";
+import { ClientWall } from "@/components/Clients/Clients";
 import { Head, PageHero, StatRow } from "@/components/Page/Page";
 import b from "@/components/Page/blocks.module.css";
 import { about } from "@/content/about";
+import { clients } from "@/content/clients";
 import { initials, people } from "@/content/people";
 import { site } from "@/content/site";
 import styles from "./about.module.css";
@@ -27,7 +29,7 @@ export default function AboutPage() {
 
       <section className="section" data-section="story">
         <div className={`container ${b.split}`}>
-          <h2 className="h2">How we started.</h2>
+          <h2 className="h2">How we started</h2>
           <div className={b.body}>
             {about.story.map((p) => (
               <p key={p}>{p}</p>
@@ -38,7 +40,7 @@ export default function AboutPage() {
 
       <section className="section dark" data-section="values">
         <div className="container">
-          <Head title="What we believe." />
+          <Head title="What we believe" />
           <ul className={styles.values}>
             {about.values.map((v) => (
               <li key={v.title}>
@@ -52,7 +54,7 @@ export default function AboutPage() {
 
       <section className="section" data-section="timeline">
         <div className="container">
-          <Head title="Since 2019." />
+          <Head title="Since 2019" />
           <ol className={styles.timeline}>
             {about.timeline.map((t) => (
               <li key={t.title}>
@@ -66,7 +68,7 @@ export default function AboutPage() {
 
       <section className="section mist" data-section="leadership">
         <div className="container">
-          <Head title="The people you will work with.">
+          <Head title="The people you will work with">
             <p>Every engagement has one of these people on it, not just on the pitch.</p>
           </Head>
           <ul className={styles.people}>
@@ -88,13 +90,18 @@ export default function AboutPage() {
 
       <section className="section" data-section="clients">
         <div className="container">
+          <Head title="Who we work with" text={`${clients.length} companies, from first-time founders to listed brands.`}>
+            <Link href="/work" className="go">
+              Meet our clients
+            </Link>
+          </Head>
           <ClientWall />
         </div>
       </section>
 
       <section className="section" data-section="offices">
         <div className="container">
-          <Head title="Three studios in India." />
+          <Head title="Three studios in India" />
           <ul className={styles.offices}>
             {site.offices.map((o) => (
               <li key={o.city}>
@@ -113,7 +120,7 @@ export default function AboutPage() {
 
       <section className="section mist" data-section="giving">
         <div className="container">
-          <Head title="Giving back." />
+          <Head title="Giving back" />
           <div className={`${b.cards} ${b.cards3}`}>
             {about.giving.map((g) => (
               <article key={g.title} className={b.card}>

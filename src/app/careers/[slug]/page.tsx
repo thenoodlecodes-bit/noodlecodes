@@ -113,7 +113,7 @@ export default async function RolePage({ params }: PageProps<"/careers/[slug]">)
       <section className="section mist" data-section="other-roles">
         <div className="container">
           <div className="head">
-            <h2 className="h2">Other open roles.</h2>
+            <h2 className="h2">Other open roles</h2>
             <Link href="/careers#roles" className="go">
               All roles
             </Link>

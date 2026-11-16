@@ -63,13 +63,18 @@ All copy lives in `src/content/`. Everything there is placeholder: client names,
 ## How it fits together
 
 - **Design tokens** are in `src/app/globals.css`: ink `#111318` and chilli red `#D7332A`, solid grey surfaces with visible borders, and Archivo for everything (its width axis widens headings), with JetBrains Mono for meta. Swapping the brand means editing the tokens at the top of that file.
-- **The name is the idea.** "Noodle" is slang for the brain, as in "use your noodle". The site shows the thinking instead of claiming it:
-  - `src/components/Untangle` is the home hero: a typical company's tangled stack that rearranges into the system we leave behind. Nodes, notes and both layouts (wide and phone) are data in `diagram.ts`.
-  - `src/components/Decisions` shows client work as decisions: what the client asked, the call we made, the result. Case pages are full decision records with the options we ruled out.
-  - `src/components/Problems` introduces each service with the sentence clients say when they call.
+- **Built to be read by anyone.** Every section is a short heading, one line of context and one clear block. Details live on inner pages.
+  - `src/components/Untangle` is the home hero: a before and after diagram of a typical company's systems, labelled in plain English with the technical name underneath. Nodes and both layouts (wide and phone) are data in `diagram.ts`.
+  - `src/components/Cards` holds every card: services (with drawings from `src/components/Pictogram`), client results led by the number, articles, simple tiles and the Stack Report cover.
+  - `src/components/Process` is the four-step "how we work".
   - `src/components/Brief` ends most pages with a box to start a brief. Its text carries into the contact form through `?brief=`.
-  - `src/components/Journal` lists articles as dated field notes, with the Stack Report as a printed cover.
-- **Shared page parts** are in `src/components/Page`: hero, breadcrumbs (with JSON-LD), stats, steps, FAQ (with JSON-LD), call to action band and section layouts.
+  - Client story pages put the question, our answer and the results first, with the full story beside a sticky facts panel.
+- **Each kind of page has its own shape**, so visitors can tell where they are:
+  - Services (`src/components/Service`) read like hiring a team. The hero pairs the offer with how a first call usually starts, and the index introduces each service by the problem clients bring.
+  - Plug and play modules (`src/components/Tool`) read like product pages. Each shows the module working in an HTML picture (`ToolPreview.tsx`), then features and a spec sheet. Module cards reuse the picture as a thumbnail.
+  - Industries and insights (`src/components/Read`) read like briefings: a grey title band with plain facts, then a reading column with an "On this page" list.
+- **Clients are everywhere.** `src/content/clients.ts` holds the roster (sector, city, what we did, services, since, story). `src/components/Clients` draws the wordmarks and uses them in the home band and quotes, the clients page (`/work`, roster then stories), story cards, "Who hired us for this" on service pages and "Clients in this sector" on industry pages.
+- **Shared page parts** are in `src/components/Page`: the general hero (about, work, careers, contact), breadcrumbs (with JSON-LD), the dark stat strip, steps, FAQ (with JSON-LD), call to action band and section layouts.
 - **The header** gets only the small menu data from the layout, so article bodies never ship to the browser.
 - **Forms**: `src/lib/enquiry.ts` holds the zod schemas shared by the client and the API routes in `src/app/api`. Both routes rate limit per instance, filter bots with a honeypot and email the team through `src/lib/mail.ts`.
 - **SEO**: per-page metadata, sitemap, robots, Open Graph image and JSON-LD (organisation, breadcrumbs, articles, FAQs, job postings).

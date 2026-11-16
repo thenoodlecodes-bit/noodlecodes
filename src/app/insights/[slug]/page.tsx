@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Brief } from "@/components/Brief/Brief";
-import { Journal } from "@/components/Journal/Journal";
+import { ArticleGrid } from "@/components/Cards/Cards";
 import { Breadcrumbs, Head } from "@/components/Page/Page";
 import { Prose, slugify } from "@/components/Prose/Prose";
 import { insights } from "@/content/insights";
@@ -135,12 +135,12 @@ export default async function ArticlePage({ params }: PageProps<"/insights/[slug
 
       <section className="section mist" data-section="related">
         <div className="container">
-          <Head title="Keep reading.">
+          <Head title="Keep reading">
             <Link href="/insights" className="go">
               All insights
             </Link>
           </Head>
-          <Journal items={related} />
+          <ArticleGrid items={related} />
         </div>
       </section>
 
