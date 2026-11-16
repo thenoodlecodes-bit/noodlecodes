@@ -1,0 +1,20 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink);
+}
+.light {
+  color: var(--paper);
+}
+.mark {
+  flex: none;
+  width: 32px;
+  height: 32px;
+}
+.word {
+  font: 800 21px/1 var(--display);
+  font-variation-settings: "wdth" 118;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}

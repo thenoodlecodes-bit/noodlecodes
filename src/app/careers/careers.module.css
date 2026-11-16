@@ -1,0 +1,78 @@
+.growth {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 32px;
+  list-style: none;
+}
+.growth li {
+  padding-top: 22px;
+  border-top: 2px solid var(--brand);
+}
+.growth h3 {
+  margin-bottom: 10px;
+  font: 700 22px/1.2 var(--display);
+  font-variation-settings: "wdth" 108;
+}
+.growth p {
+  color: rgb(255 255 255 / 0.72);
+  font-size: 16px;
+}
+
+.team + .team {
+  margin-top: 48px;
+}
+.teamName {
+  margin-bottom: 12px;
+  color: var(--ink-3);
+  font: 500 13px/1 var(--mono);
+}
+.roles {
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+.roles li {
+  border-bottom: 1px solid var(--line);
+}
+.role {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) 24px;
+  gap: 24px;
+  align-items: center;
+  padding: 24px 0;
+  color: var(--ink-2);
+}
+.role strong {
+  color: var(--ink);
+  font: 700 22px/1.2 var(--display);
+  font-variation-settings: "wdth" 108;
+  transition: color 0.2s;
+}
+.role:hover strong {
+  color: var(--brand);
+}
+
+@media (max-width: 1080px) {
+  .growth {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 760px) {
+  .growth {
+    grid-template-columns: 1fr;
+  }
+  .role {
+    grid-template-columns: minmax(0, 1fr) 24px;
+    gap: 6px 16px;
+  }
+  .role strong {
+    grid-column: 1;
+  }
+  .role > span:not(:global(.go)) {
+    grid-column: 1;
+    font-size: 15px;
+  }
+  .role :global(.go) {
+    grid-column: 2;
+    grid-row: 1;
+  }
+}
