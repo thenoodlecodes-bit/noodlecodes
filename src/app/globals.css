@@ -2,10 +2,10 @@
 
 :root {
   --paper: #ffffff;
-  --mist: #e8eaee;
-  --mist-2: #dadde3;
-  --line: #c3c7cf;
-  --line-strong: #959ba6;
+  --mist: #dde1e7;
+  --mist-2: #cbd0d8;
+  --line: #b3b9c3;
+  --line-strong: #858c98;
   --ink: #111318;
   --ink-2: #464b57;
   --ink-3: #6b717d;
@@ -205,19 +205,27 @@ ol {
   color: rgb(255 255 255 / 0.55);
 }
 
-/* section head: heading left, short text or link right */
+/* section head: heading with one line under it, optional link on the right */
 .head {
-  display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
-  gap: 24px 64px;
-  align-items: end;
-  margin-bottom: 56px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px 48px;
+  margin-bottom: 40px;
 }
+.headText {
+  max-width: 760px;
+}
+.headText p,
 .head > p {
+  max-width: 60ch;
+  margin-top: 14px;
   color: var(--ink-2);
   font-size: 18px;
   line-height: 1.55;
 }
+.dark .headText p,
 .dark .head > p {
   color: rgb(255 255 255 / 0.72);
 }
@@ -405,8 +413,7 @@ a:hover .go::after {
     padding-block: 80px;
   }
   .head {
-    grid-template-columns: 1fr;
-    margin-bottom: 36px;
+    margin-bottom: 32px;
   }
   .grid-2,
   .grid-3,

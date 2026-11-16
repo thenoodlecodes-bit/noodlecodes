@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Brief } from "@/components/Brief/Brief";
-import { PageHero } from "@/components/Page/Page";
+import { ReadHero } from "@/components/Read/Read";
 import { stack, stackReport, verdicts } from "@/content/stack";
 import { formatDate } from "@/lib/content";
 import { StackBoard } from "./StackBoard";
@@ -15,18 +15,15 @@ export const metadata: Metadata = {
 export default function StackReportPage() {
   return (
     <main id="main">
-      <PageHero
+      <ReadHero
         crumbs={[
           { href: "/insights", label: "Insights" },
           { href: "/insights/stack-report", label: "The Stack Report" },
         ]}
-        title="What we use, what we test and what we dropped."
+        title="What we use, what we test and what we dropped"
         intro={stackReport.intro}
-      >
-        <span className="meta">
-          {stackReport.edition} · Published {formatDate(stackReport.date)} · {stack.length} entries
-        </span>
-      </PageHero>
+        meta={[stackReport.edition, `Published ${formatDate(stackReport.date)}`, `${stack.length} entries`]}
+      />
 
       <section className="section" data-section="verdicts">
         <div className="container">

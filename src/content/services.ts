@@ -7,7 +7,6 @@ export const services: Service[] = [
     name: "Product development",
     menu: "Websites, apps, dashboards and AI features",
     problem: "We have a launch date in March and half an app.",
-    title: "Products people use every day, built to keep working.",
     intro:
       "We design and build websites, mobile apps, dashboards and AI features. Small senior teams, a working demo every Friday, and code you own from the first commit.",
     overview: [
@@ -61,7 +60,6 @@ export const services: Service[] = [
     name: "Tech consultancy",
     menu: "Architecture, audits, modernisation and fractional CTO",
     problem: "Our engineers want a rewrite. Is that the right call?",
-    title: "Straight answers on expensive technical decisions.",
     intro:
       "Engineers who have built and run large systems help you choose a stack, audit what you have, plan a migration or hire your first team.",
     overview: [
@@ -115,7 +113,6 @@ export const services: Service[] = [
     name: "Digital marketing",
     menu: "Performance marketing, SEO, content and CRM",
     problem: "We spend ₹20 lakh a month on ads and can't say what it earns.",
-    title: "Marketing that answers to the numbers.",
     intro:
       "Paid campaigns, search, content and lifecycle marketing, run by people who also understand the product and the data underneath it.",
     overview: [
@@ -169,7 +166,6 @@ export const services: Service[] = [
     name: "Ads tracking setup",
     menu: "Server-side tracking, conversion APIs, GA4 and consent",
     problem: "Meta says 412 orders. Shopify says 268.",
-    title: "Know which ad paid for which order.",
     intro:
       "Tracking that survives ad blockers, cookie limits and app updates, so the numbers in your ad accounts match the money in your bank.",
     overview: [
@@ -223,7 +219,6 @@ export const services: Service[] = [
     name: "Plug and play solutions",
     menu: "Notifications, email, WhatsApp, push and behaviour analytics",
     problem: "We need WhatsApp, push and email without three more vendors.",
-    title: "Ready-built modules, live in your product in days.",
     intro:
       "Five modules we have built, tested and run in production for years. We install them in your cloud, connect your data and hand you the keys.",
     overview: [

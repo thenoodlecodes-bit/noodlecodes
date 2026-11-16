@@ -1,6 +1,7 @@
+/* the same grey band as other reading pages */
 .header {
-  padding: 64px 0 56px;
-  border-bottom: 1px solid var(--line);
+  padding: 48px 0 56px;
+  background: var(--mist);
 }
 .title {
   max-width: 20ch;

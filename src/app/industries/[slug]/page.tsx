@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Brief } from "@/components/Brief/Brief";
-import { Decisions } from "@/components/Decisions/Decisions";
-import { IndexList } from "@/components/IndexList/IndexList";
-import { Journal } from "@/components/Journal/Journal";
-import { Head, PageHero } from "@/components/Page/Page";
-import b from "@/components/Page/blocks.module.css";
+import { CaseGrid, Tiles } from "@/components/Cards/Cards";
+import { ClientWall } from "@/components/Clients/Clients";
+import { StatStrip } from "@/components/Page/Page";
+import { Points, RailAction, ReadHero, ReadLayout, ReadSection } from "@/components/Read/Read";
+import { ToolRows } from "@/components/Tool/Tool";
+import { clients } from "@/content/clients";
 import { industries } from "@/content/industries";
 import { service } from "@/content/services";
 import { solution } from "@/content/solutions";
-import { casesBy, insightsBy } from "@/lib/content";
+import { casesBy } from "@/lib/content";
 
 export function generateStaticParams() {
   return industries.map((i) => ({ slug: i.slug }));
@@ -23,82 +23,67 @@ export async function generateMetadata({ params }: PageProps<"/industries/[slug]
   return { title: i.name, description: i.intro, alternates: { canonical: `/industries/${i.slug}` } };
 }
 
+/** An industry page reads like a briefing: what makes the sector hard, the numbers, how we help and proof. */
 export default async function IndustryPage({ params }: PageProps<"/industries/[slug]">) {
   const { slug } = await params;
   const i = industries.find((x) => x.slug === slug);
   if (!i) notFound();
 
   const stories = casesBy({ industry: i.slug });
-  const reading = insightsBy({ industry: i.slug }).slice(0, 3);
+  const sectorClients = clients.filter((c) => c.industry === i.slug);
+  const contents = [
+    { id: "hard", label: "What makes it hard" },
+    { id: "numbers", label: "In numbers" },
+    { id: "help", label: "How we help" },
+    { id: "clients", label: "Clients in this sector" },
+    ...(stories.length > 0 ? [{ id: "stories", label: "Client stories" }] : []),
+    { id: "tools", label: "Ready-made tools" },
+  ];
 
   return (
     <main id="main">
-      <PageHero
-        tone="dark"
-        stats={i.stats}
+      <ReadHero
         crumbs={[
           { href: "/industries", label: "Industries" },
           { href: `/industries/${i.slug}`, label: i.name },
         ]}
-        title={i.title}
+        title={i.name}
         intro={i.intro}
-      >
-        <Link href="/contact" className="btn btn--primary">
-          Talk to our {i.name.toLowerCase()} team
-        </Link>
-      </PageHero>
+        meta={[
+          `${sectorClients.length} clients`,
+          `${stories.length} client ${stories.length === 1 ? "story" : "stories"}`,
+          `${i.offerings.length} ways we help`,
+          `${i.solutions.length} ready-made tools`,
+        ]}
+      />
 
-      <section className="section" data-section="challenges">
-        <div className="container">
-          <Head title="What makes it hard." />
-          <div className={`${b.cards} ${b.cards3}`}>
-            {i.challenges.map((c) => (
-              <article key={c.title} className={b.card}>
-                <h3>{c.title}</h3>
-                <p>{c.text}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ReadLayout contents={contents} aside={<RailAction text="Have a project in this sector?" href="/contact" label="Talk to our team" />}>
+        <ReadSection id="hard" title="What makes it hard">
+          <Points items={i.challenges} />
+        </ReadSection>
 
-      <section className="section mist" data-section="offerings">
-        <div className="container">
-          <Head title="What we do about it." />
-          <IndexList items={i.offerings.map((o) => ({ href: `/services/${o.service}`, title: o.title, text: o.text, tag: service(o.service).name }))} />
-        </div>
-      </section>
+        <ReadSection id="numbers" title="In numbers">
+          <StatStrip stats={i.stats} />
+        </ReadSection>
 
-      {stories.length > 0 && (
-        <section className="section" data-section="stories">
-          <div className="container">
-            <Head title="Decisions we made in this sector.">
-              <Link href="/work" className="go">
-                All client work
-              </Link>
-            </Head>
-            <Decisions cases={stories} />
-          </div>
-        </section>
-      )}
+        <ReadSection id="help" title="How we help">
+          <Tiles cols={2} items={i.offerings.map((o) => ({ href: `/services/${o.service}`, title: o.title, text: o.text, tag: service(o.service).name }))} />
+        </ReadSection>
 
-      <section className="section mist" data-section="modules">
-        <div className="container">
-          <Head title="Modules that fit.">
-            <p>Ready-built pieces we install for {i.name.toLowerCase()} teams, live in days.</p>
-          </Head>
-          <IndexList items={i.solutions.map((slug) => solution(slug)).map((m) => ({ href: `/solutions/${m.slug}`, title: m.name, text: m.menu, tag: m.kind }))} />
-        </div>
-      </section>
+        <ReadSection id="clients" title="Clients in this sector">
+          <ClientWall list={sectorClients} cols={4} />
+        </ReadSection>
 
-      {reading.length > 0 && (
-        <section className="section" data-section="reading">
-          <div className="container">
-            <Head title="Further reading." />
-            <Journal items={reading} />
-          </div>
-        </section>
-      )}
+        {stories.length > 0 && (
+          <ReadSection id="stories" title="Client stories">
+            <CaseGrid cases={stories} cols={2} />
+          </ReadSection>
+        )}
+
+        <ReadSection id="tools" title="Ready-made tools">
+          <ToolRows items={i.solutions.map((s) => solution(s))} />
+        </ReadSection>
+      </ReadLayout>
 
       <Brief />
     </main>

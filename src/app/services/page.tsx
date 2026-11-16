@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Brief } from "@/components/Brief/Brief";
-import { IndexList } from "@/components/IndexList/IndexList";
+import { Tiles } from "@/components/Cards/Cards";
 import { Head, PageHero } from "@/components/Page/Page";
-import { Problems } from "@/components/Problems/Problems";
+import { ProblemCards } from "@/components/Service/Service";
+import { ToolCards } from "@/components/Tool/Tool";
 import { industries } from "@/content/industries";
 import { solutions } from "@/content/solutions";
 
@@ -18,29 +19,28 @@ export default function ServicesPage() {
     <main id="main">
       <PageHero
         crumbs={[{ href: "/services", label: "What we do" }]}
-        title="Everything a growing product needs, under one roof."
-        intro="Five practices that work as one team. We build the software, advise on the hard calls, run the marketing, measure what it earns and plug in modules we have already built."
+        title="What we do"
+        intro="Five services from one senior team. We build software, advise on hard technical calls, run marketing, fix tracking and install ready-made tools."
       />
 
-      <section className="section" data-section="services">
+      <section className="section mist" data-section="services">
         <div className="container">
-          <Problems />
+          <Head title="Which one sounds like you?" text="Each service starts with a problem clients bring us. Pick the one closest to yours." />
+          <ProblemCards />
         </div>
       </section>
 
-      <section className="section mist" data-section="modules">
+      <section className="section" data-section="modules">
         <div className="container">
-          <Head title="Plug and play modules.">
-            <p>Production code we maintain, installed in your cloud and connected to your data in days.</p>
-          </Head>
-          <IndexList items={solutions.map((m) => ({ href: `/solutions/${m.slug}`, title: m.name, text: m.menu, tag: m.kind }))} />
+          <Head title="Plug and play modules" text="Ready-built tools we install in your cloud and connect to your data in days." />
+          <ToolCards items={solutions} />
         </div>
       </section>
 
-      <section className="section" data-section="industries">
+      <section className="section mist" data-section="industries">
         <div className="container">
-          <Head title="Where we have done it before." />
-          <IndexList items={industries.map((i) => ({ href: `/industries/${i.slug}`, title: i.name, text: i.menu }))} />
+          <Head title="Industries we know" />
+          <Tiles items={industries.map((i) => ({ href: `/industries/${i.slug}`, title: i.name, text: i.menu, stat: i.stats[0].value, tag: i.stats[0].label }))} />
         </div>
       </section>
 

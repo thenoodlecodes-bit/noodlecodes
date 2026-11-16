@@ -10,7 +10,7 @@ import styles from "./Footer.module.css";
 
 const company = [
   { href: "/about", label: "About us" },
-  { href: "/work", label: "Client work" },
+  { href: "/work", label: "Clients" },
   { href: "/careers", label: "Careers" },
   { href: "/contact", label: "Contact" },
 ];
@@ -25,13 +25,6 @@ export function Footer() {
     <footer className={`dark ${styles.footer}`}>
       <div className="container">
         <div className={styles.top}>
-          <div className={styles.define}>
-            <p className={styles.word}>
-              noodle <span className={styles.ipa}>/ˈnuː.dəl/</span> <span className={styles.pos}>verb, informal</span>
-            </p>
-            <p className={styles.sense}>To think something through, carefully and from every side.</p>
-            <p className={styles.usage}>We noodle on it first. Then we write the code.</p>
-          </div>
           <Newsletter />
         </div>
 

@@ -17,7 +17,6 @@ export type Service = {
   menu: string;
   /** The problem clients bring, in their words. */
   problem: string;
-  title: string;
   intro: string;
   overview: string[];
   capabilities: { title: string; text: string; items: string[] }[];
@@ -33,7 +32,6 @@ export type Solution = {
   /** What it is, in plain words: "Notification system". */
   kind: string;
   menu: string;
-  title: string;
   intro: string;
   features: Step[];
   specs: Stat[];
@@ -47,7 +45,6 @@ export type Industry = {
   slug: IndustrySlug;
   name: string;
   menu: string;
-  title: string;
   intro: string;
   challenges: Step[];
   offerings: (Step & { service: ServiceSlug })[];

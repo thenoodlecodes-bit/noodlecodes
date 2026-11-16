@@ -28,24 +28,24 @@ export type Layout = {
 };
 
 export const nodes: DNode[] = [
-  { id: "shopify", label: "Shopify", before: "Store", after: "Store, 1.2s loads" },
-  { id: "app", label: "Mobile app", before: "Ships once a month", after: "Ships weekly", issue: true },
-  { id: "pixel", label: "Meta", before: "Pixel misses 30% of orders", after: "Conversions API", issue: true },
-  { id: "aws", label: "AWS", before: "14 servers, mostly idle", after: "Right-sized, 41% cheaper", issue: true },
-  { id: "admin", label: "Admin panel", before: "PHP, 2016", issue: true },
-  { id: "sheet", label: "Orders.xlsx", before: "Edited by 3 people", issue: true },
-  { id: "ga4", label: "GA4", before: "3 versions of revenue", after: "1 version of revenue", issue: true },
-  { id: "razorpay", label: "Razorpay", before: "Payments", after: "Reconciled daily" },
+  { id: "shopify", label: "Online store", before: "Shopify", after: "Loads in 1.2 seconds" },
+  { id: "app", label: "Mobile app", before: "Updates once a month", after: "Updates every week", issue: true },
+  { id: "pixel", label: "Ad tracking", before: "Misses 30% of sales", after: "Counts every sale", issue: true },
+  { id: "aws", label: "Servers", before: "14 servers, mostly idle", after: "41% cheaper", issue: true },
+  { id: "admin", label: "Admin panel", before: "Built in 2016", issue: true },
+  { id: "sheet", label: "Orders spreadsheet", before: "Edited by 3 people", issue: true },
+  { id: "ga4", label: "Analytics", before: "3 revenue numbers", after: "1 revenue number", issue: true },
+  { id: "razorpay", label: "Payments", before: "Razorpay", after: "Matched to orders" },
   { id: "whatsapp", label: "WhatsApp", before: "4 groups, 1 phone", issue: true },
-  { id: "crm", label: "Zoho CRM", before: "Not connected", after: "Synced every hour", issue: true },
-  { id: "mailchimp", label: "Mailchimp", before: "3 lists, no segments" },
-  { id: "shipping", label: "Delhivery", before: "Shipping", after: "Status in the app" },
-  { id: "wave", label: "WhatsApp API", after: "Opted-in customers", built: true },
-  { id: "api", label: "Orders API", after: "One record per order", built: true },
-  { id: "db", label: "Postgres", after: "Single source of truth", built: true },
-  { id: "sgtm", label: "Server tracking", after: "Every order counted", built: true },
-  { id: "mail", label: "Email journeys", after: "Segmented by behaviour", built: true },
-  { id: "dash", label: "One dashboard", after: "Finance and marketing agree", built: true },
+  { id: "crm", label: "Customer list", before: "Not connected", after: "Always up to date", issue: true },
+  { id: "mailchimp", label: "Email tool", before: "3 separate lists" },
+  { id: "shipping", label: "Delivery", before: "Delhivery", after: "Live order status" },
+  { id: "wave", label: "WhatsApp", after: "Official API", built: true },
+  { id: "api", label: "Order system", after: "One API for every order", built: true },
+  { id: "db", label: "Database", after: "Postgres, one source", built: true },
+  { id: "sgtm", label: "Server tracking", after: "Every sale counted", built: true },
+  { id: "mail", label: "Auto emails", after: "Sent by behaviour", built: true },
+  { id: "dash", label: "One dashboard", after: "Same numbers for all", built: true },
   { id: "alerts", label: "Alerts", after: "When a number drifts", built: true },
 ];
 
@@ -128,10 +128,10 @@ export const wide: Layout = {
     alerts: { x: 1060, y: 410 },
   },
   groups: [
-    { label: "Channels", at: { x: 140, y: 52 } },
-    { label: "Core", at: { x: 450, y: 52 } },
-    { label: "Growth", at: { x: 760, y: 52 } },
-    { label: "Decisions", at: { x: 1060, y: 52 } },
+    { label: "Sales channels", at: { x: 140, y: 52 } },
+    { label: "Operations", at: { x: 450, y: 52 } },
+    { label: "Marketing", at: { x: 760, y: 52 } },
+    { label: "Reporting", at: { x: 1060, y: 52 } },
   ],
 };
 
@@ -172,10 +172,10 @@ export const narrow: Layout = {
     alerts: { x: 450, y: 1226 },
   },
   groups: [
-    { label: "Channels", at: { x: 12, y: 30 } },
-    { label: "Core", at: { x: 12, y: 314 } },
-    { label: "Growth", at: { x: 12, y: 726 } },
-    { label: "Decisions", at: { x: 12, y: 1160 } },
+    { label: "Sales channels", at: { x: 12, y: 30 } },
+    { label: "Operations", at: { x: 12, y: 314 } },
+    { label: "Marketing", at: { x: 12, y: 726 } },
+    { label: "Reporting", at: { x: 12, y: 1160 } },
   ],
 };
 

@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Brief } from "@/components/Brief/Brief";
 import { FilterBoard } from "@/components/FilterBoard/FilterBoard";
-import { JournalEntry, ReportCover, journalList } from "@/components/Journal/Journal";
-import { PageHero } from "@/components/Page/Page";
+import { ArticleCard, ReportCover, cardGrid } from "@/components/Cards/Cards";
+import { ReadHero } from "@/components/Read/Read";
 import { insights } from "@/content/insights";
+import { stackReport } from "@/content/stack";
 import type { InsightCategory } from "@/content/types";
 import styles from "./insights.module.css";
 
@@ -20,17 +21,16 @@ export default function InsightsPage() {
   const rest = insights.filter((i) => i !== lead);
   return (
     <main id="main">
-      <PageHero
+      <ReadHero
         crumbs={[{ href: "/insights", label: "Insights" }]}
-        title="Field notes from the work."
-        intro="Written by the engineers, designers and marketers who did the work, about what held up and what did not."
+        title="Ideas and guides"
+        intro="Practical articles from our engineers, designers and marketers."
+        meta={[`${insights.length} articles`, `${CATEGORIES.length} topics`, `The Stack Report, ${stackReport.edition}`]}
       />
 
       <section className="section" data-section="featured">
         <div className={`container ${styles.top}`}>
-          <div className={journalList}>
-            <JournalEntry i={lead} lead />
-          </div>
+          <ArticleCard i={lead} lead />
           <ReportCover />
         </div>
       </section>
@@ -39,11 +39,11 @@ export default function InsightsPage() {
         <div className="container">
           <FilterBoard
             noun={["article", "articles"]}
-            gridClassName={journalList}
+            gridClassName={cardGrid}
             groups={[{ id: "category", label: "Topic", options: CATEGORIES.map((c) => ({ value: c, label: c })) }]}
             items={rest.map((i) => ({ category: [i.category] }))}
             cards={rest.map((i) => (
-              <JournalEntry key={i.slug} i={i} />
+              <ArticleCard key={i.slug} i={i} />
             ))}
           />
         </div>

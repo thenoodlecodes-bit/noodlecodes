@@ -27,43 +27,54 @@ export function Breadcrumbs({ items }: { items: Crumb[] }) {
   );
 }
 
-/** Top of every inner page. Pass `stats` to show the key numbers beside the heading. */
+/**
+ * Top of every inner page: what the page is, one paragraph, actions, and the key numbers in a strip below.
+ * `note` is a plain description shown under a name that needs one, such as a module name.
+ */
 export function PageHero({
   crumbs,
   title,
+  note,
   intro,
-  tone = "light",
   stats,
   children,
 }: {
   crumbs: Crumb[];
   title: string;
+  note?: string;
   intro?: string;
-  tone?: "light" | "dark";
   stats?: Stat[];
   children?: ReactNode;
 }) {
   return (
-    <section className={`${styles.hero} ${tone === "dark" ? `dark ${styles.heroDark}` : ""}`}>
-      <div className={`container ${styles.heroGrid} ${stats ? styles.withAside : ""}`}>
+    <section className={styles.hero}>
+      <div className="container">
+        <Breadcrumbs items={crumbs} />
         <div className={styles.heroText}>
-          <Breadcrumbs items={crumbs} />
-          <h1 className="h1">{title}</h1>
+          <h1 className={`h1 ${styles.heroTitle}`}>
+            {title}
+            {note && <span className={styles.heroNote}>{note}</span>}
+          </h1>
           {intro && <p className="lede">{intro}</p>}
           {children && <div className={styles.heroActions}>{children}</div>}
         </div>
-        {stats && (
-          <dl className={styles.heroStats}>
-            {stats.map((s) => (
-              <div key={s.label}>
-                <dt>{s.label}</dt>
-                <dd>{s.value}</dd>
-              </div>
-            ))}
-          </dl>
-        )}
+        {stats && <StatStrip stats={stats} className={styles.heroStrip} />}
       </div>
     </section>
+  );
+}
+
+/** Key numbers in one dark strip, the first in red. */
+export function StatStrip({ stats, className }: { stats: Stat[]; className?: string }) {
+  return (
+    <dl className={`${styles.strip} ${className ?? ""}`}>
+      {stats.map((s) => (
+        <div key={s.label}>
+          <dt>{s.label}</dt>
+          <dd>{s.value}</dd>
+        </div>
+      ))}
+    </dl>
   );
 }
 
@@ -97,7 +108,7 @@ export function Steps({ steps }: { steps: Step[] }) {
   );
 }
 
-export function Faqs({ faqs, title = "Questions we get asked." }: { faqs: Faq[]; title?: string }) {
+export function Faqs({ faqs, title = "Questions we get asked" }: { faqs: Faq[]; title?: string }) {
   const ld = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -161,13 +172,16 @@ export function CtaBand({
   );
 }
 
-/** Section head: heading on the left, a line of context or a link on the right. */
-export function Head({ title, children, id }: { title: string; children?: ReactNode; id?: string }) {
+/** Section head: a short heading, one line of context under it, and an optional link on the right. */
+export function Head({ title, text, children, id }: { title: string; text?: string; children?: ReactNode; id?: string }) {
   return (
     <div className="head">
-      <h2 className="h2" id={id}>
-        {title}
-      </h2>
+      <div className="headText">
+        <h2 className="h2" id={id}>
+          {title}
+        </h2>
+        {text && <p>{text}</p>}
+      </div>
       {children}
     </div>
   );

@@ -1,0 +1,216 @@
+/* grids */
+.grid3,
+.grid2 {
+  display: grid;
+  gap: 20px;
+  list-style: none;
+}
+.grid3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.grid2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.grid3 > *,
+.grid2 > * {
+  display: flex;
+}
+
+/* one card for everything: clear edge, roomy, one job */
+.card {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--paper);
+  color: var(--ink);
+  transition:
+    border-color 0.2s,
+    box-shadow 0.3s var(--ease),
+    transform 0.3s var(--ease);
+}
+.card:hover {
+  border-color: var(--ink);
+  box-shadow: var(--shadow);
+  transform: translateY(-3px);
+}
+.picto {
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+.title {
+  font: 700 clamp(20px, 1.7vw, 23px) / 1.22 var(--display);
+  font-variation-settings: "wdth" 106;
+  letter-spacing: -0.01em;
+}
+.card:hover .title {
+  color: var(--brand);
+}
+.text {
+  color: var(--ink-2);
+  font-size: 16px;
+  line-height: 1.5;
+}
+.foot {
+  margin-top: auto;
+  padding-top: 12px;
+}
+.invert {
+  border-color: var(--dark);
+  background: var(--dark);
+  color: var(--paper);
+}
+.invert:hover {
+  border-color: var(--brand);
+}
+.invert .text {
+  color: rgb(255 255 255 / 0.72);
+}
+.invert .title,
+.invert:hover .title {
+  color: var(--paper);
+}
+.invert :global(.go) {
+  color: var(--brand-bright);
+}
+
+.lead {
+  padding: 36px;
+}
+.lead .title {
+  max-width: 18ch;
+  margin-top: 8px;
+  font-size: clamp(30px, 3.4vw, 48px);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+.lead .text {
+  max-width: 52ch;
+  font-size: 18px;
+}
+
+/* client story card */
+.caseTop {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+}
+.caseClient {
+  font: 700 18px/1.3 var(--body);
+}
+.stat {
+  margin-top: 12px;
+  color: var(--brand);
+  font: 800 clamp(44px, 4.4vw, 60px) / 1 var(--display);
+  font-variation-settings: "wdth" 114;
+  letter-spacing: -0.03em;
+}
+.statLabel {
+  font: 600 16px/1.35 var(--body);
+}
+.asked {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  margin-top: 8px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  color: var(--ink-2);
+  font-size: 15.5px;
+  line-height: 1.45;
+}
+.askedLabel {
+  color: var(--ink-3);
+  font: 500 12px/1.4 var(--mono);
+}
+
+.tileStat {
+  color: var(--brand);
+  font: 800 30px/1 var(--display);
+  font-variation-settings: "wdth" 112;
+  letter-spacing: -0.02em;
+}
+
+/* report cover */
+.cover {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 16px;
+  padding: 28px;
+  border-radius: var(--r-lg);
+  background: var(--dark);
+  color: var(--paper);
+  transition:
+    transform 0.3s var(--ease),
+    box-shadow 0.3s var(--ease);
+}
+.cover:hover {
+  box-shadow: var(--shadow);
+  transform: translateY(-3px);
+}
+.coverTop {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--brand);
+  color: rgb(255 255 255 / 0.7);
+  font: 500 12.5px/1 var(--mono);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.coverTitle {
+  font: 800 clamp(34px, 3.2vw, 46px) / 1 var(--display);
+  font-variation-settings: "wdth" 116;
+  letter-spacing: -0.025em;
+}
+.coverLine {
+  color: rgb(255 255 255 / 0.72);
+  font-size: 16px;
+  line-height: 1.5;
+}
+.fresh {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: auto;
+  font-size: 15px;
+}
+.freshHead {
+  color: var(--brand-bright);
+  font: 500 12.5px/1 var(--mono);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.fresh > span:not(.freshHead) {
+  padding: 8px 0;
+  border-top: 1px solid rgb(255 255 255 / 0.16);
+}
+.cover :global(.go) {
+  color: var(--brand-bright);
+}
+
+@media (max-width: 1080px) {
+  .grid3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 680px) {
+  .grid3,
+  .grid2 {
+    grid-template-columns: 1fr;
+  }
+  .card,
+  .cover {
+    padding: 24px 22px;
+  }
+}
