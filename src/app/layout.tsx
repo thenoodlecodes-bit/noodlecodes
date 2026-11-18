@@ -4,6 +4,7 @@ import { Archivo, JetBrains_Mono } from "next/font/google";
 import { Header, type MenuData } from "@/components/Header/Header";
 import { Footer } from "@/components/Footer/Footer";
 import { Tracking } from "@/components/Tracking";
+import { WhatsappButton } from "@/components/Whatsapp/Whatsapp";
 import { cases } from "@/content/cases";
 import { industries } from "@/content/industries";
 import { insights } from "@/content/insights";
@@ -58,6 +59,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Header menu={menu} />
         {children}
         <Footer />
+        <WhatsappButton />
         <Tracking />
       </body>
     </html>

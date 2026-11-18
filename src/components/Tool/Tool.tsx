@@ -1,11 +1,14 @@
 import Link from "next/link";
 import { Breadcrumbs, type Crumb } from "@/components/Page/Page";
+import { From } from "@/components/Price/Price";
+import { solutionFrom } from "@/content/pricing";
 import type { Solution } from "@/content/types";
 import { ToolPreview } from "./ToolPreview";
 import styles from "./tool.module.css";
 
 /** Top of a module page: the name, what it is, the demo button and key specs, beside a picture of it working. */
 export function ToolHero({ s, crumbs }: { s: Solution; crumbs: Crumb[] }) {
+  const price = solutionFrom(s.slug);
   return (
     <section className={styles.hero}>
       <div className="container">
@@ -25,6 +28,12 @@ export function ToolHero({ s, crumbs }: { s: Solution; crumbs: Crumb[] }) {
                 See the spec sheet
               </Link>
             </div>
+            {price && (
+              <p className={styles.price}>
+                <From item={price} />
+                <Link href="/pricing">See pricing</Link>
+              </p>
+            )}
             <dl className={styles.specs}>
               {s.specs.map((x) => (
                 <div key={x.label}>

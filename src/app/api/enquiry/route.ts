@@ -1,14 +1,18 @@
 import { enquirySchema, fieldErrors, type Enquiry } from "@/lib/enquiry";
-import { limited, notifyTeam, readJson } from "@/lib/mail";
+import { countryOf } from "@/lib/locale";
+import { deliver, limited, readJson } from "@/lib/mail";
 
-function render(e: Enquiry) {
+function render(e: Enquiry, country: string) {
   return [
     `Topics: ${e.topics.join(", ")}`,
-    `Budget: ${e.budget ?? "Not given"}`,
+    `Budget: ${e.budget || "Not given"}`,
+    `Timeline: ${e.timeline ?? "Not given"}`,
     `Name: ${e.name}`,
     `Email: ${e.email}`,
     e.company ? `Company: ${e.company}` : null,
-    e.phone ? `Phone: ${e.phone}` : null,
+    e.phone ? `Phone or WhatsApp: ${e.phone}` : null,
+    country ? `Country: ${country}` : null,
+    `Source: ${e.source || "Contact form"}`,
     "",
     e.message,
   ]
@@ -28,16 +32,32 @@ export async function POST(request: Request) {
   if (!parsed.success) {
     return Response.json({ error: "Check the highlighted fields.", fields: fieldErrors(parsed.error) }, { status: 422 });
   }
-  const enquiry = parsed.data;
+  const e = parsed.data;
 
   // Bots fill the hidden field. Pretend it worked.
-  if (enquiry.website) return Response.json({ ok: true });
+  if (e.website) return Response.json({ ok: true });
 
-  const sent = await notifyTeam({
+  const country = countryOf(request);
+  const sent = await deliver({
     tag: "enquiry",
-    subject: `New enquiry from ${enquiry.name}${enquiry.company ? `, ${enquiry.company}` : ""}`,
-    text: render(enquiry),
-    replyTo: enquiry.email,
+    row: {
+      name: e.name,
+      email: e.email,
+      company: e.company,
+      service: e.topics.join(", "),
+      budget: e.budget,
+      timeline: e.timeline,
+      source: e.source || "Contact form",
+      // The phone also goes in the message, so it is kept even before the sheet has a phone column.
+      message: e.phone ? `${e.message}\n\nPhone or WhatsApp: ${e.phone}` : e.message,
+      phone: e.phone,
+      country,
+    },
+    mail: {
+      subject: `New enquiry from ${e.name}${e.company ? `, ${e.company}` : ""}`,
+      text: render(e, country),
+      replyTo: e.email,
+    },
   });
   if (!sent.ok) return Response.json({ error: sent.error }, { status: sent.status });
   return Response.json({ ok: true });

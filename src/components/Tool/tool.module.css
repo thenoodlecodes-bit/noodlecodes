@@ -32,6 +32,22 @@
   gap: 12px 20px;
   margin-top: 32px;
 }
+.price {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 16px;
+  margin-top: 20px;
+  font: 700 18px/1.3 var(--body);
+}
+.price a {
+  color: var(--brand);
+  font-size: 15px;
+  font-weight: 600;
+}
+.price a:hover {
+  color: var(--brand-deep);
+}
 .specs {
   display: flex;
   flex-wrap: wrap;

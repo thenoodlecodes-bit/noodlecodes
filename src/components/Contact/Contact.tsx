@@ -1,39 +1,41 @@
 "use client";
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
-import { BUDGETS } from "@/content/services";
+import { BUDGETS, TIMELINES, type Currency } from "@/content/pricing";
 import { site } from "@/content/site";
 import type { ServiceSlug } from "@/content/types";
 import { ENQUIRY_FIELDS, TOPICS, TOPIC_FOR, enquirySchema, fieldErrors, type EnquiryField } from "@/lib/enquiry";
+import { whatsappLink } from "@/lib/money";
 import { track } from "@/lib/track";
 import styles from "./Contact.module.css";
 
 type Status = "idle" | "sending" | "sent" | "failed";
 type Errors = Partial<Record<EnquiryField, string>>;
 
-export function ContactForm() {
+/** Budget ranges follow the visitor's currency. */
+export function ContactForm({ currency = "USD" }: { currency?: Currency }) {
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState<Status>("idle");
   const [failure, setFailure] = useState("");
-  const [firstName, setFirstName] = useState("");
+  const [sent, setSent] = useState({ firstName: "", summary: "" });
   const form = useRef<HTMLFormElement>(null);
   const done = useRef<HTMLDivElement>(null);
 
-  // ?service=consultancy ticks the matching topic; ?brief= carries text typed into a brief box elsewhere
+  // ?service=consultancy ticks the matching topic (it can repeat); ?brief= carries text typed elsewhere; ?source= says where it started
   useEffect(() => {
     const params = new URLSearchParams(location.search);
-    const slug = params.get("service") as ServiceSlug | null;
-    const topic = slug ? TOPIC_FOR[slug] : undefined;
-    const brief = params.get("brief");
     if (!form.current) return;
-    if (topic) {
-      const box = form.current.querySelector<HTMLInputElement>(`input[name="topics"][value="${topic}"]`);
+    for (const slug of params.getAll("service")) {
+      const topic = TOPIC_FOR[slug as ServiceSlug];
+      const box = topic && form.current.querySelector<HTMLInputElement>(`input[name="topics"][value="${topic}"]`);
       if (box) box.checked = true;
     }
-    if (brief) {
-      const message = form.current.querySelector<HTMLTextAreaElement>('textarea[name="message"]');
-      if (message && !message.value) message.value = brief.slice(0, 4000);
-    }
+    const brief = params.get("brief");
+    const message = form.current.querySelector<HTMLTextAreaElement>('textarea[name="message"]');
+    if (brief && message && !message.value) message.value = brief.slice(0, 4000);
+    const source = params.get("source");
+    const hidden = form.current.querySelector<HTMLInputElement>('input[name="source"]');
+    if (source && hidden) hidden.value = source.slice(0, 60);
   }, []);
 
   useEffect(() => {
@@ -53,14 +55,17 @@ export function ContactForm() {
   async function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
+    const optional = (key: string) => (data.get(key) ? String(data.get(key)) : undefined);
     const parsed = enquirySchema.safeParse({
       topics: data.getAll("topics").map(String),
-      budget: data.get("budget") ? String(data.get("budget")) : undefined,
+      budget: optional("budget"),
+      timeline: optional("timeline"),
       name: String(data.get("name") ?? ""),
       email: String(data.get("email") ?? "").trim(),
       company: String(data.get("company") ?? ""),
       phone: String(data.get("phone") ?? ""),
       message: String(data.get("message") ?? ""),
+      source: String(data.get("source") ?? ""),
       website: String(data.get("website") ?? ""),
     });
     if (!parsed.success) return showErrors(fieldErrors(parsed.error));
@@ -79,7 +84,11 @@ export function ContactForm() {
       }
       if (!res.ok) throw new Error(body.error ?? "That did not send.");
       track("generate_lead", parsed.data.topics.join(", "));
-      setFirstName(parsed.data.name.split(" ")[0]);
+      const p = parsed.data;
+      setSent({
+        firstName: p.name.split(" ")[0],
+        summary: `Hi Noodle Codes, I am ${p.name}${p.company ? ` from ${p.company}` : ""}. I just sent an enquiry about ${p.topics.join(", ").toLowerCase()}.`,
+      });
       setStatus("sent");
     } catch (err) {
       setFailure(err instanceof Error ? err.message : "That did not send.");
@@ -96,11 +105,16 @@ export function ContactForm() {
     return (
       <div ref={done} className={styles.done} tabIndex={-1}>
         <span className={styles.tick} aria-hidden="true" />
-        <h2 className="h3">Thanks, {firstName}. Message received.</h2>
-        <p>A senior person from the right team will reply within one working day, usually sooner.</p>
-        <button className="btn btn--ghost" type="button" onClick={again}>
-          Send another message
-        </button>
+        <h2 className="h3">Thanks, {sent.firstName}. Message received.</h2>
+        <p>We reply within one working day, usually sooner. For a faster answer, message us on WhatsApp too.</p>
+        <div className={styles.doneActions}>
+          <a className="btn btn--primary" href={whatsappLink(site.whatsapp, sent.summary)} target="_blank" rel="noreferrer" onClick={() => track("whatsapp", "after enquiry")}>
+            Continue on WhatsApp
+          </a>
+          <button className="btn btn--ghost" type="button" onClick={again}>
+            Send another message
+          </button>
+        </div>
       </div>
     );
   }
@@ -126,11 +140,11 @@ export function ContactForm() {
 
       <div className={styles.row}>
         <Input name="name" label="Name" autoComplete="name" error={errors.name} onInput={clear("name")} />
-        <Input name="email" label="Work email" type="email" autoComplete="email" error={errors.email} onInput={clear("email")} />
+        <Input name="email" label="Email" type="email" autoComplete="email" error={errors.email} onInput={clear("email")} />
       </div>
       <div className={styles.row}>
+        <Input name="phone" label="WhatsApp or phone" type="tel" autoComplete="tel" optional />
         <Input name="company" label="Company" autoComplete="organization" optional />
-        <Input name="phone" label="Phone" type="tel" autoComplete="tel" optional />
       </div>
 
       <label className={styles.input}>
@@ -151,20 +165,10 @@ export function ContactForm() {
         )}
       </label>
 
-      <fieldset className={styles.field}>
-        <legend>
-          Rough budget <small>Optional</small>
-        </legend>
-        <div className={styles.picks}>
-          {BUDGETS.map((b) => (
-            <label key={b} className={styles.pick}>
-              <input type="radio" name="budget" value={b} />
-              <span>{b}</span>
-            </label>
-          ))}
-        </div>
-      </fieldset>
+      <Choice name="budget" legend="Rough budget" options={BUDGETS[currency]} />
+      <Choice name="timeline" legend="When do you want to start?" options={TIMELINES} />
 
+      <input type="hidden" name="source" defaultValue="" />
       <label className={styles.honey} aria-hidden="true">
         Website
         <input name="website" tabIndex={-1} autoComplete="off" />
@@ -172,7 +176,11 @@ export function ContactForm() {
 
       {status === "failed" && (
         <p className={styles.failed} role="alert">
-          {failure} Try again, or email <a href={`mailto:${site.emails.hello}`}>{site.emails.hello}</a>.
+          {failure} Try again, email <a href={`mailto:${site.emails.hello}`}>{site.emails.hello}</a> or{" "}
+          <a href={whatsappLink(site.whatsapp)} target="_blank" rel="noreferrer">
+            message us on WhatsApp
+          </a>
+          .
         </p>
       )}
 
@@ -183,6 +191,24 @@ export function ContactForm() {
         <p>We reply within one working day. No sales sequences.</p>
       </div>
     </form>
+  );
+}
+
+function Choice({ name, legend, options }: { name: string; legend: string; options: readonly string[] }) {
+  return (
+    <fieldset className={styles.field}>
+      <legend>
+        {legend} <small>Optional</small>
+      </legend>
+      <div className={styles.picks}>
+        {options.map((o) => (
+          <label key={o} className={styles.pick}>
+            <input type="radio" name={name} value={o} />
+            <span>{o}</span>
+          </label>
+        ))}
+      </div>
+    </fieldset>
   );
 }
 

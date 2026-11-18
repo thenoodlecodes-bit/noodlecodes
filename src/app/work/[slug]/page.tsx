@@ -110,7 +110,7 @@ export default async function CasePage({ params }: PageProps<"/work/[slug]">) {
             <blockquote className={styles.quote}>
               <p>&ldquo;{c.quote.text}&rdquo;</p>
               <footer>
-                <strong>{c.quote.name}</strong> {c.quote.role}
+                {c.quote.role}
               </footer>
             </blockquote>
           </article>

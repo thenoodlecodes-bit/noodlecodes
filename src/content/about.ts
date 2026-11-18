@@ -6,9 +6,9 @@ export const about = {
   intro:
     "Noodle Codes is a technology consultancy from India. We build software, fix the systems that hold companies back and set up the marketing and tracking that make it pay.",
   story: [
-    "Aarav and Nisha met in 2016 on a payments team in Bengaluru. Over the next three years they watched good companies lose a year to agencies that sold senior people and sent juniors, and to rewrites nobody needed.",
-    "They started Noodle Codes in 2019 with a simple rule: the people who pitch the work do the work. The name came from the first whiteboard session with a client, where their system diagram looked like a bowl of noodles. Untangling it became the job.",
-    "Today we are about 40 people across Bengaluru, Pune and Gurugram. We have worked with 24 clients, from first-time founders to listed brands, in India, the Gulf and the UK. Most of them came back for a second project.",
+    "Our founders spent years on product and payments teams, watching good companies lose a year to agencies that sold senior people and sent juniors, and to rewrites nobody needed.",
+    "So in 2019 they started Noodle Codes with a simple rule: the people who pitch the work do the work. The name came from the first whiteboard session with a client, where their system diagram looked like a bowl of noodles. Untangling it became the job.",
+    "Today we are about 40 people working across India. We have worked with 24 clients, from first-time founders to listed brands, in India, the Gulf and the UK. Most of them came back for a second project.",
   ],
   values: [
     { title: "Say what you think", text: "Clients pay for our judgement. We give it plainly, even when the answer is a smaller project." },
@@ -19,15 +19,15 @@ export const about = {
     { title: "Teach as we go", text: "Your team should understand every decision we make. We pair, write it down and explain." },
   ] satisfies Step[],
   timeline: [
-    { title: "2019", text: "Founded in Bengaluru by Aarav Mehta and Nisha Raman. First client: a lending startup in Bengaluru." },
-    { title: "2021", text: "Opened the Pune engineering studio. Team of 15. First healthcare and mobility clients." },
-    { title: "2023", text: "Started the growth practice and opened in Gurugram, so the people building products also make them pay." },
+    { title: "2019", text: "Founded in India. First client: a lending startup." },
+    { title: "2021", text: "Grew to a team of 15. First healthcare and mobility clients." },
+    { title: "2023", text: "Started the growth practice, so the people building products also make them pay." },
     { title: "2024", text: "Released the five plug and play modules after running them in client products for two years." },
     { title: "2026", text: "Third edition of the Stack Report. About 40 people, 24 clients and counting." },
   ] satisfies Step[],
   giving: [
     { title: "Free audits for non-profits", text: "Two technical audits a quarter, at no cost, for Indian non-profits and social enterprises." },
     { title: "Open source", text: "We publish internal tools and contribute fixes upstream to the projects we depend on." },
-    { title: "Meetups and mentoring", text: "We host monthly engineering meetups in Bengaluru and Pune and mentor students from Tier 2 colleges." },
+    { title: "Meetups and mentoring", text: "We host monthly engineering meetups and mentor students from Tier 2 colleges." },
   ] satisfies Step[],
 };

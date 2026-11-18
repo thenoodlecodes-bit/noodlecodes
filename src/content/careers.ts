@@ -3,7 +3,7 @@ import type { Role, Step } from "./types";
 // Placeholder benefits, process and openings. Replace with the real policy and live roles.
 export const careers: { intro: string; benefits: Step[]; process: Step[]; growth: Step[] } = {
   intro:
-    "We are about 40 engineers, designers and marketers across Bengaluru, Pune and Gurugram. We hire people who like hard problems and explain things plainly, then put them on small teams with real clients.",
+    "We are about 40 engineers, designers and marketers working across India. We hire people who like hard problems and explain things plainly, then put them on small teams with real clients.",
   benefits: [
     {
       title: "Health cover for your family",
@@ -15,7 +15,7 @@ export const careers: { intro: string; benefits: Step[]; process: Step[]; growth
     },
     {
       title: "Hybrid by default",
-      text: "Two days a week in a studio, the rest wherever you work best. Some roles are fully remote.",
+      text: "Work from anywhere in India, with the whole team meeting up every quarter.",
     },
     {
       title: "Real time off",
@@ -77,7 +77,7 @@ export const roles: Role[] = [
     slug: "senior-full-stack-engineer",
     title: "Senior full-stack engineer",
     team: "Engineering",
-    location: "Bengaluru",
+    location: "Remote in India",
     type: "Full-time",
     experience: "5+ years",
     summary: "Build web products and APIs for clients in retail, finance and logistics, from first commit to production.",
@@ -110,7 +110,7 @@ export const roles: Role[] = [
     slug: "mobile-engineer",
     title: "Mobile engineer",
     team: "Engineering",
-    location: "Pune",
+    location: "Remote in India",
     type: "Full-time",
     experience: "3+ years",
     summary: "Build iOS and Android apps in Flutter or React Native for users on every kind of phone and network.",
@@ -138,7 +138,7 @@ export const roles: Role[] = [
     slug: "data-engineer",
     title: "Data engineer",
     team: "Data and AI",
-    location: "Bengaluru",
+    location: "Remote in India",
     type: "Full-time",
     experience: "4+ years",
     summary: "Build the pipelines and warehouses that our clients' reports, models and campaigns depend on.",
@@ -194,7 +194,7 @@ export const roles: Role[] = [
     slug: "product-designer",
     title: "Product designer",
     team: "Design",
-    location: "Gurugram",
+    location: "Remote in India",
     type: "Full-time",
     experience: "4+ years",
     summary: "Design apps and dashboards people use every day, from research through to shipped screens.",
@@ -222,7 +222,7 @@ export const roles: Role[] = [
     slug: "performance-marketing-manager",
     title: "Performance marketing manager",
     team: "Growth",
-    location: "Gurugram",
+    location: "Remote in India",
     type: "Full-time",
     experience: "4+ years",
     summary: "Plan and run paid campaigns for our clients, judged by orders and revenue.",
@@ -278,7 +278,7 @@ export const roles: Role[] = [
     slug: "engagement-manager",
     title: "Engagement manager",
     team: "Delivery",
-    location: "Bengaluru",
+    location: "Remote in India",
     type: "Full-time",
     experience: "6+ years",
     summary: "Run client engagements end to end: scope, team, budget, demos and the relationship.",

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Brief } from "@/components/Brief/Brief";
 import { Tiles } from "@/components/Cards/Cards";
 import { Head, PageHero } from "@/components/Page/Page";
@@ -21,7 +22,11 @@ export default function ServicesPage() {
         crumbs={[{ href: "/services", label: "What we do" }]}
         title="What we do"
         intro="Five services from one senior team. We build software, advise on hard technical calls, run marketing, fix tracking and install ready-made tools."
-      />
+      >
+        <Link href="/pricing" className="btn btn--primary">
+          See pricing
+        </Link>
+      </PageHero>
 
       <section className="section mist" data-section="services">
         <div className="container">

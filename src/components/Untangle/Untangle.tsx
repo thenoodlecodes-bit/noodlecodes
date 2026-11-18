@@ -134,8 +134,7 @@ export function Untangle() {
           We untangle hard software problems<span className={styles.stop}>.</span>
         </h1>
         <p className={styles.lede}>
-          We build apps and websites, fix messy systems and make your marketing numbers add up. One senior team, based in
-          Bengaluru, Pune and Gurugram.
+          We build apps and websites, fix messy systems and make your marketing numbers add up. One senior team, based in India.
         </p>
         <div className={styles.actions}>
           <Link href="/contact" className="btn btn--primary">

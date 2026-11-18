@@ -1,0 +1,49 @@
+.float {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 40;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 52px;
+  padding: 0 20px 0 16px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--paper);
+  font: 600 15px/1 var(--body);
+  box-shadow: 0 10px 28px -10px rgb(17 19 24 / 0.55);
+  transition:
+    background-color 0.2s,
+    transform 0.3s var(--ease);
+}
+.float:hover {
+  background: var(--brand);
+  transform: translateY(-2px);
+}
+.float:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 3px;
+}
+
+@media (max-width: 560px) {
+  .float {
+    right: 14px;
+    bottom: 14px;
+    width: 52px;
+    padding: 0;
+    justify-content: center;
+  }
+  .float span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+}
+@media print {
+  .float {
+    display: none;
+  }
+}

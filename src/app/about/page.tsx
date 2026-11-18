@@ -6,7 +6,6 @@ import { Head, PageHero, StatRow } from "@/components/Page/Page";
 import b from "@/components/Page/blocks.module.css";
 import { about } from "@/content/about";
 import { clients } from "@/content/clients";
-import { initials, people } from "@/content/people";
 import { site } from "@/content/site";
 import styles from "./about.module.css";
 
@@ -66,28 +65,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="section mist" data-section="leadership">
-        <div className="container">
-          <Head title="The people you will work with">
-            <p>Every engagement has one of these people on it, not just on the pitch.</p>
-          </Head>
-          <ul className={styles.people}>
-            {people
-              .filter((p) => p.leadership)
-              .map((p) => (
-                <li key={p.id}>
-                  <span className={styles.avatar} aria-hidden="true">
-                    {initials(p.name)}
-                  </span>
-                  <h3>{p.name}</h3>
-                  <p className="meta">{p.role}</p>
-                  <p>{p.bio}</p>
-                </li>
-              ))}
-          </ul>
-        </div>
-      </section>
-
       <section className="section" data-section="clients">
         <div className="container">
           <Head title="Who we work with" text={`${clients.length} companies, from first-time founders to listed brands.`}>
@@ -96,25 +73,6 @@ export default function AboutPage() {
             </Link>
           </Head>
           <ClientWall />
-        </div>
-      </section>
-
-      <section className="section" data-section="offices">
-        <div className="container">
-          <Head title="Three studios in India" />
-          <ul className={styles.offices}>
-            {site.offices.map((o) => (
-              <li key={o.city}>
-                <h3>{o.city}</h3>
-                <p className="meta">{o.note}</p>
-                <address>
-                  {o.lines.map((l) => (
-                    <span key={l}>{l}</span>
-                  ))}
-                </address>
-              </li>
-            ))}
-          </ul>
         </div>
       </section>
 

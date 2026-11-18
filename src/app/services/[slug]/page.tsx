@@ -6,9 +6,11 @@ import { CaseGrid } from "@/components/Cards/Cards";
 import { ClientWall } from "@/components/Clients/Clients";
 import { Faqs, Head, Steps } from "@/components/Page/Page";
 import b from "@/components/Page/blocks.module.css";
+import { From } from "@/components/Price/Price";
 import { ServiceHero } from "@/components/Service/Service";
 import { ToolCards } from "@/components/Tool/Tool";
 import { clients } from "@/content/clients";
+import { serviceFrom } from "@/content/pricing";
 import { services } from "@/content/services";
 import { solutions } from "@/content/solutions";
 import { casesBy } from "@/lib/content";
@@ -33,6 +35,7 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
   const stories = casesBy({ service: s.slug }).slice(0, 3);
   const hired = clients.filter((c) => c.services.includes(s.slug));
   const modules = s.slug === "plug-and-play";
+  const from = serviceFrom(s.slug);
 
   return (
     <main id="main">
@@ -46,6 +49,7 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
         problem={s.problem}
         reply={s.overview[0]}
         stats={s.stats}
+        price={from && <From item={from} />}
       >
         <Link href={`/contact?service=${s.slug}`} className="btn btn--primary">
           Talk to us about {s.name.toLowerCase()}

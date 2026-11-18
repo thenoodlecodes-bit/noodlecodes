@@ -3,7 +3,6 @@
 export type ServiceSlug = "development" | "consultancy" | "digital-marketing" | "ads-tracking" | "plug-and-play";
 export type IndustrySlug = "retail" | "financial-services" | "healthcare" | "hospitality" | "mobility" | "saas";
 export type SolutionSlug = "relay" | "mailroom" | "wave" | "pulse" | "trail";
-export type PersonId = "aarav" | "nisha" | "kabir" | "meera" | "rohan" | "ananya" | "farhan" | "tara";
 export type InsightCategory = "Engineering" | "AI" | "Growth" | "Measurement" | "Leadership";
 
 export type Stat = { value: string; label: string };
@@ -77,7 +76,7 @@ export type CaseStudy = {
   approach: Step[];
   outcome: string[];
   stack: string[];
-  quote: { text: string; name: string; role: string };
+  quote: { text: string; role: string };
 };
 
 export type Block =
@@ -92,7 +91,6 @@ export type Insight = {
   title: string;
   dek: string;
   category: InsightCategory;
-  author: PersonId;
   /** ISO date, "2026-10-28". */
   date: string;
   minutes: number;
@@ -111,14 +109,6 @@ export type StackEntry = {
   verdict: Verdict;
   change?: "new" | "up" | "down";
   note: string;
-};
-
-export type Person = {
-  id: PersonId;
-  name: string;
-  role: string;
-  bio: string;
-  leadership?: boolean;
 };
 
 export type Team = "Engineering" | "Design" | "Data and AI" | "Growth" | "Delivery";

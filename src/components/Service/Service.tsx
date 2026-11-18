@@ -13,6 +13,7 @@ export function ServiceHero({
   problem,
   reply,
   stats,
+  price,
   children,
 }: {
   crumbs: Crumb[];
@@ -21,6 +22,8 @@ export function ServiceHero({
   problem: string;
   reply: string;
   stats: Stat[];
+  /** The starting price line, when the service has one. */
+  price?: ReactNode;
   children?: ReactNode;
 }) {
   return (
@@ -32,6 +35,12 @@ export function ServiceHero({
             <h1 className={`h1 ${styles.title}`}>{title}</h1>
             <p className="lede">{intro}</p>
             {children && <div className={styles.actions}>{children}</div>}
+            {price && (
+              <p className={styles.price}>
+                {price}
+                <Link href="/pricing">See pricing</Link>
+              </p>
+            )}
           </div>
           <figure className={styles.call}>
             <div className={styles.them}>

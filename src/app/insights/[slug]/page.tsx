@@ -6,7 +6,6 @@ import { ArticleGrid } from "@/components/Cards/Cards";
 import { Breadcrumbs, Head } from "@/components/Page/Page";
 import { Prose, slugify } from "@/components/Prose/Prose";
 import { insights } from "@/content/insights";
-import { initials, person } from "@/content/people";
 import { service } from "@/content/services";
 import { site } from "@/content/site";
 import { formatDate, topUp } from "@/lib/content";
@@ -25,7 +24,7 @@ export async function generateMetadata({ params }: PageProps<"/insights/[slug]">
     title: i.title,
     description: i.dek,
     alternates: { canonical: `/insights/${i.slug}` },
-    openGraph: { type: "article", title: i.title, description: i.dek, publishedTime: i.date, authors: [person(i.author).name] },
+    openGraph: { type: "article", title: i.title, description: i.dek, publishedTime: i.date },
   };
 }
 
@@ -34,7 +33,6 @@ export default async function ArticlePage({ params }: PageProps<"/insights/[slug
   const article = insights.find((x) => x.slug === slug);
   if (!article) notFound();
 
-  const author = person(article.author);
   const headings = article.body.filter((b) => b.type === "h2").map((b) => b.text);
   const related = topUp(
     insights.filter((x) => x !== article && (x.category === article.category || x.services.some((s) => article.services.includes(s)))),
@@ -49,7 +47,7 @@ export default async function ArticlePage({ params }: PageProps<"/insights/[slug
     headline: article.title,
     description: article.dek,
     datePublished: article.date,
-    author: { "@type": "Person", name: author.name, jobTitle: author.role },
+    author: { "@type": "Organization", name: site.name, url: site.url },
     publisher: { "@type": "Organization", name: site.name, url: site.url },
     mainEntityOfPage: url,
   };
@@ -67,17 +65,9 @@ export default async function ArticlePage({ params }: PageProps<"/insights/[slug
             />
             <h1 className={styles.title}>{article.title}</h1>
             <p className="lede">{article.dek}</p>
-            <div className={styles.byline}>
-              <span className={styles.avatar} aria-hidden="true">
-                {initials(author.name)}
-              </span>
-              <span>
-                <strong>{author.name}</strong>
-                <span className="meta">
-                  {author.role} · {formatDate(article.date)} · {article.minutes} min read
-                </span>
-              </span>
-            </div>
+            <p className={`meta ${styles.byline}`}>
+              {formatDate(article.date)} · {article.minutes} min read
+            </p>
           </div>
         </header>
 
@@ -118,16 +108,6 @@ export default async function ArticlePage({ params }: PageProps<"/insights/[slug
                   </li>
                 ))}
               </ul>
-              <div className={styles.author}>
-                <span className={styles.avatar} aria-hidden="true">
-                  {initials(author.name)}
-                </span>
-                <div>
-                  <strong>{author.name}</strong>
-                  <span className="meta">{author.role}</span>
-                  <p>{author.bio}</p>
-                </div>
-              </div>
             </footer>
           </div>
         </div>
