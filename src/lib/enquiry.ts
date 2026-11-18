@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { BUDGETS } from "@/content/services";
+import { TIMELINES } from "@/content/pricing";
 import type { ServiceSlug } from "@/content/types";
 
 export const TOPICS = [
@@ -22,12 +22,16 @@ export const TOPIC_FOR: Record<ServiceSlug, (typeof TOPICS)[number]> = {
 
 export const enquirySchema = z.object({
   topics: z.array(z.enum(TOPICS)).min(1, "Pick at least one."),
-  budget: z.enum(BUDGETS).optional(),
+  // Budget ranges change with the visitor's currency, so any short label is accepted.
+  budget: z.string().trim().max(40).optional(),
+  timeline: z.enum(TIMELINES).optional(),
   name: z.string().trim().min(1, "Add your name.").max(100),
   email: z.email("Add an email we can reply to.").max(200),
   company: z.string().trim().max(120).optional().default(""),
   phone: z.string().trim().max(30).optional().default(""),
   message: z.string().trim().min(20, "Tell us a little more, at least a sentence or two.").max(4000),
+  /** Where the enquiry started, such as the pricing estimate. */
+  source: z.string().trim().max(60).optional().default(""),
   // Honeypot. Real people never see this field.
   website: z.string().max(0).optional().default(""),
 });

@@ -57,7 +57,6 @@ export const cases: CaseStudy[] = [
     stack: ["Shopify", "Liquid", "Razorpay", "Klaviyo", "Google Analytics 4", "Shiprocket"],
     quote: {
       text: "They spent the first week reading our DMs. The store works the way we actually sell.",
-      name: "Clara Mendes",
       role: "Founder, Maison Verde",
     },
   },
@@ -115,7 +114,6 @@ export const cases: CaseStudy[] = [
     stack: ["Node.js", "PostgreSQL", "Redis", "BullMQ", "Next.js", "AWS", "Datadog"],
     quote: {
       text: "The audit alone saved us a six month rewrite. The build after it was the easy part.",
-      name: "Sanjana Rao",
       role: "CTO, Onyx Ridge Capital",
     },
   },
@@ -174,7 +172,6 @@ export const cases: CaseStudy[] = [
     stack: ["React Native", "TypeScript", "NestJS", "PostgreSQL", "Razorpay", "Firebase Cloud Messaging"],
     quote: {
       text: "A demo every Friday for four months. We never once had to ask what was happening.",
-      name: "Arjun Sethi",
       role: "Director, Halcyon Health",
     },
   },
@@ -240,7 +237,6 @@ export const cases: CaseStudy[] = [
     ],
     quote: {
       text: "Our WhatsApp campaigns fill Tuesday nights now, and we can show the owners exactly how.",
-      name: "Ishaan Malhotra",
       role: "Head of growth, Ember & Oak",
     },
   },
@@ -299,7 +295,6 @@ export const cases: CaseStudy[] = [
     stack: ["Flutter", "Dart", "Firebase Cloud Messaging", "Go", "PostgreSQL", "BigQuery", "Unleash"],
     quote: {
       text: "Push, analytics and a new onboarding in ten weeks. We finally know why riders stay.",
-      name: "Priya Nair",
       role: "Product lead, Kestrel Mobility",
     },
   },
@@ -365,7 +360,6 @@ export const cases: CaseStudy[] = [
     ],
     quote: {
       text: "Finally, numbers our finance team and our ad team agree on.",
-      name: "Marc Duval",
       role: "CMO, Aurelian",
     },
   },
@@ -423,7 +417,6 @@ export const cases: CaseStudy[] = [
     stack: ["Kotlin", "Swift", "Python", "FastAPI", "PostgreSQL", "pgvector", "Claude API", "Langfuse"],
     quote: {
       text: "It answers what it should and refuses what it should. Our compliance team signed off on both.",
-      name: "Devika Menon",
       role: "COO, Juniper Wealth",
     },
   },
@@ -482,7 +475,6 @@ export const cases: CaseStudy[] = [
     stack: ["Ruby on Rails", "PostgreSQL", "Sidekiq", "AWS", "Terraform", "GitHub Actions", "Packwerk"],
     quote: {
       text: "We came in asking for microservices. We left with a cheaper, faster platform and the same team.",
-      name: "Vikram Hegde",
       role: "CEO, Calder Labs",
     },
   },

@@ -1,5 +1,6 @@
 import { Resend } from "resend";
 import { site } from "@/content/site";
+import { saveToSheet, type SheetRow } from "./sheet";
 
 // Best-effort limit per server instance. Put a real limiter (Upstash, Vercel WAF) in front for heavy traffic.
 const WINDOW_MS = 10 * 60 * 1000;
@@ -23,27 +24,39 @@ export async function readJson(request: Request): Promise<unknown | undefined> {
   }
 }
 
-type Sent = { ok: true; dev?: true } | { ok: false; status: 502 | 503; error: string };
+type Mail = { subject: string; text: string; replyTo?: string };
+type Sent = { ok: true } | { ok: false; status: 502 | 503; error: string };
 
-/** Emails the team through Resend. In development without keys, logs the message instead. */
-export async function notifyTeam(mail: { subject: string; text: string; replyTo?: string; tag: string }): Promise<Sent> {
+/** Emails the team through Resend, when RESEND_API_KEY and MAIL_FROM are set. */
+async function email(mail: Mail, tag: string): Promise<"sent" | "missing" | "failed"> {
   const apiKey = process.env.RESEND_API_KEY;
   const from = process.env.MAIL_FROM;
+  if (!apiKey || !from) return "missing";
   const to = process.env.MAIL_TO ?? site.emails.hello;
-
-  if (!apiKey || !from) {
-    if (process.env.NODE_ENV !== "production") {
-      console.info(`[${mail.tag}] Email is not configured. Would have sent:\n${mail.subject}\n\n${mail.text}`);
-      return { ok: true, dev: true };
-    }
-    console.error(`[${mail.tag}] RESEND_API_KEY or MAIL_FROM is missing`);
-    return { ok: false, status: 503, error: "This form is not configured yet." };
-  }
-
   const { error } = await new Resend(apiKey).emails.send({ from, to, replyTo: mail.replyTo, subject: mail.subject, text: mail.text });
   if (error) {
-    console.error(`[${mail.tag}] Resend failed`, error);
-    return { ok: false, status: 502, error: "Could not send right now." };
+    console.error(`[${tag}] Resend failed`, error);
+    return "failed";
   }
-  return { ok: true };
+  return "sent";
+}
+
+/**
+ * Saves the enquiry to the Google Sheet and emails the team, in parallel.
+ * It counts as delivered when either one works. In development with neither set up, it logs instead.
+ */
+export async function deliver({ tag, row, mail }: { tag: string; row: SheetRow; mail: Mail }): Promise<Sent> {
+  const [sheet, mailed] = await Promise.all([saveToSheet(row), email(mail, tag)]);
+  if (sheet.ok || mailed === "sent") return { ok: true };
+
+  const nothingSetUp = !sheet.ok && sheet.reason === "missing" && mailed === "missing";
+  if (nothingSetUp && process.env.NODE_ENV !== "production") {
+    console.info(`[${tag}] Neither ENQUIRY_SHEET_URL nor Resend is set. Would have sent:\n${mail.subject}\n\n${mail.text}`);
+    return { ok: true };
+  }
+  if (nothingSetUp) {
+    console.error(`[${tag}] Set ENQUIRY_SHEET_URL or RESEND_API_KEY and MAIL_FROM`);
+    return { ok: false, status: 503, error: "This form is not set up yet." };
+  }
+  return { ok: false, status: 502, error: "Could not send right now." };
 }

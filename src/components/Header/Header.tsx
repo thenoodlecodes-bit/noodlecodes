@@ -24,6 +24,7 @@ const PANELS: { id: Panel; label: string; base: string }[] = [
 
 const LINKS = [
   { href: "/work", label: "Clients" },
+  { href: "/pricing", label: "Pricing" },
   { href: "/about", label: "About" },
   { href: "/careers", label: "Careers" },
 ];

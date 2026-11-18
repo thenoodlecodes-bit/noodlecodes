@@ -103,8 +103,7 @@ export function ClientQuotes({ stories }: { stories: CaseStudy[] }) {
                 <p>&ldquo;{s.quote.text}&rdquo;</p>
               </blockquote>
               <figcaption>
-                <strong>{s.quote.name}</strong>
-                <span>{s.quote.role}</span>
+                <strong>{s.quote.role}</strong>
               </figcaption>
               <Link href={`/work/${s.slug}`} className="go">
                 Read the story

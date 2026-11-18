@@ -276,6 +276,3 @@ export function service(slug: ServiceSlug): Service {
   if (!s) throw new Error(`Unknown service: ${slug}`);
   return s;
 }
-
-export const BUDGETS = ["Under ₹10 lakh", "₹10 to 40 lakh", "₹40 lakh to ₹1 crore", "Above ₹1 crore"] as const;
-export type Budget = (typeof BUDGETS)[number];

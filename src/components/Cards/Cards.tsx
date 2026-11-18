@@ -3,9 +3,9 @@ import { ClientMark } from "@/components/Clients/Clients";
 import { Pictogram } from "@/components/Pictogram/Pictogram";
 import { clientForStory } from "@/content/clients";
 import { industries } from "@/content/industries";
-import { person } from "@/content/people";
 import { services } from "@/content/services";
 import { stack, stackReport } from "@/content/stack";
+import { formatDate } from "@/lib/content";
 import type { CaseStudy, Insight } from "@/content/types";
 import styles from "./cards.module.css";
 
@@ -73,14 +73,13 @@ export function CaseGrid({ cases, cols = 3 }: { cases: CaseStudy[]; cols?: 2 | 3
 
 /** `lead` is the featured article: a larger headline for the wide slot. */
 export function ArticleCard({ i, lead = false }: { i: Insight; lead?: boolean }) {
-  const author = person(i.author);
   return (
     <Link href={`/insights/${i.slug}`} className={`${styles.card} ${lead ? styles.lead : ""}`}>
       <span className="chip">{i.category}</span>
       <h3 className={styles.title}>{i.title}</h3>
       <p className={styles.text}>{i.dek}</p>
       <span className={`meta ${styles.foot}`}>
-        {author.name} · {i.minutes} min read
+        {formatDate(i.date)} · {i.minutes} min read
       </span>
     </Link>
   );

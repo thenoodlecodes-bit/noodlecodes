@@ -28,7 +28,7 @@ export default function Home() {
     telephone: site.phone,
     foundingDate: String(site.founded),
     areaServed: "IN",
-    address: { "@type": "PostalAddress", addressLocality: "Bengaluru", addressRegion: "Karnataka", addressCountry: "IN" },
+    address: { "@type": "PostalAddress", addressCountry: "IN" },
   };
 
   return (
@@ -47,7 +47,11 @@ export default function Home() {
 
       <section className="section mist" data-section="services">
         <div className="container">
-          <Head title="What we do" text="Five services from one team. Use one, or let us combine them." />
+          <Head title="What we do" text="Five services from one team. Use one, or let us combine them.">
+            <Link href="/pricing" className="go">
+              See pricing
+            </Link>
+          </Head>
           <ServiceCards />
         </div>
       </section>
@@ -108,7 +112,7 @@ export default function Home() {
           <Link href="/careers" className={styles.hiring}>
             <strong>We are hiring.</strong>
             <span>
-              {roles.length} open roles in Bengaluru, Pune, Gurugram and remote.
+              {roles.length} open roles, remote across India.
             </span>
             <span className="go">See the roles</span>
           </Link>

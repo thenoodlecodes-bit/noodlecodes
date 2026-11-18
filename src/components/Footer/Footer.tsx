@@ -4,6 +4,7 @@ import { industries } from "@/content/industries";
 import { services } from "@/content/services";
 import { site } from "@/content/site";
 import { solutions } from "@/content/solutions";
+import { whatsappLink } from "@/lib/money";
 import { Newsletter } from "./Newsletter";
 import { Year } from "./Year";
 import styles from "./Footer.module.css";
@@ -11,6 +12,7 @@ import styles from "./Footer.module.css";
 const company = [
   { href: "/about", label: "About us" },
   { href: "/work", label: "Clients" },
+  { href: "/pricing", label: "Pricing" },
   { href: "/careers", label: "Careers" },
   { href: "/contact", label: "Contact" },
 ];
@@ -81,21 +83,13 @@ export function Footer() {
           </div>
         </nav>
 
-        <div className={styles.offices}>
-          {site.offices.map((o) => (
-            <address key={o.city}>
-              <strong>{o.city}</strong>
-              <span className="meta">{o.note}</span>
-              {o.lines.map((l) => (
-                <span key={l}>{l}</span>
-              ))}
-            </address>
-          ))}
-          <address>
-            <strong>Talk to us</strong>
-            <a href={`mailto:${site.emails.hello}`}>{site.emails.hello}</a>
-            <a href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a>
-          </address>
+        <div className={styles.contact}>
+          <strong>Talk to us</strong>
+          <a href={whatsappLink(site.whatsapp)} target="_blank" rel="noreferrer">
+            WhatsApp {site.phone}
+          </a>
+          <a href={`mailto:${site.emails.hello}`}>{site.emails.hello}</a>
+          <Link href="/pricing">See pricing</Link>
         </div>
 
         <div className={styles.bottom}>
